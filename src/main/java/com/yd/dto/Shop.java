@@ -12,6 +12,7 @@ public class Shop extends BaseDTO {
     private String mobile;
     private String city;
     private Date cdate;
+    private String flag;
 
     public Integer getId() {
         return id;
@@ -59,5 +60,13 @@ public class Shop extends BaseDTO {
 
     public void setCdate(Date cdate) {
         this.cdate = cdate;
+    }
+
+    public String getFlag() {
+        return flag;
+    }
+
+    public void setFlag(String flag) {
+        this.flag = flag;
     }
 }
