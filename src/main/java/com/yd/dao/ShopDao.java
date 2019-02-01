@@ -25,10 +25,10 @@ public class ShopDao {
 
     public Page<Shop> getList(String search_name, Integer pagesize, Integer count){
         if(search_name!=null && !search_name.equals("")) {
-            String sql = "SELECT * FROM t_shop where (name like ? or city like ?) and flag='0' order cdate asc";
+            String sql = "SELECT * FROM t_shop where (name like ? or city like ?) and flag='0' order by cdate asc";
             return baseDao.queryByPage(sql, Shop.class, new Object[]{"%" + search_name + "%", "%" + search_name + "%"}, pagesize, count);
         }else{
-            String sql = "SELECT * FROM t_shop where flag='0' order cdate asc";
+            String sql = "SELECT * FROM t_shop where flag='0' order by cdate asc";
             return baseDao.queryByPage(sql, Shop.class, new Object[]{}, pagesize, count);
         }
     }
