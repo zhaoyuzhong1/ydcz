@@ -110,7 +110,7 @@
                 </div>
                 <div class="modal-footer" id="qlfoot2" style="display: none">
                     <button type="button"  class="btn btn-thollow" data-dismiss="modal"><i class="fa fa-times"></i> 取消</button>
-                    <button type="button" class="btn btn-tsolid" onclick="update();" ><i class="fa fa-check" ></i> 修改</button>
+                    <button type="button" class="btn btn-tsolid" onclick="updateEmp();" ><i class="fa fa-check" ></i> 修改</button>
                 </div>
 
             </div><!-- /.modal-content -->
