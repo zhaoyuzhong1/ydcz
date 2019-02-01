@@ -46,6 +46,16 @@ public class ShopDao {
     }
 
 
+    //根据city获取该城市下的门店
+    public Shop selectShopByCity(String city){
+        String sql = "SELECT * FROM t_shop where city=? and flag='0' ";
+        List<Shop> s = baseDao.query(sql,Shop.class,new Object[]{city});
+        if(s.size()>0){
+            return s.get(0);
+        }else{
+            return null;
+        }
+    }
 
 
 
