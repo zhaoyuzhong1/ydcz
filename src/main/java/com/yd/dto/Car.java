@@ -7,11 +7,15 @@ import java.util.Date;
  */
 public class Car extends BaseDTO {
     private Integer id;
-    private String name;
-    private String linkman;
-    private String mobile;
-    private String city;
+    private String title;
+    private String color;
+    private String issy;
+    private double guiprice;
+    private double price;
+    private double downpay;
+    private double monpay;
     private Date cdate;
+    private String flag;
 
     public Integer getId() {
         return id;
@@ -21,36 +25,60 @@ public class Car extends BaseDTO {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getLinkman() {
-        return linkman;
+    public String getColor() {
+        return color;
     }
 
-    public void setLinkman(String linkman) {
-        this.linkman = linkman;
+    public void setColor(String color) {
+        this.color = color;
     }
 
-    public String getMobile() {
-        return mobile;
+    public String getIssy() {
+        return issy;
     }
 
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
+    public void setIssy(String issy) {
+        this.issy = issy;
     }
 
-    public String getCity() {
-        return city;
+    public double getGuiprice() {
+        return guiprice;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setGuiprice(double guiprice) {
+        this.guiprice = guiprice;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public double getDownpay() {
+        return downpay;
+    }
+
+    public void setDownpay(double downpay) {
+        this.downpay = downpay;
+    }
+
+    public double getMonpay() {
+        return monpay;
+    }
+
+    public void setMonpay(double monpay) {
+        this.monpay = monpay;
     }
 
     public Date getCdate() {
@@ -59,5 +87,13 @@ public class Car extends BaseDTO {
 
     public void setCdate(Date cdate) {
         this.cdate = cdate;
+    }
+
+    public String getFlag() {
+        return flag;
+    }
+
+    public void setFlag(String flag) {
+        this.flag = flag;
     }
 }
