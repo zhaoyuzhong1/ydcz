@@ -24,15 +24,15 @@ public class ShopDao {
 
 
     public Page<Shop> getList(String search_name, Integer pagesize, Integer count){
-        String sql = "SELECT * FROM t_shop where name like ? and flag='0' order cdate asc";
-        return baseDao.queryByPage(sql,Shop.class,new Object[]{"%"+search_name+"%"},pagesize,count);
+        String sql = "SELECT * FROM t_shop where (name like ? or city like ?) and flag='0' order cdate asc";
+        return baseDao.queryByPage(sql,Shop.class,new Object[]{"%"+search_name+"%","%"+search_name+"%"},pagesize,count);
     }
 
 
     //添加
     public int addShop(Shop shop) {
         StringBuffer sql =new StringBuffer();
-        sql.append(" insert into t_shop (name,linkman,mobile,city,cdate,flag) values(:name,:linkman,:mobile,:city,now(),'0') ");
+        sql.append(" insert into t_shop (name,address,linkman,mobile,city,cdate,flag) values(:name,:address,:linkman,:mobile,:city,now(),'0') ");
         return baseDao.insert(sql.toString(),shop);
     }
 
@@ -41,7 +41,7 @@ public class ShopDao {
     //添加
     public int updateShop(Shop shop) {
         StringBuffer sql =new StringBuffer();
-        sql.append(" update t_shop set name=:name,linkman=:linkman,city=:city,mobile=:mobile where id=:id ");
+        sql.append(" update t_shop set name=:name,linkman=:linkman,city=:city,mobile=:mobile,address=:address where id=:id ");
         return baseDao.update(sql.toString(),shop);
     }
 
