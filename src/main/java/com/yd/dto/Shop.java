@@ -8,6 +8,7 @@ import java.util.Date;
 public class Shop extends BaseDTO {
     private Integer id;
     private String name;
+    private String address;
     private String linkman;
     private String mobile;
     private String city;
@@ -68,5 +69,13 @@ public class Shop extends BaseDTO {
 
     public void setFlag(String flag) {
         this.flag = flag;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }
