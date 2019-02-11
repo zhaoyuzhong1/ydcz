@@ -1,6 +1,7 @@
 package com.yd.web;
 
 import com.yd.dao.CarDao;
+import com.yd.dao.CarImgDao;
 import com.yd.dao.CityDao;
 import com.yd.dao.ShopDao;
 import com.yd.dto.Car;
@@ -13,8 +14,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -26,6 +35,8 @@ import java.util.Map;
 public class CarController {
     @Autowired
     CarDao carDao;
+    @Autowired
+    CarImgDao carImgDao;
 
     @RequestMapping(value = "/index")
     public String index() {
@@ -39,8 +50,66 @@ public class CarController {
     public String imgindex(int carid,Model model) {
         List<CarImg> cis = carDao.selectImgByCarid(carid);
         model.addAttribute("cis",cis);
+        model.addAttribute("carid",carid);
         return "car/imgindex";
         //return "sys/top";
+    }
+
+
+
+    @RequestMapping(value = "/uploadFile")
+    public String upload(HttpServletRequest request, HttpServletResponse response) throws IOException {
+
+        response.setCharacterEncoding("UTF-8");
+        Map<String, Object> json = new HashMap<String, Object>();
+        MultipartHttpServletRequest multipartRequest = (MultipartHttpServletRequest) request;
+
+        /** 页面控件的文件流* */
+        MultipartFile multipartFile = null;
+        Map map =multipartRequest.getFileMap();
+        String name = multipartRequest.getParameter("name");
+        String carid = multipartRequest.getParameter("carid");
+        System.out.println("name:"+name);
+        for (Iterator i = map.keySet().iterator(); i.hasNext();) {
+            Object obj = i.next();
+            multipartFile=(MultipartFile) map.get(obj);
+
+        }
+
+        /** 获取文件的后缀* */
+        String filename = multipartFile.getOriginalFilename();
+
+        InputStream inputStream;
+        //System.out.println("             "+request.getRealPath("/"));
+        String basePath=request.getRealPath("/")+"upload\\index\\";
+
+
+        byte[] data = new byte[1024];
+        int len = 0;
+        FileOutputStream fileOutputStream = null;
+
+        try {
+            inputStream = multipartFile.getInputStream();
+            fileOutputStream = new FileOutputStream(basePath+filename);
+            while ((len = inputStream.read(data)) != -1) {
+                fileOutputStream.write(data, 0, len);
+            }
+            CarImg img = new CarImg();
+            img.setImgname(name);
+            img.setImgpath(basePath+filename);
+            if(carid!=null) {
+                img.setCarid(Integer.parseInt(carid));
+            }else{
+                img.setCarid(0);
+            }
+            carImgDao.addCarImg(img);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+        return "redirect:imgindex";
+
     }
 
 
