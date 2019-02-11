@@ -19,6 +19,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -151,6 +152,28 @@ public class CarController {
             return "nook";
         }
         //return "sys/top";
+    }
+
+
+    @ResponseBody
+    @RequestMapping(value = "/delCarImg")
+    public String delCarImg(int id){
+        CarImg ci = carImgDao.getCarImg(id);
+        String filepath = "";
+        if(ci!=null){
+            filepath = ci.getImgpath();
+        }
+        int flag = carImgDao.delCarImg(id);
+        if(flag==-1){
+            return "nook";
+        }else {
+            //删除数据库记录并删除图片
+            if(!filepath.equals("")){
+                File f = new File(filepath);
+                f.delete();
+            }
+            return "ok";
+        }
     }
 
 
