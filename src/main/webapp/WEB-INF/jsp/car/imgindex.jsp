@@ -85,6 +85,7 @@
 
                         <input type="hidden" id="allid">
                         <input type="hidden" id="uiflag">
+                        <input type="hidden" id="carid" value="${carid}"/>
                         <div class="form-horizontal">
                             <div class="form-group">
                                 <label class="control-label col-sm-3"><font color="red" >*</font> 图片名称：</label>
@@ -308,7 +309,7 @@
         removeTitle: 'Cancel or reset changes',
         elErrorContainer: '#kv-avatar-errors-1',
         msgErrorClass: 'alert alert-block alert-danger',
-        defaultPreviewContent: '<img src="${ctx}/upload/default_avatar_male.jpg" alt="Your Avatar">',
+        defaultPreviewContent: '<img src="${ctx}/upload/car.jpg" alt="Your Avatar">',
         layoutTemplates: {main2: '{preview} ' + ' {remove} {browse}'},
         allowedFileExtensions: ["jpg", "png", "gif"]
     });
