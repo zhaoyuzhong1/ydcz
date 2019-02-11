@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="116px" height="116px" viewBox="0 0 116 116" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <circle id="path-1" cx="48" cy="48" r="48"></circle>
+        <filter x="-17.2%" y="-14.1%" width="134.4%" height="134.4%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="3" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <path d="M29.8923077,8 C35.4879701,8 40,12.7093196 40,18.4895248 C40,25.3565547 34.9395391,32.1655788 25.0627748,39.037571 C23.2184375,40.3208122 20.7815378,40.3208094 18.9372155,39.0375643 C9.06045761,32.1655744 4,25.3565525 4,18.4895248 C4,12.7093196 8.51202994,8 14.1076923,8 C17.3630231,8 20.1742968,9.17470862 22,11.328206 C23.8257032,9.17470862 26.6369769,8 29.8923077,8 Z M20.3327093,15.8209319 C19.5630086,13.3860867 17.361772,12 14.3269231,12 C10.8456275,12 8,14.965251 8,18.6512562 C8,23.8916506 12.2566838,29.6099061 21.0074339,35.6886047 C21.6051296,36.1037978 22.3948624,36.1037987 22.9925644,35.6886059 C31.7433132,29.6099101 36,23.8916524 36,18.6512562 C36,14.965251 33.1543725,12 29.6730769,12 C26.638228,12 24.4369914,13.3860867 23.6672907,15.8209319 C23.1493012,17.4595224 20.8506988,17.4595224 20.3327093,15.8209319 Z" id="path-3"></path>
+    </defs>
+    <g id="列表页" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-49" transform="translate(-612.000000, -102.000000)">
+            <g id="回到顶部-copy-4" transform="translate(622.000000, 109.000000)">
+                <g id="Oval-8">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <use fill-opacity="0.95" fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                </g>
+                <text id="收藏夹" font-family="PingFangSC-Regular, PingFang SC" font-size="20" font-weight="normal" line-spacing="20" fill="#5E5E66">
+                    <tspan x="18.5" y="85">收藏夹</tspan>
+                </text>
+                <g id="Group" transform="translate(24.000000, 12.000000)">
+                    <g id="a_48" opacity="0" stroke="#AC59FF" stroke-width="4">
+                        <rect id="Rectangle-40" x="2" y="2" width="44" height="44"></rect>
+                    </g>
+                    <mask id="mask-4" fill="white">
+                        <use xlink:href="#path-3"></use>
+                    </mask>
+                    <use id="Mask" fill="#8D8E99" fill-rule="nonzero" xlink:href="#path-3"></use>
+                </g>
+                <polygon id="Rectangle-7" fill="#FFFFFF" points="50 29 68 29 68 54 50 54 46 41.5"></polygon>
+                <circle id="Oval" fill="#8D8E99" cx="62" cy="29" r="2"></circle>
+                <circle id="Oval-Copy" fill="#8D8E99" cx="48" cy="49" r="2"></circle>
+                <rect id="Rectangle-6" fill="#8D8E99" x="52" y="34" width="16" height="3" rx="1.5"></rect>
+                <rect id="Rectangle-6-Copy" fill="#8D8E99" x="52" y="40" width="16" height="3" rx="1.5"></rect>
+                <rect id="Rectangle-6-Copy-2" fill="#8D8E99" x="52" y="46" width="16" height="3" rx="1.5"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="116px" height="116px" viewBox="0 0 116 116" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <circle id="path-1" cx="48" cy="48" r="48"></circle>
+        <filter x="-17.2%" y="-14.1%" width="134.4%" height="134.4%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="3" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="列表页" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-49" transform="translate(-612.000000, -222.000000)">
+            <g id="回到顶部" transform="translate(622.000000, 229.000000)">
+                <g id="Oval-8">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <use fill-opacity="0.95" fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                </g>
+                <text id="顶部" font-family="PingFangSC-Regular, PingFang SC" font-size="20" font-weight="normal" line-spacing="20" fill="#5E5E66">
+                    <tspan x="26.06" y="82.96">顶部</tspan>
+                </text>
+                <g id="Artboard-Copy-2" transform="translate(31.000000, 22.000000)">
+                    <path d="M6.29752066,36.8712926 L6.29752066,16.557243 C6.29752066,15.4526735 7.19295116,14.557243 8.29752066,14.557243 L28.6115702,14.557243" id="Rectangle" stroke="#8D8E99" stroke-width="4" stroke-linecap="round" transform="translate(17.454545, 25.714268) rotate(-315.000000) translate(-17.454545, -25.714268) "></path>
+                    <rect id="Rectangle-5" fill="#8D8E99" x="0" y="0" width="35" height="4" rx="2"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
