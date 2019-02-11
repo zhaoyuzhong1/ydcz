@@ -81,7 +81,7 @@ public class CarController {
 
         InputStream inputStream;
         //System.out.println("             "+request.getRealPath("/"));
-        String basePath=request.getRealPath("/")+"upload\\index\\";
+        String basePath=request.getRealPath("/")+"upload\\car\\";
 
 
         byte[] data = new byte[1024];
