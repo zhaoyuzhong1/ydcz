@@ -49,6 +49,10 @@ public class CarImgDao {
     }
 
 
+    public CarImg getCarImg(int id){
+        String sql = "select * from t_car_img where id=?";
+        return baseDao.queryById(sql,CarImg.class,id);
+    }
 
 
 }
