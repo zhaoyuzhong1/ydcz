@@ -47,17 +47,17 @@
                     <img src="images/jinpaiguwen.png" alt="" class="saler-tag">
                 </div>
                 <div class="saler-info">
-                    <div class="saler-name">由艳福</div>
-                    <div class="saler-phone">欢迎咨询 13331585767</div>
+                    <div class="saler-name">${name}</div>
+                    <div class="saler-phone">欢迎咨询 ${mobile}</div>
                 </div>
             </div>
-            <div class="phone-icon"><img src="images/phone_grey.png" alt=""></div>
+            <div class="phone-icon"><img src="${ctx}/images/phone_grey.png" alt=""></div>
         </div>
         <div class="delivery-moment">
             <div tabindex="-1" role="dialog" aria-hidden="true" class="pswp">
                 <div class="pswp__bg"></div>
                 <div class="som-image-viewer">
-                    <div class="som-image-viewer__title"><span><img src="images/cancel.png"></span><span>01/ 00</span>
+                    <div class="som-image-viewer__title"><span><img src="${ctx}/images/cancel.png"></span><span>01/ 00</span>
                     </div>
                 </div>
                 <div class="pswp__scroll-wrap">
@@ -85,7 +85,7 @@
                 <div class="title">品牌优选</div>
                 <div class="btn-right">
                     <span>查看全部</span>
-                    <img src="images/to_right2.png" alt="">
+                    <img src="${ctx}/images/to_right2.png" alt="">
                 </div>
             </div>
             <div class="brand-list-box">
