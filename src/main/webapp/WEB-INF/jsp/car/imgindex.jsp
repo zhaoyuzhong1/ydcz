@@ -56,7 +56,7 @@
                 <section class="panel">
                     <div class="page-heading">
                         <h3 class="panel-title">
-                            <i class="fa fa-th-list" style="margin-right: 5px"></i>首页图片管理${ctx}
+                            <i class="fa fa-th-list" style="margin-right: 5px"></i>汽车图片管理${ctx}
                         </h3>
                     </div>
                     <div class="panel-body" >
@@ -138,7 +138,7 @@
         var oTableInit = new Object();
         oTableInit.Init = function (){
             $('#teacher_table').bootstrapTable('destroy').bootstrapTable({
-                url: "${ctx}/file/queryList",
+                url: "${ctx}/car/queryList",
                 method: 'get',
                 striped: true,
                 cache: false,
@@ -171,27 +171,13 @@
                         field: 'name',
                         title: '图片名称'
                     },{
-                        field: 'flag',
-                        title: '状态',
-                        formatter: function(value,row,index){
-                            if("0"==value){
-                                return "启用";
-                            } else if("1"==value){
-                                return "注销";
-                            }
-                        }
-                    },{
                         title: '操作',
                         width:'100px',
                         formatter: function(value,row,index){
                             var button ='<div class="btn-group btn-group-xs">';
 
-                            var b = '';
-                            if(row.flag=='0'){
-                                b = '<button type="button" class="btn btn-default btn-maincolor"onclick="zx(\''+ row.id + '\')" ><i class="fa fa-eye"></i>&nbsp;注&nbsp;销</button>';
-                            }else{
-                                b = '<button type="button" class="btn btn-default btn-maincolor"onclick="qy(\''+ row.id + '\')" ><i class="fa fa-eye"></i>&nbsp;启&nbsp;用</button>';
-                            }
+                            var b = '<button type="button" class="btn btn-default btn-maincolor"onclick="del(\''+ row.id + '\')" ><i class="fa fa-eye"></i>&nbsp;删&nbsp;除</button>';
+
 
                             return button +b+ '</div>';
 
@@ -224,8 +210,8 @@
 
 
 
-    function zx(id) {
-        $.post("${ctx}/file/zx",{id:id},function (d) {
+    function del(id) {
+        $.post("${ctx}/car/delCarImg",{id:id},function (d) {
             if(d=="ajaxfail"){
                 Showbo.Msg.confirm1("会话过期,请重新登录!",function(btn){
                     if(btn=="yes"){
@@ -234,10 +220,10 @@
                 });
             }else {
                 if(d=="ok"){
-                    Showbo.Msg.alert('注销成功');
+                    Showbo.Msg.alert('删除成功');
                     $('#teacher_table').bootstrapTable('refresh');
                 }else {
-                    Showbo.Msg.alert('注销失败');
+                    Showbo.Msg.alert('删除失败');
                 }
             }
 
@@ -247,7 +233,7 @@
 
 
     function qy(id) {
-        $.post("${ctx}/file/qy",{id:id},function (d) {
+        $.post("${ctx}/car/qy",{id:id},function (d) {
             if(d=="ajaxfail"){
                 Showbo.Msg.confirm1("会话过期,请重新登录!",function(btn){
                     if(btn=="yes"){
