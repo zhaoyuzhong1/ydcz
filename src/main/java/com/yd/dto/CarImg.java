@@ -1,5 +1,7 @@
 package com.yd.dto;
 
+import java.util.Date;
+
 /**
  * Created by james on 2019/2/1.
  */
@@ -8,6 +10,7 @@ public class CarImg extends BaseDTO{
     private Integer carid;
     private String imgname;
     private String imgpath;
+    private Date cdate;
 
     public Integer getId() {
         return id;
@@ -39,5 +42,13 @@ public class CarImg extends BaseDTO{
 
     public void setImgpath(String imgpath) {
         this.imgpath = imgpath;
+    }
+
+    public Date getCdate() {
+        return cdate;
+    }
+
+    public void setCdate(Date cdate) {
+        this.cdate = cdate;
     }
 }
