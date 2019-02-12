@@ -42,8 +42,10 @@ public class WebController {
     @RequestMapping(value = "/index")
     public String index(Model model) {
         Shop shop = shopDao.selectShopByCity("长春");
+        List<Car> cars = carDao.getSyCar(10);
 
         model.addAttribute("shop",shop);
+        model.addAttribute("cars",cars);
         return "web/index";
         //return "sys/top";
     }
