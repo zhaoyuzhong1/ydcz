@@ -60,6 +60,13 @@ public class CarDao {
     }
 
 
+    //获取首页展示的car列表
+    public List<Car> getSyCar(int limit){
+        String sql = "SELECT a.*,b.imgpath FROM t_car a LEFT JOIN t_car_img b ON a.id=b.carid WHERE a.flag='0' AND a.issy='0' GROUP BY a.id ORDER BY a.id ASC LIMIT "+limit;
+        return baseDao.query(sql,Car.class,new Object[]{});
+    }
+
+
 
 
 
