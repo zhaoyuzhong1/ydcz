@@ -87,70 +87,13 @@
                 </div>
             </div>
             <div class="brand-list-box">
-                <div class="brand-list-item">
-                    <img width="100%" height="100%" alt="" class="oss-image brand-img" src="images/aodi.png">
-                    <div class="brand-item-title">奥迪</div>
-                </div>
-                <div class="brand-list-item">
-                    <img width="100%" height="100%" alt="" class="oss-image brand-img" src="images/bieke.png">
-                    <div class="brand-item-title">别克</div>
-                </div>
-                <div class="brand-list-item">
-                    <img width="100%" height="100%" alt="" class="oss-image brand-img" src="images/beijingqiche.png">
-                    <div class="brand-item-title">北京汽车</div>
-                </div>
-                <div class="brand-list-item">
-                    <img width="100%" height="100%" alt="" class="oss-image brand-img" src="./images/7DwvpDMsxm.png">
-                    <div class="brand-item-title">北汽绅宝</div>
-                </div>
-                <div class="brand-list-item">
-                    <img width="100%" height="100%" alt="" class="oss-image brand-img" src="./images/2zMZPwkriv.png">
-                    <div class="brand-item-title">奔腾</div>
-                </div>
-                <div class="brand-list-item">
-                    <img width="100%" height="100%" alt="" class="oss-image brand-img" src="./images/QU4w7CeF31.png">
-                    <div class="brand-item-title">宝骏</div>
-                </div>
-                <div class="brand-list-item">
-                    <img width="100%" height="100%" alt="" class="oss-image brand-img" src="./images/4NMdX1NErQ.png">
-                    <div class="brand-item-title">本田</div>
-                </div>
-                <div class="brand-list-item">
-                    <img width="100%" height="100%" alt="" class="oss-image brand-img" src="./images/Ay8uVvsuPA.png">
-                    <div class="brand-item-title">标致</div>
-                </div>
-                <div class="brand-list-item">
-                    <img width="100%" height="100%" alt="" class="oss-image brand-img" src="./images/GCKgPNizjk.png">
-                    <div class="brand-item-title">比亚迪</div>
-                </div>
-                <div class="brand-list-item">
-                    <img width="100%" height="100%" alt="" class="oss-image brand-img" src="./images/k7gZIDTHVE.png">
-                    <div class="brand-item-title">长安</div>
-                </div>
-                <div class="brand-list-item">
-                    <img width="100%" height="100%" alt="" class="oss-image brand-img" src="./images/30A7wRIyKv.png">
-                    <div class="brand-item-title">长安欧尚</div>
-                </div>
-                <div class="brand-list-item">
-                    <img width="100%" height="100%" alt="" class="oss-image brand-img" src="./images/ePAxQRnjt7.png">
-                    <div class="brand-item-title">东风风神</div>
-                </div>
-                <div class="brand-list-item">
-                    <img width="100%" height="100%" alt="" class="oss-image brand-img" src="./images/V1uYw3dt9C.png">
-                    <div class="brand-item-title">东风风行</div>
-                </div>
-                <div class="brand-list-item">
-                    <img width="100%" height="100%" alt="" class="oss-image brand-img" src="./images/lMQ7DAjvSF.png">
-                    <div class="brand-item-title">大众</div>
-                </div>
-                <div class="brand-list-item">
-                    <img width="100%" height="100%" alt="" class="oss-image brand-img" src="./images/4V8qf0BDNQ.png">
-                    <div class="brand-item-title">福特</div>
-                </div>
-                <div class="brand-list-item">
-                    <img width="100%" height="100%" alt="" class="oss-image brand-img" src="./images/OU80kTufNy.png">
-                    <div class="brand-item-title">广汽传祺</div>
-                </div>
+                <c:forEach var="c" items="${cars}">
+                    <div class="brand-list-item">
+                        <img width="100%" height="100%" alt="" class="oss-image brand-img" src="${ctx}/${c.imgpath}">
+                        <div class="brand-item-title">${c.title}</div>
+                    </div>
+                </c:forEach>
+
             </div>
         </div>
         <div class="promotion-area-item promotion-area-item">
@@ -160,6 +103,7 @@
                 </a>
                 <div class="remove-scrollbar">
                     <div class="scroll-list">
+                        <c:forEach var="c" items="${cars}">
                         <div class="scroll-item">
                             <div class="item-link">
                                 <div>
@@ -168,97 +112,14 @@
                                         <img width="100%" height="100%" class="oss-image car-img" src="images/car8.jpg">
                                     </div>
                                     <div class="content-word">
-                                        <div class="word-car"><span class="car-name">比亚迪F0</span></div>
-                                        <span class="down-payment">首付<span>0.43</span>万</span><span class="month-installment">月供1398元</span>
+                                        <div class="word-car"><span class="car-name">${c.title}</span></div>
+                                        <span class="down-payment">首付<span>${c.downpay}</span>万</span><span class="month-installment">月供${c.monpay}元</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="scroll-item">
-                            <div class="item-link">
-                                <div>
-                                    <div class="fix-img">
-                                        <img src="images/月供1798.png" class="tag-img" style="width: 32px;">
-                                        <img width="100%" height="100%" class="oss-image car-img" src="images/car9.jpg">
-                                    </div>
-                                    <div class="content-word">
-                                        <div class="word-car"><span class="car-name">雪佛兰赛欧</span></div>
-                                        <span class="down-payment">首付<span>0.68</span>万</span><span class="month-installment">月供1798元</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="scroll-item">
-                            <div class="item-link">
-                                <div>
-                                    <div class="fix-img">
-                                        <img src="images/yuegong1998.png" class="tag-img" style="width: 32px;">
-                                        <img width="100%" height="100%" class="oss-image car-img" src="images/car10.jpg">
-                                    </div>
-                                    <div class="content-word">
-                                        <div class="word-car"><span class="car-name">五菱汽车五菱宏光</span></div>
-                                        <span class="down-payment">首付<span>0.49</span>万</span><span class="month-installment">月供1998元</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="scroll-item">
-                            <div class="item-link">
-                                <div>
-                                    <div class="fix-img">
-                                        <img src="images/yuegong19982.png" class="tag-img" style="width: 32px;">
-                                        <img width="100%" height="100%" class="oss-image car-img" src="images/car11.jpg">
-                                    </div>
-                                    <div class="content-word">
-                                        <div class="word-car"><span class="car-name">起亚焕驰</span></div>
-                                        <span class="down-payment">首付<span>0.65</span>万</span><span class="month-installment">月供1998元</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="scroll-item">
-                            <div class="item-link">
-                                <div>
-                                    <div class="fix-img">
-                                        <img src="images/yuegong2098.png" class="tag-img" style="width: 32px;">
-                                        <img width="100%" height="100%" class="oss-image car-img" src="images/car12.jpg">
-                                    </div>
-                                    <div class="content-word">
-                                        <div class="word-car"><span class="car-name">MG3</span></div>
-                                        <span class="down-payment">首付<span>0.73</span>万</span><span class="month-installment">月供2098元</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="scroll-item">
-                            <div class="item-link">
-                                <div>
-                                    <div class="fix-img">
-                                        <img src="./images/6c9108636104fb807a587b9d44276e1a.png" class="tag-img" style="width: 32px;">
-                                        <img width="100%" height="100%" class="oss-image car-img" src="images/car18.jpg">
-                                    </div>
-                                    <div class="content-word">
-                                        <div class="word-car"><span class="car-name">标致301</span></div>
-                                        <span class="down-payment">首付<span>0.96</span>万</span><span class="month-installment">月供2098元</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="scroll-item">
-                            <div class="item-link">
-                                <div>
-                                    <div class="fix-img">
-                                        <img src="images/yuegong2598.png" class="tag-img" style="width: 32px;">
-                                        <img width="100%" height="100%" class="oss-image car-img" src="images/car19.jpg">
-                                    </div>
-                                    <div class="content-word">
-                                        <div class="word-car"><span class="car-name">广汽传祺GA4</span></div>
-                                        <span class="down-payment">首付<span>0.96</span>万</span><span
-                                            class="month-installment">月供2598元</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            </c:forEach>
+
                         <div class="scroll-more">
                             <a href="" class="pear-other-link scroll-dog-link">
                                 <div>
@@ -281,120 +142,10 @@
                 </a>
                 <div class="remove-scrollbar">
                     <div class="scroll-list">
-                        <div class="scroll-item">
-                            <div class="item-link">
-                                <div>
-                                    <div class="fix-img">
-                                        <img width="100%" height="100%" class="oss-image car-img" src="images/car16.jpg" lazy="loaded">
-                                    </div>
-                                    <div class="content-word">
-                                        <div class="word-car"><span class="car-name">Jeep自由侠</span></div>
-                                        <span class="down-payment">首付<span>0.00</span>万</span><span class="month-installment">月供3198元</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="scroll-item">
-                            <div class="item-link">
-                                <div>
-                                    <div class="fix-img">
-                                        <img width="100%" height="100%" class="oss-image car-img" src="images/car21.jpg" lazy="loaded">
-                                    </div>
-                                    <div class="content-word">
-                                        <div class="word-car"><span class="car-name">日产骊威</span></div>
-                                        <span class="down-payment">首付<span>0.47</span>万</span><span class="month-installment">月供2098元</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="scroll-item">
-                            <div class="item-link">
-                                <div>
-                                    <div class="fix-img">
-                                        <img width="100%" height="100%" class="oss-image car-img" src="images/car22.jpg" lazy="loaded">
-                                    </div>
-                                    <div class="content-word">
-                                        <div class="word-car"><span class="car-name">别克英朗</span></div>
-                                        <span class="down-payment">首付<span>0.56</span>万</span><span class="month-installment">月供2498元</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="scroll-item">
-                            <div class="item-link">
-                                <div>
-                                    <div class="fix-img">
-                                        <img width="100%" height="100%" class="oss-image car-img" src="images/car23.jpg" lazy="loaded">
-                                    </div>
-                                    <div class="content-word">
-                                        <div class="word-car"><span class="car-name">日产骐达</span></div>
-                                        <span class="down-payment">首付<span>0.61</span>万</span><span class="month-installment">月供2298元</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="scroll-item">
-                            <div class="item-link">
-                                <div>
-                                    <div class="fix-img">
-                                        <img width="100%" height="100%" class="oss-image car-img" src="images/car24.jpg" lazy="loaded">
-                                    </div>
-                                    <div class="content-word">
-                                        <div class="word-car"><span class="car-name">本田凌派</span></div>
-                                        <span class="down-payment">首付<span>0.62</span>万</span><span class="month-installment">月供2698元</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="scroll-item">
-                            <div class="item-link">
-                                <div>
-                                    <div class="fix-img">
-                                        <img width="100%" height="100%" class="oss-image car-img" src="images/car25.jpg" lazy="loaded">
-                                    </div>
-                                    <div class="content-word">
-                                        <div class="word-car"><span class="car-name">本田凌派</span></div>
-                                        <span class="down-payment">首付<span>0.62</span>万</span><span class="month-installment">月供2798元</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="scroll-item">
-                            <div class="item-link">
-                                <div>
-                                    <div class="fix-img">
-                                        <img width="100%" height="100%" class="oss-image car-img" src="images/car26.jpg" lazy="loaded">
-                                    </div>
-                                    <div class="content-word">
-                                        <div class="word-car"><span class="car-name">福特翼搏</span></div>
-                                        <span class="down-payment">首付<span>0.64</span>万</span><span class="month-installment">月供2098元</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="scroll-item">
-                            <div class="item-link">
-                                <div>
-                                    <div class="fix-img">
-                                        <img width="100%" height="100%" class="oss-image car-img" src="images/car27.jpg" lazy="loaded">
-                                    </div>
-                                    <div class="content-word">
-                                        <div class="word-car"><span class="car-name">斯柯达野帝</span></div>
-                                        <span class="down-payment">首付<span>0.64</span>万</span><span class="month-installment">月供2498元</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="scroll-more">
-                            <a href="" class="pear-other-link scroll-dog-link">
-                                <div>
-                                    <div class="more-zh"><span>查看更多</span>
-                                        <img src="./images/to_right.png" alt="" height="13px">
-                                    </div>
-                                    <div class="more-en"><span>See More</span></div>
-                                </div>
-                            </a>
-                        </div>
+
+
+
+
                     </div>
                 </div>
             </div>
@@ -410,67 +161,24 @@
                 <i class="point"></i>
             </div>
             <div class="common-car-list car-list">
-                <div class="common-car-item common-car-item">
-                    <div data-v-46bfca60="" class="image-wrapper">
-                        <img data-v-46bfca60="" src="images/car2.jpg" width="100%" height="100%" class="oss-image car-image">
-                        <img data-v-46bfca60="" src="images/shangxin.png" class="stock-icon">
-                    </div>
-                    <div data-v-46bfca60="" class="text-infos">
-                        <p data-v-46bfca60="" class="model-name">雪佛兰科沃兹 2019款 320自动欣悦版</p>
-                        <p data-v-46bfca60="" class="car-status">厂商指导价9.99万</p>
-                        <p data-v-46bfca60="" class="price-info">
-                            <span data-v-46bfca60="" class="down-payment">首付<span data-v-46bfca60="" class="down-payment-price">0.99</span>万</span>
-                            <span data-v-46bfca60="" class="monthly-payments">月供2498元</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="splite-line"></div>
-                <div class="common-car-item common-car-item">
-                    <div data-v-46bfca60="" class="image-wrapper">
-                        <img data-v-46bfca60="" src="images/car13.jpg" width="100%" height="100%" class="oss-image car-image">
-                    </div>
-                    <div data-v-46bfca60="" class="text-infos">
-                        <p data-v-46bfca60="" class="model-name">大众帕萨特 2017款330TSI DSG尊荣版</p>
-                        <p data-v-46bfca60="" class="car-status">厂商指导价22.29万</p>
-                        <p data-v-46bfca60="" class="price-info">
-                            <span data-v-46bfca60="" class="down-payment">首付<span data-v-46bfca60="" class="down-payment-price">2.22</span>万</span>
-                            <span data-v-46bfca60="" class="monthly-payments">月供4598元</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="splite-line"></div>
-                <div class="common-car-item common-car-item">
-                    <div class="image-wrapper">
-                        <img src="images/car14.jpg" width="100%" height="100%" class="oss-image car-image">
-                        <img src="images/zanshiquehuo.png" class="stock-icon">
-                    </div>
-                    <div class="text-infos">
-                        <p class="model-name">Jeep大指挥官 2018款2.0T 四驱尊享导航版</p>
-                        <p class="car-status">厂商指导价30.28万</p>
-                        <p class="price-info">
-                            <span class="down-payment">首付<span class="down-payment-price">3.02</span>万</span>
-                            <span class="monthly-payments">月供7998元</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="splite-line"></div>
-                <div class="common-car-item common-car-item">
-                    <div class="image-wrapper">
-                        <img src="images/car5.jpg" width="100%" height="100%" class="oss-image car-image">
-                        <img src="images/zhijiang.png" class="flag-icon">
-                    </div>
-                    <div class="text-infos">
-                        <p class="model-name">三菱欧蓝德 2019款 2.0L两驱畅享版 5座</p>
-                        <p class="car-status">厂商指导价17.28万</p>
-                        <p class="price-info">
-                            <span class="down-payment">首付<span class="down-payment-price">1.72</span>万</span>
-                            <span class="monthly-payments">月供4498元</span>
-                        </p>
-                        <div class="tag-list">
-                            <img src="images/car6.png" width="100%" height="100%" class="oss-image tag-image">
+                <c:forEach var="c" items="${cars}">
+                    <div class="common-car-item common-car-item">
+                        <div data-v-46bfca60="" class="image-wrapper">
+                            <img data-v-46bfca60="" src="${ctx}/${c.imgpath}" width="100%" height="100%" class="oss-image car-image">
+                            <img data-v-46bfca60="" src="${ctx}/images/shangxin.png" class="stock-icon">
+                        </div>
+                        <div data-v-46bfca60="" class="text-infos">
+                            <p data-v-46bfca60="" class="model-name">${c.title}</p>
+                            <p data-v-46bfca60="" class="car-status">厂商指导价${c.guiprice}万</p>
+                            <p data-v-46bfca60="" class="price-info">
+                                <span data-v-46bfca60="" class="down-payment">首付<span data-v-46bfca60="" class="down-payment-price">${c.downpay}</span>万</span>
+                                <span data-v-46bfca60="" class="monthly-payments">月供${c.monpay}元</span>
+                            </p>
                         </div>
                     </div>
-                </div>
+                    <div class="splite-line"></div>
+                </c:forEach>
+
             </div>
             <div class="splite-line"></div>
             <div class="view-all"><span>查看更多</span>
