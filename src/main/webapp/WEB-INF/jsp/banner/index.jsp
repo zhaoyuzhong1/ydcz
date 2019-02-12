@@ -3,13 +3,13 @@
 <!DOCcode html>
 <html lang="en">
 
-<link rel="stylesheet" href="${ctx}/css/fileupload/bootstrap.413.min.css" crossorigin="anonymous">
+<%--<link rel="stylesheet" href="${ctx}/css/fileupload/bootstrap.413.min.css" crossorigin="anonymous">--%>
 <link href="${ctx}/css/fileupload/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
 <link href="${ctx}/js/fileupload/themes/explorer-fas/theme.css" media="all" rel="stylesheet" type="text/css"/>
 
 <script src="${ctx}/js/jquery-3.2.1.js" type="text/javascript"></script>
 <script src="${ctx}/js/fileupload/plugins/sortable.js" type="text/javascript"></script>
-<script src="${ctx}/js/fileupload/fileinput.js" type="text/javascript"></script>
+
 <script src="${ctx}/js/fileupload/locales/fr.js" type="text/javascript"></script>
 <script src="${ctx}/js/fileupload/locales/es.js" type="text/javascript"></script>
 <script src="${ctx}/js/fileupload/locales/zh.js" type="text/javascript"></script>
@@ -17,25 +17,6 @@
 <script src="${ctx}/js/fileupload/themes/explorer-fas/theme.js" type="text/javascript"></script>
 
 <style>
-    .kv-avatar .krajee-default.file-preview-frame,.kv-avatar .krajee-default.file-preview-frame:hover {
-        margin: 0;
-        padding: 0;
-        border: none;
-        box-shadow: none;
-        text-align: center;
-    }
-    .kv-avatar {
-        display: inline-block;
-    }
-    .kv-avatar .file-input {
-        display: table-cell;
-        width: 213px;
-    }
-    .kv-reqd {
-        color: red;
-        font-family: monospace;
-        font-weight: normal;
-    }
 </style>
 <body class="sticky-header">
 
@@ -61,11 +42,10 @@
                     </div>
                     <div class="panel-body" >
 
-                        <button class="btn btn-main btn-sm" type="button" onclick="add()"><i class="fa fa-search"></i> 添加</button>
+                        <button style="margin-bottom: 15px;" class="btn btn-main btn-sm" type="button" onclick="add()"><i class="fa fa-search"></i> 添加</button>
 
+                        <table id="teacher_table" data-page-size="5"> </table>
                     </div>
-                    <table id="teacher_table" data-page-size="5"> </table>
-
                 </section>
             </div>
         </div>
@@ -96,7 +76,7 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-3"><font color="red" >*</font> 图片位置：</label>
                                 <div class="col-sm-7">
-                                    <select id="type">
+                                    <select id="type" class="form-control">
                                         <option value="">请选择</option>
                                         <option value="0">顶部</option>
                                         <option value="1">中部</option>
@@ -106,20 +86,20 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">上传图片：</label>
-                                <div class="kv-avatar">
-                                    <div class="file-loading">
-                                        <input id="avatar-1" name="avatar-1" type="file" required>
+                                <label class="col-sm-3 control-label">上传图片：</label>
+                                <div class="col-sm-7">
+                                    <div class="kv-avatar">
+                                        <div class="file-loading">
+                                            <input id="avatar-1" name="avatar-1" type="file" required>
+                                        </div>
                                     </div>
+                                    <div class="kv-avatar-hint"><small>Select file < 1500 KB</small></div>
                                 </div>
-                                <div class="kv-avatar-hint"><small>Select file < 1500 KB</small></div>
                             </div>
-
-
 
                         </div>
                     </form>
-                    <div id="kv-avatar-errors-1" class="center-block" style="width:800px;display:none"></div>
+                    <div id="kv-avatar-errors-1" class="center-block" style="width:100%;display:none"></div>
                 </div>
                 <div class="modal-footer" id="qlfoot1">
                     <button type="button"  class="btn btn-thollow" data-dismiss="modal"><i class="fa fa-times"></i> 取消</button>
@@ -137,8 +117,25 @@
 
     <!-- main content end-->
 </body>
+<script src="${ctx}/js/fileupload/fileinput.js" type="text/javascript"></script>
 <script>
-
+    $("#avatar-1").fileinput({
+        language: 'zh',
+        overwriteInitial: true,
+        maxFileSize: 1500,
+        showClose: false,
+        showCaption: false,
+        browseLabel: '',
+        removeLabel: '',
+        browseIcon: '选择文件',
+        removeIcon: '删除文件',
+        removeTitle: 'Cancel or reset changes',
+        elErrorContainer: '#kv-avatar-errors-1',
+        msgErrorClass: 'alert alert-block alert-danger',
+        defaultPreviewContent: '<img src="${ctx}/upload/car.jpg" alt="Your Avatar">',
+        layoutTemplates: {main2: '{preview} ' + ' {remove} {browse}'},
+        allowedFileExtensions: ["jpg", "png", "gif"]
+    });
 
     $(function () {
         var dtb1 = new DataTable1();
@@ -309,23 +306,7 @@
 
 
 
-    $("#avatar-1").fileinput({
-        language: 'zh',
-        overwriteInitial: true,
-        maxFileSize: 1500,
-        showClose: false,
-        showCaption: false,
-        browseLabel: '',
-        removeLabel: '',
-        browseIcon: '选择文件',
-        removeIcon: '删除文件',
-        removeTitle: 'Cancel or reset changes',
-        elErrorContainer: '#kv-avatar-errors-1',
-        msgErrorClass: 'alert alert-block alert-danger',
-        defaultPreviewContent: '<img src="${ctx}/upload/car.jpg" alt="Your Avatar">',
-        layoutTemplates: {main2: '{preview} ' + ' {remove} {browse}'},
-        allowedFileExtensions: ["jpg", "png", "gif"]
-    });
+
 
 
 </script>
