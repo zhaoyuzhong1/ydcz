@@ -16,6 +16,7 @@ public class Car extends BaseDTO {
     private double monpay;
     private Date cdate;
     private String flag;
+    private String imgpath;
 
     public Integer getId() {
         return id;
@@ -95,5 +96,13 @@ public class Car extends BaseDTO {
 
     public void setFlag(String flag) {
         this.flag = flag;
+    }
+
+    public String getImgpath() {
+        return imgpath;
+    }
+
+    public void setImgpath(String imgpath) {
+        this.imgpath = imgpath;
     }
 }
