@@ -27,9 +27,10 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
     public void addInterceptors(InterceptorRegistry registry) {
         registry
                 .addInterceptor(new WebInterceptor())//要拦截的请求
-                .addPathPatterns("/ug/**")
-                .addPathPatterns("/goods/**")
-                .excludePathPatterns("/").excludePathPatterns("/main/**").excludePathPatterns("/user/**");//不拦截的请求
+                .addPathPatterns("/shop/**")
+                .addPathPatterns("/car/**")
+                .addPathPatterns("/banner/**")
+                .excludePathPatterns("/").excludePathPatterns("/main/**").excludePathPatterns("/web/**").excludePathPatterns("/user/**");//不拦截的请求
         super.addInterceptors(registry);
 
     }
