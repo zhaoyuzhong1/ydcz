@@ -60,7 +60,7 @@
                     <h4 class="modal-title"> 图片上传</h4>
                 </div>
                 <div class="modal-body" >
-                    <form class="form-horizontal" role="form" method="post"
+                    <form method="post"
                           action="${ctx}/banner/uploadFile" enctype="multipart/form-data">
 
                         <input type="hidden" id="allid">
