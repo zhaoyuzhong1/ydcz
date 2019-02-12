@@ -7,9 +7,7 @@
 <html style="font-size: 50px;">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="keywords" content="弹个车长春高新区世兴行光谷大街店、新车报价、 新车4S门店-长春世兴行光谷大街店、新车购车优惠、置换购车">
-    <meta name="description"
-          content="弹个车长春高新区世兴行光谷大街店,长春世兴行光谷大街店-可信赖的品牌4S店，门店地址：吉林省长春市高新区光谷大街268号富祥小区正门；联系电话：15543177272;新款车系车型报价">
+    <meta name="keywords" content="易贷车主、新车报价、购车贷款、零首付">
     <meta name="viewport"
           content="initial-scale=1,maximum-scale=1,user-scalable=no,width=device-width,minimal-ui,viewport-fit=cover">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -17,9 +15,9 @@
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0">
-    <title>弹个车长春高新区世兴行光谷大街店</title>
-    <link href="./css/app.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/index.css">
+    <title>易贷车主</title>
+    <link href="${ctx}/css/app.css" rel="stylesheet">
+    <link rel="stylesheet" href="${ctx}/css/index.css">
 </head>
 <body class="index-page">
 <div id="app">
@@ -27,14 +25,14 @@
         <div class="shop-sign-container bg">
             <div class="shop-info-container">
                 <div class="shop-image">
-                    <img src="./images/logo.png">
+                    <img src="${ctx}/images/logo.png">
                 </div>
                 <div class="shop-info">
                     <div class="title">
-                        <div class="title-text">弹个车长春高新区世兴行光谷大街店</div>
+                        <div class="title-text">${shop.name}</div>
                     </div>
-                    <div class="address">吉林省长春市高新区光谷大街268号富祥小区正门</div>
-                    <img src="images/shouquan.png" class="shop-badge">
+                    <div class="address">${shop.address}</div>
+                    <img src="${ctx}/images/shouquan.png" class="shop-badge">
                 </div>
             </div>
         </div>
@@ -42,13 +40,13 @@
             <div class="saler-info-box">
                 <div class="saler-avatar">
                     <div class="saler-photo-box">
-                        <img src="./images/yanfu.jpg" alt="" class="saler-photo">
+                        <img src="${ctx}/images/yanfu.jpg" alt="" class="saler-photo">
                     </div>
-                    <img src="images/jinpaiguwen.png" alt="" class="saler-tag">
+                    <img src="${ctx}/images/jinpaiguwen.png" alt="" class="saler-tag">
                 </div>
                 <div class="saler-info">
-                    <div class="saler-name">${name}</div>
-                    <div class="saler-phone">欢迎咨询 ${mobile}</div>
+                    <div class="saler-name">${shop.linkman}</div>
+                    <div class="saler-phone">欢迎咨询 ${shop.mobile}</div>
                 </div>
             </div>
             <div class="phone-icon"><img src="${ctx}/images/phone_grey.png" alt=""></div>
