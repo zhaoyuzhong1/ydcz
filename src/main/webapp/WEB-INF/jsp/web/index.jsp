@@ -78,84 +78,14 @@
                 </div>
             </div>
         </div>
-        <div class="brand-filter-container">
-            <div class="box">
-                <div class="title">品牌优选</div>
-                <div class="btn-right">
-                    <span>查看全部</span>
-                    <img src="${ctx}/images/to_right2.png" alt="">
-                </div>
-            </div>
-            <div class="brand-list-box">
-                <c:forEach var="c" items="${cars}">
-                    <div class="brand-list-item">
-                        <img width="100%" height="100%" alt="" class="oss-image brand-img" src="${ctx}/${c.imgpath}">
-                        <div class="brand-item-title">${c.title}</div>
-                    </div>
-                </c:forEach>
-
-            </div>
-        </div>
-        <div class="promotion-area-item promotion-area-item">
-            <div class="pear-dog-index-cars">
-                <a href="" class="pear-other-link cars-banner">
-                    <img width="100%" height="100%" class="oss-image" src="images/car7.png">
-                </a>
-                <div class="remove-scrollbar">
-                    <div class="scroll-list">
-                        <c:forEach var="c" items="${cars}">
-                        <div class="scroll-item">
-                            <div class="item-link">
-                                <div>
-                                    <div class="fix-img">
-                                        <img src="images/月供.png" class="tag-img" style="width: 32px;">
-                                        <img width="100%" height="100%" class="oss-image car-img" src="images/car8.jpg">
-                                    </div>
-                                    <div class="content-word">
-                                        <div class="word-car"><span class="car-name">${c.title}</span></div>
-                                        <span class="down-payment">首付<span>${c.downpay}</span>万</span><span class="month-installment">月供${c.monpay}元</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                            </c:forEach>
-
-                        <div class="scroll-more">
-                            <a href="" class="pear-other-link scroll-dog-link">
-                                <div>
-                                    <div class="more-zh">
-                                        <span>查看更多</span>
-                                        <img src="./images/to_right.png" alt="" height="13px">
-                                    </div>
-                                    <div class="more-en"><span>See More</span></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="premium-used-cars">
-            <div class="pear-dog-index-cars">
-                <a href="" class="pear-other-link cars-banner">
-                    <img width="100%" height="100%" class="oss-image" src="images/car20.png">
-                </a>
-                <div class="remove-scrollbar">
-                    <div class="scroll-list">
 
 
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="recommend-car-list">
             <div class="recommend-title">
                 <i class="point"></i>
                 <em class="line"></em>
                 <div class="title">
-                    <img src="./images/like.png">您可能喜欢
+                    <img src="${ctx}/images/like.png">您可能喜欢
                 </div>
                 <em class="line"></em>
                 <i class="point"></i>
@@ -181,14 +111,14 @@
 
             </div>
             <div class="splite-line"></div>
-            <div class="view-all"><span>查看更多</span>
-                <img src="images/to_right2.png" alt="">
+            <div class="view-all"><a href="${ctx}/web/list"><span>查看更多</span></a>
+                <img src="${ctx}/images/to_right2.png" alt="">
             </div>
         </div>
         <div class="footer-info">
-            <p class="shop-name">弹个车长春高新区世兴行光谷大街店</p>
-            <p class="shop-address">吉林省长春市高新区光谷大街268号富祥小区正门</p>
-            <p class="shop-phone">15543177272</p>
+            <p class="shop-name">${main.name}</p>
+            <p class="shop-address">${main.address}</p>
+            <p class="shop-phone">${main.mobile}</p>
         </div>
         <div class="floating-level">
             <div class="bottom-actions">
