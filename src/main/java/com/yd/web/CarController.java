@@ -23,10 +23,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by james on 2019/2/1.
@@ -50,8 +47,14 @@ public class CarController {
     @RequestMapping(value = "/imgindex")
     public String imgindex(int carid,Model model) {
         List<CarImg> cis = carDao.selectImgByCarid(carid);
+        Car car = carDao.getCarByid(carid);
+        String title = "";
+        if(car!=null){
+            title = car.getTitle();
+        }
         model.addAttribute("cis",cis);
         model.addAttribute("carid",carid);
+        model.addAttribute("title",title);
         return "car/imgindex";
         //return "sys/top";
     }
@@ -70,7 +73,7 @@ public class CarController {
         Map map =multipartRequest.getFileMap();
         String name = multipartRequest.getParameter("name");
         String carid = multipartRequest.getParameter("carid");
-        System.out.println("name:"+name);
+
         for (Iterator i = map.keySet().iterator(); i.hasNext();) {
             Object obj = i.next();
             multipartFile=(MultipartFile) map.get(obj);
@@ -78,8 +81,8 @@ public class CarController {
         }
 
         /** 获取文件的后缀* */
-        String filename = multipartFile.getOriginalFilename();
-
+        String filename = new Date().getTime()+"_"+multipartFile.getOriginalFilename();
+        System.out.println();
         InputStream inputStream;
         //System.out.println("             "+request.getRealPath("/"));
         String basePath=request.getRealPath("/")+"upload\\car\\";
@@ -109,7 +112,7 @@ public class CarController {
         }
 
 
-        return "redirect:imgindex";
+        return "redirect:imgindex?carid="+carid;
 
     }
 
@@ -121,6 +124,18 @@ public class CarController {
     public Map<String, Object> queryList(String search_name, Integer pagesize, Integer count) {
         Map<String, Object> map = new HashMap<>();
         Page<Car> pageList = carDao.getList(search_name,pagesize, count);
+        map.put("rows", pageList.getResult());
+        map.put("total", pageList.getTotalCount());
+        return map;
+    }
+
+
+
+    @ResponseBody
+    @RequestMapping(value = "/queryImgList")
+    public Map<String, Object> queryImgList(String carid, Integer pagesize, Integer count) {
+        Map<String, Object> map = new HashMap<>();
+        Page<CarImg> pageList = carImgDao.getList(carid,pagesize, count);
         map.put("rows", pageList.getResult());
         map.put("total", pageList.getTotalCount());
         return map;
