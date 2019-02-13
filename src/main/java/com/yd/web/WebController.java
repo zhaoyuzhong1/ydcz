@@ -2,9 +2,11 @@ package com.yd.web;
 
 import com.yd.dao.CarDao;
 import com.yd.dao.CarImgDao;
+import com.yd.dao.MainDao;
 import com.yd.dao.ShopDao;
 import com.yd.dto.Car;
 import com.yd.dto.CarImg;
+import com.yd.dto.Main;
 import com.yd.dto.Shop;
 import com.yd.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,14 +40,17 @@ public class WebController {
     CarImgDao carImgDao;
     @Autowired
     ShopDao shopDao;
+    @Autowired
+    MainDao mainDao;
 
     @RequestMapping(value = "/index")
     public String index(Model model) {
         Shop shop = shopDao.selectShopByCity("长春");
         List<Car> cars = carDao.getSyCar(10);
-
+        Main main = mainDao.getMain();
         model.addAttribute("shop",shop);
         model.addAttribute("cars",cars);
+        model.addAttribute("main",main);
         return "web/index";
         //return "sys/top";
     }
