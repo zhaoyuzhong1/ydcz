@@ -75,7 +75,7 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-3"><font color="red" >*</font> 图片位置：</label>
                                 <div class="col-sm-7">
-                                    <select id="type" class="form-control">
+                                    <select id="type" name="type" class="form-control">
                                         <option value="">请选择</option>
                                         <option value="0">顶部</option>
                                         <option value="1">中部</option>
