@@ -110,6 +110,10 @@ public class BannerController {
     @ResponseBody
     @RequestMapping(value = "/qy")
     public String qy(int id ) {
+        Banner b = bannerDao.getBannerByid(id);
+        //先注销这个位置的所有图片
+        bannerDao.zxBanner(b.getType());
+        //然后在启用
         int flag = bannerDao.updateBanner(id,"0");
         if(flag==0){
             return "ok";
