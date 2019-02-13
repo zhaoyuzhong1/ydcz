@@ -57,6 +57,20 @@ public class WebController {
 
 
 
+    @RequestMapping(value = "/list")
+    public String list(Model model) {
+        Shop shop = shopDao.selectShopByCity("长春");
+        List<Car> cars = carDao.getAllCar(20);
+        Main main = mainDao.getMain();
+        model.addAttribute("shop",shop);
+        model.addAttribute("cars",cars);
+        model.addAttribute("main",main);
+        return "web/list";
+        //return "sys/top";
+    }
+
+
+
 
 
 
