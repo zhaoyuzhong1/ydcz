@@ -3,39 +3,19 @@
 <!DOCcode html>
 <html lang="en">
 
-<link rel="stylesheet" href="${ctx}/css/fileupload/bootstrap.413.min.css" crossorigin="anonymous">
+<%--<link rel="stylesheet" href="${ctx}/css/fileupload/bootstrap.413.min.css" crossorigin="anonymous">--%>
 <link href="${ctx}/css/fileupload/fileinput.css" media="all" rel="stylesheet" type="text/css"/>
 <link href="${ctx}/js/fileupload/themes/explorer-fas/theme.css" media="all" rel="stylesheet" type="text/css"/>
 
 <script src="${ctx}/js/jquery-3.2.1.js" type="text/javascript"></script>
 <script src="${ctx}/js/fileupload/plugins/sortable.js" type="text/javascript"></script>
-<script src="${ctx}/js/fileupload/fileinput.js" type="text/javascript"></script>
-<script src="${ctx}/js/fileupload/locales/fr.js" type="text/javascript"></script>
-<script src="${ctx}/js/fileupload/locales/es.js" type="text/javascript"></script>
+
+<script src="${ctx}/js/fileupload/fileinput.min.js" type="text/javascript"></script>
 <script src="${ctx}/js/fileupload/locales/zh.js" type="text/javascript"></script>
 <script src="${ctx}/js/fileupload/themes/fas/theme.js" type="text/javascript"></script>
 <script src="${ctx}/js/fileupload/themes/explorer-fas/theme.js" type="text/javascript"></script>
 
 <style>
-    .kv-avatar .krajee-default.file-preview-frame,.kv-avatar .krajee-default.file-preview-frame:hover {
-        margin: 0;
-        padding: 0;
-        border: none;
-        box-shadow: none;
-        text-align: center;
-    }
-    .kv-avatar {
-        display: inline-block;
-    }
-    .kv-avatar .file-input {
-        display: table-cell;
-        width: 213px;
-    }
-    .kv-reqd {
-        color: red;
-        font-family: monospace;
-        font-weight: normal;
-    }
 </style>
 <body class="sticky-header">
 
@@ -56,16 +36,15 @@
                 <section class="panel">
                     <div class="page-heading">
                         <h3 class="panel-title">
-                            <i class="fa fa-th-list" style="margin-right: 5px"></i>汽车图片管理${ctx}
+                            <i class="fa fa-th-list" style="margin-right: 5px"></i>${title}&nbsp;图片管理
                         </h3>
                     </div>
                     <div class="panel-body" >
 
-                        <button class="btn btn-main btn-sm" type="button" onclick="add()"><i class="fa fa-search"></i> 添加</button>
+                        <button style="margin-bottom: 15px;" class="btn btn-main btn-sm" type="button" onclick="add()"><i class="fa fa-search"></i> 添加</button>
 
+                        <table id="teacher_table" data-page-size="5"> </table>
                     </div>
-                    <table id="teacher_table" data-page-size="5"> </table>
-
                 </section>
             </div>
         </div>
@@ -77,15 +56,15 @@
             <div class="modal-content">
                 <div class="modal-header1">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title"> 图片上传</h4>
+                    <h4 class="modal-title"> 汽车图片上传</h4>
                 </div>
                 <div class="modal-body" >
-                    <form class="form-horizontal" role="form" method="post"
-                          action="${ctx}/file/uploadFile" enctype="multipart/form-data">
+                    <form id="picform" method="post"
+                          action="${ctx}/car/uploadFile" enctype="multipart/form-data">
 
                         <input type="hidden" id="allid">
+                        <input type="hidden" id="carid" name="carid" value="${carid}"/>
                         <input type="hidden" id="uiflag">
-                        <input type="hidden" id="carid" value="${carid}"/>
                         <div class="form-horizontal">
                             <div class="form-group">
                                 <label class="control-label col-sm-3"><font color="red" >*</font> 图片名称：</label>
@@ -94,25 +73,27 @@
                                 </div>
                             </div>
 
+
+
                             <div class="form-group">
-                                <label class="col-sm-2 control-label">上传图片：</label>
-                                <div class="kv-avatar">
-                                    <div class="file-loading">
-                                        <input id="avatar-1" name="avatar-1" type="file" required>
+                                <label class="col-sm-3 control-label">上传图片：</label>
+                                <div class="col-sm-7">
+                                    <div class="kv-avatar">
+                                        <div class="file-loading">
+                                            <input id="avatar-1" name="avatar-1" type="file" required>
+                                        </div>
                                     </div>
+                                    <div class="kv-avatar-hint"><small>Select file < 1500 KB</small></div>
                                 </div>
-                                <div class="kv-avatar-hint"><small>Select file < 1500 KB</small></div>
                             </div>
-
-
 
                         </div>
                     </form>
-                    <div id="kv-avatar-errors-1" class="center-block" style="width:800px;display:none"></div>
+                    <div id="kv-avatar-errors-1" class="center-block" style="width:100%;display:none"></div>
                 </div>
                 <div class="modal-footer" id="qlfoot1">
                     <button type="button"  class="btn btn-thollow" data-dismiss="modal"><i class="fa fa-times"></i> 取消</button>
-                    <button type="submit" class="btn btn-tsolid" ><i class="fa fa-check" ></i> 确定</button>
+                    <button type="button" class="btn btn-tsolid" onclick="submitAdd()"><i class="fa fa-check" ></i> 确定</button>
                 </div>
                 <div class="modal-footer" id="qlfoot2" style="display: none">
                     <button type="button"  class="btn btn-thollow" data-dismiss="modal"><i class="fa fa-times"></i> 取消</button>
@@ -126,8 +107,48 @@
 
     <!-- main content end-->
 </body>
+<script src="${ctx}/js/fileupload/fileinput.js" type="text/javascript"></script>
 <script>
 
+
+    function submitAdd() {
+        var advert = $("#avatar-1").val();
+        var type = $("#type").val();
+        var name = $("#name").val();
+        if(name==null || name.length<1){
+            alert("请填写图片名称");
+            return false;
+        }
+
+        if(advert==null || advert.length<1){
+            alert("请选择上传图片");
+            return false;
+        }
+
+        $("#picform").submit();
+    }
+
+
+
+
+
+    $("#avatar-1").fileinput({
+        language: 'zh',
+        overwriteInitial: true,
+        maxFileSize: 1500,
+        showClose: false,
+        showCaption: false,
+        browseLabel: '',
+        removeLabel: '',
+        browseIcon: '选择文件',
+        removeIcon: '删除文件',
+        removeTitle: 'Cancel or reset changes',
+        elErrorContainer: '#kv-avatar-errors-1',
+        msgErrorClass: 'alert alert-block alert-danger',
+        defaultPreviewContent: '<img src="${ctx}/upload/car.jpg" alt="Your Avatar">',
+        layoutTemplates: {main2: '{preview} ' + ' {remove} {browse}'},
+        allowedFileExtensions: ["jpg", "png", "gif"]
+    });
 
     $(function () {
         var dtb1 = new DataTable1();
@@ -138,7 +159,7 @@
         var oTableInit = new Object();
         oTableInit.Init = function (){
             $('#teacher_table').bootstrapTable('destroy').bootstrapTable({
-                url: "${ctx}/car/queryList",
+                url: "${ctx}/car/queryImgList",
                 method: 'get',
                 striped: true,
                 cache: false,
@@ -168,7 +189,7 @@
                         }
                     }
                     ,{
-                        field: 'name',
+                        field: 'imgname',
                         title: '图片名称'
                     },{
                         title: '操作',
@@ -177,7 +198,6 @@
                             var button ='<div class="btn-group btn-group-xs">';
 
                             var b = '<button type="button" class="btn btn-default btn-maincolor"onclick="del(\''+ row.id + '\')" ><i class="fa fa-eye"></i>&nbsp;删&nbsp;除</button>';
-
 
                             return button +b+ '</div>';
 
@@ -192,7 +212,7 @@
             return {
                 count: params.limit,  //页面大小
                 pagesize:params.offset, //页码
-
+                carid:${carid}
             };
         };
         return oTableInit;
@@ -202,9 +222,11 @@
 
     //打开修改模态框
     function add() {
-
-        $("#qlfoot2").css("display","block");
-        $("#qlfoot1").css("display","none");
+        $("#avatar-1").val("");
+        $("#name").val("");
+        $("#type").val("");
+        $("#qlfoot1").css("display","block");
+        $("#qlfoot2").css("display","none");
         $('#model').modal();
     }
 
@@ -230,27 +252,6 @@
         });
     }
 
-
-
-    function qy(id) {
-        $.post("${ctx}/car/qy",{id:id},function (d) {
-            if(d=="ajaxfail"){
-                Showbo.Msg.confirm1("会话过期,请重新登录!",function(btn){
-                    if(btn=="yes"){
-                        window.location.href="${ctx}/sys/index";
-                    }
-                });
-            }else {
-                if(d=="ok"){
-                    Showbo.Msg.alert('启用成功');
-                    $('#teacher_table').bootstrapTable('refresh');
-                }else {
-                    Showbo.Msg.alert('启用失败');
-                }
-            }
-
-        });
-    }
 
 
 
@@ -282,23 +283,7 @@
 
 
 
-    $("#avatar-1").fileinput({
-        language: 'zh',
-        overwriteInitial: true,
-        maxFileSize: 1500,
-        showClose: false,
-        showCaption: false,
-        browseLabel: '',
-        removeLabel: '',
-        browseIcon: '选择文件',
-        removeIcon: '删除文件',
-        removeTitle: 'Cancel or reset changes',
-        elErrorContainer: '#kv-avatar-errors-1',
-        msgErrorClass: 'alert alert-block alert-danger',
-        defaultPreviewContent: '<img src="${ctx}/upload/car.jpg" alt="Your Avatar">',
-        layoutTemplates: {main2: '{preview} ' + ' {remove} {browse}'},
-        allowedFileExtensions: ["jpg", "png", "gif"]
-    });
+
 
 
 </script>
