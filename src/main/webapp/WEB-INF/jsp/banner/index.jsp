@@ -10,8 +10,7 @@
 <script src="${ctx}/js/jquery-3.2.1.js" type="text/javascript"></script>
 <script src="${ctx}/js/fileupload/plugins/sortable.js" type="text/javascript"></script>
 
-<script src="${ctx}/js/fileupload/locales/fr.js" type="text/javascript"></script>
-<script src="${ctx}/js/fileupload/locales/es.js" type="text/javascript"></script>
+<script src="${ctx}/js/fileupload/fileinput.min.js" type="text/javascript"></script>
 <script src="${ctx}/js/fileupload/locales/zh.js" type="text/javascript"></script>
 <script src="${ctx}/js/fileupload/themes/fas/theme.js" type="text/javascript"></script>
 <script src="${ctx}/js/fileupload/themes/explorer-fas/theme.js" type="text/javascript"></script>
@@ -60,7 +59,7 @@
                     <h4 class="modal-title"> 图片上传</h4>
                 </div>
                 <div class="modal-body" >
-                    <form method="post"
+                    <form id="picform" method="post"
                           action="${ctx}/banner/uploadFile" enctype="multipart/form-data">
 
                         <input type="hidden" id="allid">
@@ -103,7 +102,7 @@
                 </div>
                 <div class="modal-footer" id="qlfoot1">
                     <button type="button"  class="btn btn-thollow" data-dismiss="modal"><i class="fa fa-times"></i> 取消</button>
-                    <button type="submit" class="btn btn-tsolid" ><i class="fa fa-check" ></i> 确定</button>
+                    <button type="button" class="btn btn-tsolid" onclick="submitAdd()"><i class="fa fa-check" ></i> 确定</button>
                 </div>
                 <div class="modal-footer" id="qlfoot2" style="display: none">
                     <button type="button"  class="btn btn-thollow" data-dismiss="modal"><i class="fa fa-times"></i> 取消</button>
@@ -119,6 +118,35 @@
 </body>
 <script src="${ctx}/js/fileupload/fileinput.js" type="text/javascript"></script>
 <script>
+
+
+    function submitAdd() {
+        var advert = $("#avatar-1").val();
+        var type = $("#type").val();
+        var name = $("#name").val();
+        if(name==null || name.length<1){
+            alert("请填写图片名称");
+            return false;
+        }
+
+        if(type==null || type.length<1){
+            alert("请选择图片位置");
+            return false;
+        }
+
+
+        if(advert==null || advert.length<1){
+            alert("请选择上传图片");
+            return false;
+        }
+
+        $("#picform").submit();
+    }
+
+
+
+
+
     $("#avatar-1").fileinput({
         language: 'zh',
         overwriteInitial: true,
@@ -178,6 +206,18 @@
                     ,{
                         field: 'name',
                         title: '图片名称'
+                    },{
+                        field: 'type',
+                        title: '图片位置',
+                        formatter: function(value,row,index){
+                            if("0"==value){
+                                return "顶部";
+                            } else if("1"==value){
+                                return "中部";
+                            }else if("2"==value){
+                                return "底部";
+                            }
+                        }
                     },{
                         field: 'flag',
                         title: '状态',
