@@ -59,7 +59,7 @@ public class BannerController {
         }
 
         /** 获取文件的后缀* */
-        String filename = new Date().getTime()+ multipartFile.getOriginalFilename();
+        String filename = new Date().getTime()+"_"+ multipartFile.getOriginalFilename();
 
         InputStream inputStream;
         //System.out.println("             "+request.getRealPath("/"));
