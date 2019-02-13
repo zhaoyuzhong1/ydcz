@@ -36,7 +36,7 @@
                 <section class="panel">
                     <div class="page-heading">
                         <h3 class="panel-title">
-                            <i class="fa fa-th-list" style="margin-right: 5px"></i>图片管理${ctx}
+                            <i class="fa fa-th-list" style="margin-right: 5px"></i>图片管理
                         </h3>
                     </div>
                     <div class="panel-body" >
