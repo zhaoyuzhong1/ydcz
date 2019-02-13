@@ -23,7 +23,7 @@ public class WebInterceptor extends HandlerInterceptorAdapter {
 //        String adminName = HelperClazz.getLoginInfo(request,1);
         String XRequested =request.getHeader("X-Requested-With");
         if("XMLHttpRequest".equals(XRequested)){
-            if (session.getAttribute("user") == null ) {
+            if (session.getAttribute("empSession") == null ) {
                 String str = "ajaxfail";
                 response.setContentType("text/html;charset=UTF-8");// 解决中文乱码
                 try {
@@ -38,10 +38,10 @@ public class WebInterceptor extends HandlerInterceptorAdapter {
             }
 
         }else {
-            if (session.getAttribute("user")==null) {
+            if (session.getAttribute("empSession")==null) {
                 String str = "<script language='javascript'>alert('会话过期,请重新登录');"
                         + "window.top.location.href='"
-                        + request.getContextPath() + "/main/index"
+                        + request.getContextPath() + "/sys/index"
                         + "';</script>";
                 response.setContentType("text/html;charset=UTF-8");// 解决中文乱码
                 try {

@@ -20,10 +20,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by james on 2019/2/1.
@@ -55,7 +52,6 @@ public class BannerController {
         Map map =multipartRequest.getFileMap();
         String name = multipartRequest.getParameter("name");
         String type = multipartRequest.getParameter("type");
-        System.out.println("name:"+name);
         for (Iterator i = map.keySet().iterator(); i.hasNext();) {
             Object obj = i.next();
             multipartFile=(MultipartFile) map.get(obj);
@@ -63,7 +59,7 @@ public class BannerController {
         }
 
         /** 获取文件的后缀* */
-        String filename = multipartFile.getOriginalFilename();
+        String filename = new Date().getTime()+"_"+ multipartFile.getOriginalFilename();
 
         InputStream inputStream;
         //System.out.println("             "+request.getRealPath("/"));
@@ -114,6 +110,10 @@ public class BannerController {
     @ResponseBody
     @RequestMapping(value = "/qy")
     public String qy(int id ) {
+        Banner b = bannerDao.getBannerByid(id);
+        //先注销这个位置的所有图片
+        bannerDao.zxBanner(b.getType());
+        //然后在启用
         int flag = bannerDao.updateBanner(id,"0");
         if(flag==0){
             return "ok";

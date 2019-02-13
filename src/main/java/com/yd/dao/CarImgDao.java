@@ -18,19 +18,15 @@ import java.util.List;
  */
 @Component
 public class CarImgDao {
-    Log log = LogFactory.getLog(CarImgDao.class);
     @Autowired
     private BaseDao baseDao;
 
 
-    public Page<CarImg> getList(String search_name, Integer pagesize, Integer count){
-        if(search_name!=null && !search_name.equals("")) {
-            String sql = "SELECT * FROM t_car_img where imgname like ? order by cdate asc";
-            return baseDao.queryByPage(sql, CarImg.class, new Object[]{"%" + search_name + "%"}, pagesize, count);
-        }else{
-            String sql = "SELECT * FROM t_car_img order by cdate asc";
-            return baseDao.queryByPage(sql, CarImg.class, new Object[]{}, pagesize, count);
-        }
+    public Page<CarImg> getList(String carid, Integer pagesize, Integer count){
+
+        String sql = "SELECT * FROM t_car_img where carid= ? order by cdate asc";
+        return baseDao.queryByPage(sql, CarImg.class, new Object[]{carid}, pagesize, count);
+
     }
 
 

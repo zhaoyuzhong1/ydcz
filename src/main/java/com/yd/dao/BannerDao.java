@@ -11,6 +11,8 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 /**
  * Created by What！ on 2017/7/21.
  */
@@ -45,6 +47,24 @@ public class BannerDao {
     public int updateBanner(int id,String flag) {
         String sql = "update t_banner set flag=? where id=?";
         return baseDao.update2(sql,new Object[]{flag,id});
+    }
+
+
+    public Banner getBannerByid(int id){
+        String sql = "select * from t_banner where id=?";
+        List<Banner> bs = baseDao.query(sql,Banner.class,new Object[]{id});
+        if(bs.size()>0){
+            return bs.get(0);
+        }else{
+            return null;
+        }
+    }
+
+
+
+    public int zxBanner(String type) {
+        String sql = "update t_banner set flag='1' where type=?";
+        return baseDao.update2(sql,new Object[]{type});
     }
 
 
