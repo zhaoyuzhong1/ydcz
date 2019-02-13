@@ -1,3 +1,6 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="ctx" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html style="font-size: 50px;">
 <head>
@@ -13,8 +16,8 @@
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0">
     <title>弹个车长春高新区世兴行光谷大街店</title>
-    <link href="./css/newcar.css" rel="stylesheet">
-    <link href="./css/app.css" rel="stylesheet">
+    <link href="${ctx}/css/newcar.css" rel="stylesheet">
+    <link href="${ctx}/css/app.css" rel="stylesheet">
 </head>
 <body>
 <div id="app">
@@ -23,7 +26,7 @@
         <div class="top-actions">
             <div class="top-tags">
                 <div class="search-tag">
-                    <img src="images/search.png" class="search-icon">
+                    <img src="${ctx}/images/search.png" class="search-icon">
                     <span class="search-prompt">想买什么车</span>
                 </div>
             </div>
@@ -160,7 +163,7 @@
     </div>
 </div>
 
-<script type="text/javascript" src="./js/jquery.min.js"></script>
+<script type="text/javascript" src="${ctx}/js/jquery.min.js"></script>
 <script>
     /*回到顶部*/
     document.querySelector('.to-top-tag').onclick = function () {

@@ -1,3 +1,6 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="ctx" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,8 +17,8 @@
     <meta http-equiv="expires" content="0">
     <title>MINI 2018款 1.5T COOPER 经典派</title>
     <link rel="stylesheet" href="./css/swiper.min.css">
-    <link href="./css/app.css" rel="stylesheet">
-    <link href="css/car_details.css" rel="stylesheet">
+    <link href="${ctx}/css/app.css" rel="stylesheet">
+    <link href="${ctx}/css/car_details.css" rel="stylesheet">
 </head>
 <body>
 <div id="app">
@@ -598,7 +601,7 @@
     });
 </script>
 
-<script type="text/javascript" src="./js/jquery.min.js"></script>
+<script type="text/javascript" src="${ctx}/js/jquery.min.js"></script>
 <script>
     /*回到顶部*/
     document.querySelector('.to-top-tag').onclick = function () {
