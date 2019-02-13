@@ -25,7 +25,7 @@ public class MainDao {
 
 
     //根据city获取该城市下的门店
-    public Main getMain(int carid){
+    public Main getMain(){
         String sql = "SELECT * FROM t_main ";
         List<Main> cs = baseDao.query(sql,Main.class,new Object[]{});
         if(cs.size()>0){
