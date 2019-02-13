@@ -122,7 +122,7 @@
         </div>
         <div class="floating-level">
             <div class="bottom-actions">
-                <img  src="./images/to_top.svg" class="to-top-tag">
+                <img  src="${ctx}/images/to_top.svg" class="to-top-tag">
             </div>
         </div>
     </div>
