@@ -36,83 +36,26 @@
             <div class="swiper-pagination"></div>
         </div>
         <div class="paged-list car-list">
-            <div class="common-car-item car-item">
-                <div class="image-wrapper">
-                    <img src="images/car2.jpg" width="100%" height="100%" class="oss-image car-image">
-                    <img src="images/shangxin.png" class="stock-icon">
-                </div>
-                <div class="text-infos">
-                    <p class="model-name">雪佛兰科沃兹 2019款 320自动欣悦版</p>
-                    <p class="car-status">厂商指导价9.99万</p>
-                    <p class="price-info">
-                        <span class="down-payment">首付
-                            <span class="down-payment-price">0.99</span>万
-                        </span>
-                        <span class="monthly-payments">月供2498元/span>
-                    </p>
-                </div>
-            </div>
-            <div class="splite-line"></div>
-            <div class="common-car-item car-item">
-                <div class="image-wrapper">
-                    <img src="images/car1.jpg" width="100%" height="100%" class="oss-image car-image">
-                </div>
-                <div class="text-infos">
-                    <p class="model-name">MINI 2018款 1.5TCOOPER 经典派</p>
-                    <p class="car-status">厂商指导价23.38万</p>
-                    <p class="price-info">
-                        <span class="down-payment">首付<span class="down-payment-price">2.33</span>万</span>
-                        <span class="monthly-payments">月供6098元</span>
-                    </p>
-                </div>
-            </div>
-            <div class="splite-line"></div>
-            <div class="common-car-item car-item">
-                <div class="image-wrapper">
-                    <img src="images/car3.jpg" width="100%" height="100%" class="oss-image car-image">
-                    <img src="images/zanshiquehuo.png" class="stock-icon"></div>
-                <div class="text-infos">
-                    <p class="model-name">本田CR-V 2019款 锐・混动2.0L 两驱净致版 国V</p>
-                    <p class="car-status">厂商指导价25.98万</p>
-                    <p class="price-info">
-                        <span class="down-payment">首付<span class="down-payment-price">2.59</span>万</span>
-                        <span class="monthly-payments">月供5998元</span>
-                    </p>
-                </div>
-            </div>
-            <div class="splite-line"></div>
-            <div class="common-car-item car-item">
-                <div class="image-wrapper">
-                    <img src="images/car4.jpg" width="100%" height="100%" class="oss-image car-image">
-                </div>
-                <div class="text-infos">
-                    <p class="model-name">长安欧尚X70A 2018款 1.5L手动舒适型</p>
-                    <p class="car-status">厂商指导价5.99万</p>
-                    <p class="price-info">
-                        <span class="down-payment">首付<span class="down-payment-price">0.59</span>万</span>
-                        <span class="monthly-payments">月供1898元</span>
-                    </p>
-                </div>
-            </div>
-            <div class="splite-line"></div>
-            <div class="common-car-item car-item">
-                <div class="image-wrapper">
-                    <img src="images/car5.jpg" width="100%" height="100%" class="oss-image car-image">
-                    <img src="images/zhijiang.png" class="flag-icon">
-                </div>
-                <div class="text-infos">
-                    <p class="model-name">三菱欧蓝德 2019款 2.0L两驱畅享版 5座</p>
-                    <p class="car-status">厂商指导价17.28万</p>
-                    <p class="price-info">
-                        <span class="down-payment">首付<span class="down-payment-price">1.72</span>万</span>
-                        <span class="monthly-payments">月供4498元</span>
-                    </p>
-                    <div class="tag-list">
-                        <img src="images/car6.png" width="100%" height="100%" class="oss-image tag-image">
+            <c:forEach items="${cars}" var="c">
+                <div class="common-car-item car-item">
+                    <div class="image-wrapper">
+                        <img src="${ctx}/${c.imgpath}" width="100%" height="100%" class="oss-image car-image">
+                        <img src="${ctx}/images/shangxin.png" class="stock-icon">
+                    </div>
+                    <div class="text-infos">
+                        <p class="model-name">${c.title}</p>
+                        <p class="car-status">厂商指导价${c.guiprice}</p>
+                        <p class="price-info">
+                            <span class="down-payment">首付
+                                <span class="down-payment-price">${c.downpay}</span>万
+                            </span>
+                            <span class="monthly-payments">月供${c.monpay}元</span>
+                        </p>
                     </div>
                 </div>
-            </div>
-            <div class="splite-line"></div>
+                <div class="splite-line"></div>
+            </c:forEach>
+
         </div>
 
         <div class="floating-level">
