@@ -26,10 +26,10 @@ public class CarDao {
 
     public Page<Car> getList(String search_name, Integer pagesize, Integer count){
         if(search_name!=null && !search_name.equals("")) {
-            String sql = "SELECT * FROM t_car where (title like ? or color like ?) and flag='0' order by cdate asc";
+            String sql = "SELECT a.*,b.name as companyname FROM t_car a left join t_company b on a.companyid=b.id where (a.title like ? or a.color like ?) and a.flag='0' order by a.cdate asc";
             return baseDao.queryByPage(sql, Car.class, new Object[]{"%" + search_name + "%", "%" + search_name + "%"}, pagesize, count);
         }else{
-            String sql = "SELECT * FROM t_car where flag='0' order by cdate asc";
+            String sql = "SELECT a.*,b.name as companyname FROM t_car a left join t_company b on a.companyid=b.id where a.flag='0' order by a.cdate asc";
             return baseDao.queryByPage(sql, Car.class, new Object[]{}, pagesize, count);
         }
     }
@@ -38,7 +38,7 @@ public class CarDao {
     //添加
     public int addCar(Car car) {
         StringBuffer sql =new StringBuffer();
-        sql.append(" insert into t_car (title,color,guiprice,price,downpay,monpay,issy,cdate,flag) values(:title,:color,:guiprice,:price,:downpay,:monpay,:issy,now(),'0') ");
+        sql.append(" insert into t_car (title,companyid,color,guiprice,price,downpay,monpay,issy,cdate,flag) values(:title,:companyid,:color,:guiprice,:price,:downpay,:monpay,:issy,now(),'0') ");
         return baseDao.insert(sql.toString(),car);
     }
 
@@ -47,7 +47,7 @@ public class CarDao {
     //添加
     public int updateCar(Car car) {
         StringBuffer sql =new StringBuffer();
-        sql.append(" update t_car set title=:title,color=:color,guiprice=:guiprice,price=:price,downpay=:downpay,monpay=:monpay,issy=:issy where id=:id ");
+        sql.append(" update t_car set title=:title,companyid=:companyid,color=:color,guiprice=:guiprice,price=:price,downpay=:downpay,monpay=:monpay,issy=:issy where id=:id ");
         return baseDao.update(sql.toString(),car);
     }
 

@@ -1,13 +1,7 @@
 package com.yd.web;
 
-import com.yd.dao.CarDao;
-import com.yd.dao.CarImgDao;
-import com.yd.dao.CityDao;
-import com.yd.dao.ShopDao;
-import com.yd.dto.Car;
-import com.yd.dto.CarImg;
-import com.yd.dto.City;
-import com.yd.dto.Shop;
+import com.yd.dao.*;
+import com.yd.dto.*;
 import com.yd.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,9 +29,13 @@ public class CarController {
     CarDao carDao;
     @Autowired
     CarImgDao carImgDao;
+    @Autowired
+    CompanyDao companyDao;
 
     @RequestMapping(value = "/index")
-    public String index() {
+    public String index(Model model) {
+        List<Company> cs = companyDao.selectAllCompany();
+        model.addAttribute("cs",cs);
         return "car/index";
         //return "sys/top";
     }
