@@ -38,7 +38,7 @@ public class CarDao {
     //添加
     public int addCar(Car car) {
         StringBuffer sql =new StringBuffer();
-        sql.append(" insert into t_car (title,color,guiprice,price,downpay,monpay,issy,cdate,flag) values(:title,:color,:guiprice,:price,:downpay,:monpay,:issy,now(),'0') ");
+        sql.append(" insert into t_car (title,companyid,color,guiprice,price,downpay,monpay,issy,cdate,flag) values(:title,:companyid,:color,:guiprice,:price,:downpay,:monpay,:issy,now(),'0') ");
         return baseDao.insert(sql.toString(),car);
     }
 
@@ -47,7 +47,7 @@ public class CarDao {
     //添加
     public int updateCar(Car car) {
         StringBuffer sql =new StringBuffer();
-        sql.append(" update t_car set title=:title,color=:color,guiprice=:guiprice,price=:price,downpay=:downpay,monpay=:monpay,issy=:issy where id=:id ");
+        sql.append(" update t_car set title=:title,companyid=:companyid,color=:color,guiprice=:guiprice,price=:price,downpay=:downpay,monpay=:monpay,issy=:issy where id=:id ");
         return baseDao.update(sql.toString(),car);
     }
 
