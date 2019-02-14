@@ -89,70 +89,13 @@
                 </div>
             </div>
             <div class="brand-list-box">
-                <div class="brand-list-item">
-                    <img width="100%" height="100%" alt="" class="oss-image brand-img" src="images/aodi.png">
-                    <div class="brand-item-title">奥迪</div>
-                </div>
-                <div class="brand-list-item">
-                    <img width="100%" height="100%" alt="" class="oss-image brand-img" src="images/bieke.png">
-                    <div class="brand-item-title">别克</div>
-                </div>
-                <div class="brand-list-item">
-                    <img width="100%" height="100%" alt="" class="oss-image brand-img" src="images/beijingqiche.png">
-                    <div class="brand-item-title">北京汽车</div>
-                </div>
-                <div class="brand-list-item">
-                    <img width="100%" height="100%" alt="" class="oss-image brand-img" src="./images/7DwvpDMsxm.png">
-                    <div class="brand-item-title">北汽绅宝</div>
-                </div>
-                <div class="brand-list-item">
-                    <img width="100%" height="100%" alt="" class="oss-image brand-img" src="./images/2zMZPwkriv.png">
-                    <div class="brand-item-title">奔腾</div>
-                </div>
-                <div class="brand-list-item">
-                    <img width="100%" height="100%" alt="" class="oss-image brand-img" src="./images/QU4w7CeF31.png">
-                    <div class="brand-item-title">宝骏</div>
-                </div>
-                <div class="brand-list-item">
-                    <img width="100%" height="100%" alt="" class="oss-image brand-img" src="./images/4NMdX1NErQ.png">
-                    <div class="brand-item-title">本田</div>
-                </div>
-                <div class="brand-list-item">
-                    <img width="100%" height="100%" alt="" class="oss-image brand-img" src="./images/Ay8uVvsuPA.png">
-                    <div class="brand-item-title">标致</div>
-                </div>
-                <div class="brand-list-item">
-                    <img width="100%" height="100%" alt="" class="oss-image brand-img" src="./images/GCKgPNizjk.png">
-                    <div class="brand-item-title">比亚迪</div>
-                </div>
-                <div class="brand-list-item">
-                    <img width="100%" height="100%" alt="" class="oss-image brand-img" src="./images/k7gZIDTHVE.png">
-                    <div class="brand-item-title">长安</div>
-                </div>
-                <div class="brand-list-item">
-                    <img width="100%" height="100%" alt="" class="oss-image brand-img" src="./images/30A7wRIyKv.png">
-                    <div class="brand-item-title">长安欧尚</div>
-                </div>
-                <div class="brand-list-item">
-                    <img width="100%" height="100%" alt="" class="oss-image brand-img" src="./images/ePAxQRnjt7.png">
-                    <div class="brand-item-title">东风风神</div>
-                </div>
-                <div class="brand-list-item">
-                    <img width="100%" height="100%" alt="" class="oss-image brand-img" src="./images/V1uYw3dt9C.png">
-                    <div class="brand-item-title">东风风行</div>
-                </div>
-                <div class="brand-list-item">
-                    <img width="100%" height="100%" alt="" class="oss-image brand-img" src="./images/lMQ7DAjvSF.png">
-                    <div class="brand-item-title">大众</div>
-                </div>
-                <div class="brand-list-item">
-                    <img width="100%" height="100%" alt="" class="oss-image brand-img" src="./images/4V8qf0BDNQ.png">
-                    <div class="brand-item-title">福特</div>
-                </div>
-                <div class="brand-list-item">
-                    <img width="100%" height="100%" alt="" class="oss-image brand-img" src="${ctx}/images/OU80kTufNy.png">
-                    <div class="brand-item-title">广汽传祺</div>
-                </div>
+                <c:forEach var="c" items="${coms}">
+                    <div class="brand-list-item">
+                        <%--<img width="100%" height="100%" alt="" class="oss-image brand-img" src="images/aodi.png">--%>
+                        <div class="brand-item-title"><a href="${ctx}/web/list?companyid=${c.id}">${c.name}</a></div>
+                    </div>
+                </c:forEach>
+
             </div>
         </div>
         <div class="promotion-area-item promotion-area-item">
