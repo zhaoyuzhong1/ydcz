@@ -68,6 +68,18 @@
                         </div>
 
                         <div class="form-group">
+                            <label class="control-label col-sm-3"><font color="red" >*</font> 汽车品牌：</label>
+                            <div class="col-sm-7">
+                                <select id="companyid">
+                                    <option value="">请选择品牌</option>
+                                    <c:forEach var="c" items="${cs}">
+                                        <option value="${c.id}">${c.name}</option>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
                             <label class="control-label col-sm-3"><font color="red" >*</font> 汽车颜色：</label>
                             <div class="col-sm-7">
                                 <input id="color" maxlength="80" type="text"  class="form-control"  placeholder="汽车颜色" >
@@ -200,6 +212,9 @@
                         field: 'title',
                         title: '汽车名称'
                     },{
+                        field: 'companyname',
+                        title: '品牌'
+                    },{
                         field: 'color',
                         title: '车辆颜色'
                     },{
@@ -244,7 +259,7 @@
                                     '</button>';
 
                             var aa =  '<ul class="dropdown-menu dropdown-menu-right">'+
-                                    '<li style="float: none;"><button type="button" class="btn btn-link" onclick="update(\''+ row.id + '\',\''+ row.title + '\',\''+ row.color + '\',\''+ row.guiprice + '\',\''+ row.price + '\',\''+ row.downpay + '\',\''+ row.monpay + '\',\''+ row.issy + '\')">修改</button></li>'+
+                                    '<li style="float: none;"><button type="button" class="btn btn-link" onclick="update(\''+ row.id + '\',\''+ row.title + '\',\''+ row.companyid + '\',\''+ row.color + '\',\''+ row.guiprice + '\',\''+ row.price + '\',\''+ row.downpay + '\',\''+ row.monpay + '\',\''+ row.issy + '\')">修改</button></li>'+
                                     '<li style="float: none;"><button type="button" class="btn btn-link" onclick="img(\''+ row.id + '\')">图片管理</button></li>'+
                                     '</ul>';
 
@@ -279,6 +294,7 @@
         $('#allid').val("");
         $('#title').val("");
         $('#color').val("");
+        $('#companyid').val("");
         $("#guiprice").val("");
         $("#price").val("");
         $("#downpay").val("");
@@ -293,6 +309,7 @@
     function add(){
         var title=$("#title").val();
         var color=$("#color").val();
+        var companyid=$("#companyid").val();
         var guiprice=$("#guiprice").val();
         var price=$("#price").val();
         var downpay=$("#downpay").val();
@@ -301,27 +318,31 @@
 
 
         if($.isEmptyObject(title)||title.trim()==""){
-            Showbo.Msg.alert("汽车名称不能为空！");
+            Showbo.Msg.alert("请填写汽车名称！");
+            $("#title").focus();
+            return false;
+        }else if($.isEmptyObject(companyid)||companyid.trim()==""){
+            Showbo.Msg.alert("请选择汽车品牌！");
             $("#title").focus();
             return false;
         }else if(color.length==0||$.trim(color)==""){
-            Showbo.Msg.alert("车辆颜色不能为空！");
+            Showbo.Msg.alert("请填写车辆颜色！");
             $("#color").focus();
             return false;
         }else if(guiprice.length==0||$.trim(guiprice)==""){
-            Showbo.Msg.alert("指导价格不能为空！");
+            Showbo.Msg.alert("请填写指导价格！");
             $("#guiprice").focus();
             return false;
         }else if(price.length==0||$.trim(price)==""){
-            Showbo.Msg.alert("销售价格不能为空！");
+            Showbo.Msg.alert("请填写销售价格！");
             $("#price").focus();
             return false;
         }else if(downpay.length==0||$.trim(downpay)==""){
-            Showbo.Msg.alert("首付金额不能为空！");
+            Showbo.Msg.alert("请填写首付金额！");
             $("#downpay").focus();
             return false;
         }else if(monpay.length==0||$.trim(monpay)==""){
-            Showbo.Msg.alert("月供金额不能为空！");
+            Showbo.Msg.alert("请填写月供金额！");
             $("#monpay").focus();
             return false;
         }else if($.trim(issy)==""){
@@ -330,7 +351,7 @@
             return false;
         }
 
-        $.post("${ctx}/car/addCar",{title:title,color:color,guiprice:guiprice,price:price,downpay:downpay,monpay:monpay,issy:issy},function (d) {
+        $.post("${ctx}/car/addCar",{title:title,companyid:companyid,color:color,guiprice:guiprice,price:price,downpay:downpay,monpay:monpay,issy:issy},function (d) {
             if(d=="ajaxfail"){
                 Showbo.Msg.confirm1("会话过期,请重新登录!",function(btn){
                     if(btn=="yes"){
@@ -352,16 +373,17 @@
     };
 
     //修改角色
-    function update(id,title,color,guiprice,price,downpay,monpay,issy) {
+    function update(id,title,companyid,color,guiprice,price,downpay,monpay,issy) {
 
         $('#allid').val(id);
-        var title=$("#title").val(title);
-        var color=$("#color").val(color);
-        var guiprice=$("#guiprice").val(guiprice);
-        var price=$("#price").val(price);
-        var downpay=$("#downpay").val(downpay);
-        var monpay=$("#monpay").val(monpay);
-        var issy=$("#issy").val(issy);
+        $("#title").val(title);
+        $("#companyid").val(companyid);
+        $("#color").val(color);
+        $("#guiprice").val(guiprice);
+        $("#price").val(price);
+        $("#downpay").val(downpay);
+        $("#monpay").val(monpay);
+        $("#issy").val(issy);
 
 
         $("#qlfoot2").css("display","block");
@@ -372,6 +394,7 @@
         var id = $('#allid').val();
         //id既是role_id又是t_role里的id
         var title=$("#title").val();
+        var companyid=$("#companyid").val();
         var color=$("#color").val();
         var guiprice=$("#guiprice").val();
         var price=$("#price").val();
@@ -381,27 +404,31 @@
 
 
         if($.isEmptyObject(title)||title.trim()==""){
-            Showbo.Msg.alert("汽车名称不能为空！");
+            Showbo.Msg.alert("请填写汽车名称！");
+            $("#title").focus();
+            return false;
+        }else if($.isEmptyObject(companyid)||companyid.trim()==""){
+            Showbo.Msg.alert("请填写汽车品牌！");
             $("#title").focus();
             return false;
         }else if(color.length==0||$.trim(color)==""){
-            Showbo.Msg.alert("车辆颜色不能为空！");
+            Showbo.Msg.alert("请填写车辆颜色！");
             $("#color").focus();
             return false;
         }else if(guiprice.length==0||$.trim(guiprice)==""){
-            Showbo.Msg.alert("指导价格不能为空！");
+            Showbo.Msg.alert("请填写指导价格！");
             $("#guiprice").focus();
             return false;
         }else if(price.length==0||$.trim(price)==""){
-            Showbo.Msg.alert("销售价格不能为空！");
+            Showbo.Msg.alert("请填写销售价格！");
             $("#price").focus();
             return false;
         }else if(downpay.length==0||$.trim(downpay)==""){
-            Showbo.Msg.alert("首付金额不能为空！");
+            Showbo.Msg.alert("请填写首付金额！");
             $("#downpay").focus();
             return false;
         }else if(monpay.length==0||$.trim(monpay)==""){
-            Showbo.Msg.alert("月供金额不能为空！");
+            Showbo.Msg.alert("请填写月供金额！");
             $("#monpay").focus();
             return false;
         }else if($.trim(issy)==""){
@@ -410,7 +437,7 @@
             return false;
         }
 
-        $.post("${ctx}/car/updateCar",{id:id,title:title,color:color,guiprice:guiprice,price:price,downpay:downpay,monpay:monpay,issy:issy},function (d) {
+        $.post("${ctx}/car/updateCar",{id:id,title:title,companyid:companyid,color:color,guiprice:guiprice,price:price,downpay:downpay,monpay:monpay,issy:issy},function (d) {
             if(d=="ajaxfail"){
                 Showbo.Msg.confirm1("会话过期,请重新登录!",function(btn){
                     if(btn=="yes"){
