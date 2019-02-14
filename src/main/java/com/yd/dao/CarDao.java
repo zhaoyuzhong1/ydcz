@@ -26,10 +26,10 @@ public class CarDao {
 
     public Page<Car> getList(String search_name, Integer pagesize, Integer count){
         if(search_name!=null && !search_name.equals("")) {
-            String sql = "SELECT * FROM t_car where (title like ? or color like ?) and flag='0' order by cdate asc";
+            String sql = "SELECT a.*,b.name as companyname FROM t_car a left join t_company b on a.companyid=b.id where (a.title like ? or a.color like ?) and a.flag='0' order by a.cdate asc";
             return baseDao.queryByPage(sql, Car.class, new Object[]{"%" + search_name + "%", "%" + search_name + "%"}, pagesize, count);
         }else{
-            String sql = "SELECT * FROM t_car where flag='0' order by cdate asc";
+            String sql = "SELECT a.*,b.name as companyname FROM t_car a left join t_company b on a.companyid=b.id where a.flag='0' order by a.cdate asc";
             return baseDao.queryByPage(sql, Car.class, new Object[]{}, pagesize, count);
         }
     }
