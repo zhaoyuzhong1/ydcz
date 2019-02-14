@@ -80,9 +80,14 @@ public class CarDao {
 
 
     //获取所有car列表
-    public List<Car> getAllCar(int limit){
-        String sql = "SELECT a.*,b.imgpath FROM t_car a LEFT JOIN t_car_img b ON a.id=b.carid WHERE a.flag='0' GROUP BY a.id ORDER BY a.issy,a.id ASC LIMIT "+limit;
-        return baseDao.query(sql,Car.class,new Object[]{});
+    public List<Car> getAllCar(String companyid,int limit){
+        if(companyid!=null && !companyid.equals("")) {
+            String sql = "SELECT a.*,b.imgpath FROM t_car a LEFT JOIN t_car_img b ON a.id=b.carid WHERE a.flag='0' and a.companyid=? GROUP BY a.id ORDER BY a.issy,a.id ASC LIMIT " + limit;
+            return baseDao.query(sql, Car.class, new Object[]{companyid});
+        }else{
+            String sql = "SELECT a.*,b.imgpath FROM t_car a LEFT JOIN t_car_img b ON a.id=b.carid WHERE a.flag='0' GROUP BY a.id ORDER BY a.issy,a.id ASC LIMIT " + limit;
+            return baseDao.query(sql, Car.class, new Object[]{});
+        }
     }
 
 
