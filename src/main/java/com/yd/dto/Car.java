@@ -17,6 +17,7 @@ public class Car extends BaseDTO {
     private Date cdate;
     private String flag;
     private String imgpath;
+    private String companyname;
 
     public Integer getId() {
         return id;
@@ -104,5 +105,13 @@ public class Car extends BaseDTO {
 
     public void setImgpath(String imgpath) {
         this.imgpath = imgpath;
+    }
+
+    public String getCompanyname() {
+        return companyname;
+    }
+
+    public void setCompanyname(String companyname) {
+        this.companyname = companyname;
     }
 }
