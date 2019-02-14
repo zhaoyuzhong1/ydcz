@@ -17,10 +17,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Created by james on 2019/2/1.
@@ -47,6 +44,7 @@ public class WebController {
         List<Company> coms = companyDao.selectYxCompany();
         model.addAttribute("shop",shop);
         model.addAttribute("cars",cars);
+        model.addAttribute("coms",coms);
         model.addAttribute("main",main);
         return "web/index";
         //return "sys/top";
@@ -55,9 +53,15 @@ public class WebController {
 
 
     @RequestMapping(value = "/list")
-    public String list(Model model) {
+    public String list(Model model,String companyid) {
         Shop shop = shopDao.selectShopByCity("长春");
-        List<Car> cars = carDao.getAllCar(20);
+        List<Car> cars = new ArrayList<>();
+        if(companyid!=null && !companyid.equals("")){
+            cars = carDao.getAllCar(companyid,20);
+        }else{
+            cars = carDao.getAllCar("",20);
+        }
+
         Main main = mainDao.getMain();
         model.addAttribute("shop",shop);
         model.addAttribute("cars",cars);
