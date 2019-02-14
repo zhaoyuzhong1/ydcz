@@ -12,6 +12,7 @@ public class Company extends BaseDTO {
     private String name;
     private String isyx;
     private Date cdate;
+    private String imgpath;
 
     public Integer getId() {
         return id;
@@ -43,5 +44,13 @@ public class Company extends BaseDTO {
 
     public void setCdate(Date cdate) {
         this.cdate = cdate;
+    }
+
+    public String getImgpath() {
+        return imgpath;
+    }
+
+    public void setImgpath(String imgpath) {
+        this.imgpath = imgpath;
     }
 }
