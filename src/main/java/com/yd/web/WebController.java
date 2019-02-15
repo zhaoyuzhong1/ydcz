@@ -72,6 +72,23 @@ public class WebController {
 
 
 
+    @RequestMapping(value = "/detail")
+    public String detail(Model model,int carid) {
+        Shop shop = shopDao.selectShopByCity("长春");
+        Car car = carDao.getCarByid(carid);
+        List<CarImg> cis = carDao.selectImgByCarid(carid);
+
+        Main main = mainDao.getMain();
+        model.addAttribute("shop",shop);
+        model.addAttribute("car",car);
+        model.addAttribute("cis",cis);
+        model.addAttribute("main",main);
+        return "web/detail";
+        //return "sys/top";
+    }
+
+
+
 
 
 
