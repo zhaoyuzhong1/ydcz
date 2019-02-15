@@ -121,11 +121,11 @@
                 <c:forEach var="c" items="${cars}">
                     <div class="common-car-item common-car-item">
                         <div data-v-46bfca60="" class="image-wrapper">
-                            <img data-v-46bfca60="" src="${ctx}/${c.imgpath}" width="100%" height="100%" class="oss-image car-image">
+                            <a href="${ctx}/web/detail?carid=${c.id}"><img data-v-46bfca60="" src="${ctx}/${c.imgpath}" width="100%" height="100%" class="oss-image car-image"></a>
                             <img data-v-46bfca60="" src="${ctx}/images/shangxin.png" class="stock-icon">
                         </div>
                         <div data-v-46bfca60="" class="text-infos">
-                            <p data-v-46bfca60="" class="model-name">${c.title}</p>
+                            <p data-v-46bfca60="" class="model-name"><a href="${ctx}/web/detail?carid=${c.id}">${c.title}</a></p>
                             <p data-v-46bfca60="" class="car-status">厂商指导价${c.guiprice}万</p>
                             <p data-v-46bfca60="" class="price-info">
                                 <span data-v-46bfca60="" class="down-payment">首付<span data-v-46bfca60="" class="down-payment-price">${c.downpay}</span>万</span>

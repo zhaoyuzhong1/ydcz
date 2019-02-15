@@ -26,12 +26,14 @@
         <div class="basic-info-section">
             <div class="swiper-container swiper-container-horizontal">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <img src="images/car1.jpg" class="slide-image">
-                    </div>
-                    <div class="swiper-slide">
-                        <img src="images/car17.jpg" class="slide-image">
-                    </div>
+                    <c:forEach items="${cis}" var="ci">
+                        <div class="swiper-slide">
+                            <img src="${ctx}${ci.imgpath}" class="slide-image">
+                        </div>
+                    </c:forEach>
+                    <%--<div class="swiper-slide">--%>
+                        <%--<img src="${ctx}/images/car17.jpg" class="slide-image">--%>
+                    <%--</div>--%>
                 </div>
                 <div class="swiper-pagination swiper-pagination-fraction"><span
                         class="swiper-pagination-current">1</span> / <span class="swiper-pagination-total">2</span>
@@ -138,13 +140,13 @@
             <div class="detail-content">
                 <div class="shop-info">
                     <div class="title">
-                        <div class="name">弹个车长春高新区世兴行光谷大街店</div>
+                        <div class="name">${main.name}</div>
                         <div class="go-shop">
                             <div>进店</div>
                             <img src="${ctx}/images/jindian.png" class="right-arrow">
                         </div>
                     </div>
-                    <div class="addr">吉林省长春市高新区光谷大街268号富祥小区正门</div>
+                    <div class="addr">${main.address}</div>
                     <div class="shop-tag">
                         <img src="${ctx}/images/shouquan.png">
                     </div>
@@ -154,8 +156,8 @@
                         <img src="${ctx}/images/yanfu.jpg" class="person-headimg">
 
                         <div class="person-intro">
-                            <div class="person-intro-name">由艳福</div>
-                            <div class="person-intro-no">13331585767</div>
+                            <div class="person-intro-name">${shop.linkman}</div>
+                            <div class="person-intro-no">${shop.mobile}</div>
                         </div>
                     </div>
                     <img src="${ctx}/images/phone.png" class="info-right"></div>

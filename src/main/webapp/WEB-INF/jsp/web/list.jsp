@@ -39,11 +39,11 @@
             <c:forEach items="${cars}" var="c">
                 <div class="common-car-item car-item">
                     <div class="image-wrapper">
-                        <img src="${ctx}/${c.imgpath}" width="100%" height="100%" class="oss-image car-image">
+                        <a href="${ctx}/web/detail?carid=${c.id}"><img src="${ctx}/${c.imgpath}" width="100%" height="100%" class="oss-image car-image"></a>
                         <img src="${ctx}/images/shangxin.png" class="stock-icon">
                     </div>
                     <div class="text-infos">
-                        <p class="model-name">${c.title}</p>
+                        <p class="model-name"><a href="${ctx}/web/detail?carid=${c.id}">${c.title}</a></p>
                         <p class="car-status">厂商指导价${c.guiprice}</p>
                         <p class="price-info">
                             <span class="down-payment">首付
