@@ -15,8 +15,8 @@
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0">
-    <title>MINI 2018款 1.5T COOPER 经典派</title>
-    <link rel="stylesheet" href="./css/swiper.min.css">
+    <title>${car.title}</title>
+    <link rel="stylesheet" href="${ctx}/css/swiper.min.css">
     <link href="${ctx}/css/app.css" rel="stylesheet">
     <link href="${ctx}/css/car_details.css" rel="stylesheet">
 </head>
@@ -44,16 +44,16 @@
 
             <div class="pear-detail-car-info">
                 <div class="main">
-                    <div class="car-name"><b>MINI 2018款 1.5T COOPER 经典派</b> <span
+                    <div class="car-name"><b>${car.title}</b> <span
                             class="feature-tags"></span></div>
                     <div class="car-attributes">
                         <div class="left-texts">
-                            <div class="color">外观胡椒白+内饰黑色/外观太阳橙+内饰黑色</div>
+                            <div class="color">${car.color}</div>
                             <div class="guide-price">
-                                <div class="price-text">厂商指导价: 23.38万</div>
+                                <div class="price-text">厂商指导价: ${car.guiprice}万</div>
                                 <img src="images/help.png" class="price-question"></div>
                         </div>
-                        <div class="sold-number"><span>已售49台</span></div>
+                        <div class="sold-number"><span>已售${car.sailnum}台</span></div>
                     </div>
                 </div>
                 <div class="pear-detail-service-charge"></div>
@@ -65,7 +65,7 @@
             <div class="switch-tabs">
                 <div class="switch-tab active"><span>标准方案</span></div>
                 <div class="switch-tab">
-                    <img src="./images/kexuan.png" class="tab-icon">
+                    <img src="${ctx}/images/kexuan.png" class="tab-icon">
                     <span>1年后可退车方案</span>
                 </div>
             </div>
@@ -85,12 +85,12 @@
                     <div class="item">
                         <div class="t1">
                             首付&nbsp;</div>
-                        <div class="t2 fs-20"><b>2.33万</b></div>
+                        <div class="t2 fs-20"><b>${car.downpay}万</b></div>
                     </div>
                     <div class="item">
                         <div class="t1">
                             月供&nbsp;</div>
-                        <div class="t2 fs-20"><b>6098元</b></div>
+                        <div class="t2 fs-20"><b>${car.monpay}元</b></div>
                     </div>
                     <div class="item">
                         <div class="t1">期数</div>
@@ -100,7 +100,7 @@
                 <div class="tips tips1">
                     <div class="fee delivery-fee-tip">
                         <div>需向门店支付交车服务费4000元</div>
-                        <img src="images/help.png" width="14">
+                        <img src="${ctx}/images/help.png" width="14">
                     </div>
                 </div>
                 <div class="title left-ico"><span class="title-text">1年后</span>
@@ -141,152 +141,28 @@
                         <div class="name">弹个车长春高新区世兴行光谷大街店</div>
                         <div class="go-shop">
                             <div>进店</div>
-                            <img src="./images/jindian.png" class="right-arrow">
+                            <img src="${ctx}/images/jindian.png" class="right-arrow">
                         </div>
                     </div>
                     <div class="addr">吉林省长春市高新区光谷大街268号富祥小区正门</div>
                     <div class="shop-tag">
-                        <img src="images/shouquan.png">
+                        <img src="${ctx}/images/shouquan.png">
                     </div>
                 </div>
                 <div class="person-info">
                     <div class="info-left">
-                        <img src="./images/yanfu.jpg" class="person-headimg">
+                        <img src="${ctx}/images/yanfu.jpg" class="person-headimg">
 
                         <div class="person-intro">
                             <div class="person-intro-name">由艳福</div>
                             <div class="person-intro-no">13331585767</div>
                         </div>
                     </div>
-                    <img src="./images/phone.png" class="info-right"></div>
+                    <img src="${ctx}/images/phone.png" class="info-right"></div>
             </div>
         </div>
         <div class="configure-section">
-            <div class="pear-detail-anchor detail-anchor"
-                 style="opacity: 0; z-index: -1;">
-                <ul class="sticky-tabs">
-                    <li class="active"><a>车辆信息</a></li>
-                    <li class=""><a>购车须知</a></li>
-                </ul>
-            </div>
-            <div class="anchor"></div>
-            <div class="pear-detail-wrapper">
-                <div class="top">
-                    <div class="title"><span>基本配置</span></div>
-                </div>
-                <div class="pear-detail-base-config">
-                    <section class="item"><span class="key">车身结构</span><span class="value">3门4座两厢车</span></section>
-                    <section class="item"><span class="key">长/宽/高</span><span
-                            class="value">3832<br>1727<br>1451mm</span></section>
-                    <section class="item"><span class="key">发动机</span><span class="value">1.5T 136马力 L3</span></section>
-                    <section class="item"><span class="key">变速箱</span><span class="value">双离合变速箱(DCT)</span></section>
-                    <section class="item"><span class="key">驱动方式</span><span class="value">前置前驱</span></section>
-                    <section class="item"><span class="key">燃料形式</span><span class="value">汽油</span></section>
-                    <section class="item"><span class="key">综合油耗</span><span class="value">5.60L<br>100km(工信部)</span>
-                    </section>
-                    <section class="item"><span class="key">车辆配色</span><span
-                            class="value">外观胡椒白+内饰黑色<br>外观太阳橙+内饰黑色</span></section>
-                </div>
-            </div>
-            <div class="see-config"><span>查看全部配置</span></div>
-            <div class="pear-detail-wrapper config-important-block">
-                <div class="top">
-                    <div class="title"><span>配置亮点</span></div>
-                    <div class="sub-title">* 车型配置仅供参考，具体配置以实车为准</div>
-                </div>
-                <div class="pear-detail-config-important">
-                    <div class="items">
-                        <div class="item">
-                            <div class="box">
-                                <img width="32px" height="32px" alt="发动机启停技术" class="oss-image"
 
-                                     src="./images/90.png" lazy="loaded">
-
-                                <div class="item-title fs-13">发动机启停技术</div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="box"><img width="32px" height="32px" alt="全景天窗" class="oss-image"
-
-                                                  src="./images/86.png" lazy="loaded">
-
-                                <div class="item-title fs-13">全景天窗</div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="box"><img width="32px" height="32px" alt="汽车大灯" class="oss-image"
-
-                                                  src="./images/81.png" lazy="loaded">
-
-                                <div class="item-title fs-13">汽车大灯</div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="box"><img width="32px" height="32px" alt="定速巡航" class="oss-image"
-
-                                                  src="./images/78.png"
-                                                  lazy="loading">
-
-                                <div class="item-title fs-13">定速巡航</div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="box"><img width="32px" height="32px" alt="胎压监测装置" class="oss-image"
-
-                                                  src="./images/77.png"
-                                                  lazy="loading">
-
-                                <div class="item-title fs-13">胎压监测装置</div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="box"><img width="32px" height="32px" alt="零胎压继续行驶" class="oss-image"
-
-                                                  src="./images/76.png"
-                                                  lazy="loading">
-
-                                <div class="item-title fs-13">零胎压继续行驶</div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="box"><img width="32px" height="32px" alt="无钥匙启动系统" class="oss-image"
-
-                                                  src="./images/73.png"
-                                                  lazy="loading">
-
-                                <div class="item-title fs-13">无钥匙启动系统</div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="box"><img width="32px" height="32px" alt="自动头灯" class="oss-image"
-
-                                                  src="./images/68.png"
-                                                  lazy="loading">
-
-                                <div class="item-title fs-13">自动头灯</div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="box"><img width="32px" height="32px" alt="上坡辅助" class="oss-image"
-
-                                                  src="./images/65.png"
-                                                  lazy="loading">
-
-                                <div class="item-title fs-13">上坡辅助</div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class="box"><img width="32px" height="32px" alt="日间行车灯" class="oss-image"
-
-                                                  src="./images/62.png"
-                                                  lazy="loading">
-
-                                <div class="item-title fs-13">日间行车灯</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             <div class="buy-car-knowledge anchor">
                 <div class="pear-detail-wrapper">
@@ -417,7 +293,7 @@
                 </div>
                 <div class="pear-detail-pick-car">
                     <div class="cell-list"><img
-                            src="images/yugou.png" alt="在线预约"
+                            src="${ctx}/images/yugou.png" alt="在线预约"
                             class="icon">
 
                         <div class="cell">
@@ -426,7 +302,7 @@
                         </div>
                     </div>
                     <div class="cell-list"><img
-                            src="images/zhifubao.png" alt="支付宝信用评估"
+                            src="${ctx}/images/zhifubao.png" alt="支付宝信用评估"
                             class="icon">
 
                         <div class="cell">
@@ -435,7 +311,7 @@
                         </div>
                     </div>
                     <div class="cell-list"><img
-                            src="images/shoufu.png" alt="支付首付等待提车"
+                            src="${ctx}/images/shoufu.png" alt="支付首付等待提车"
                             class="icon">
 
                         <div class="cell">
@@ -444,7 +320,7 @@
                         </div>
                     </div>
                     <div class="cell-list"><img
-                            src="images/tiche.png" alt="到店提车"
+                            src="${ctx}/images/tiche.png" alt="到店提车"
                             class="icon">
 
                         <div class="cell">
@@ -455,108 +331,14 @@
                 </div>
             </div>
         </div>
-        <div class="recommend-car-list">
-            <div class="recommend-title"><i class="point"></i>
-                <em class="line"></em>
-                <div class="title">
-                    <img src="./images/like.png">看了这辆车的人还看了
-                </div>
-                <em class="line"></em>
-                <i class="point"></i>
-            </div>
-            <div class="common-car-list car-list">
-                <div class="common-car-item common-car-item">
-                    <div class="image-wrapper">
-                        <img src="images/car15.jpg" width="100%" height="100%" class="oss-image car-image">
-                    </div>
-                    <div class="text-infos">
-                        <p class="model-name">MINI 2018款 1.5TONE PLUS</p>
-                        <p class="car-status">厂商指导价20.68万</p>
-                        <p class="price-info">
-                            <span class="down-payment">首付<span class="down-payment-price">2.06</span>万</span>
-                            <span class="monthly-payments">月供5598元</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="splite-line"></div>
-                <div class="common-car-item common-car-item">
-                    <div class="image-wrapper">
-                        <img src="images/car16.jpg" width="100%" height="100%" class="oss-image car-image">
-                    </div>
-                    <div class="text-infos">
-                        <p class="model-name">Jeep自由侠 2017款180T 自动劲能版</p>
-                        <p class="splited-texts car-status">
-                            <span>长春</span><span class="split-bar"></span>
-                            <span>2018年01月</span><span class="split-bar"></span>
-                            <span>2.3万公里</span>
-                        </p>
-                        <p class="price-info">
-                            <span class="down-payment">首付<span class="down-payment-price">0.79</span>万</span>
-                            <span class="monthly-payments">月供3198元</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="splite-line"></div>
-                <div class="common-car-item common-car-item">
-                    <div class="image-wrapper">
-                        <img src="images/car2.jpg" width="100%" height="100%" class="oss-image car-image">
-                        <img src="images/shangxin.png" class="stock-icon">
-                    </div>
-                    <div class="text-infos">
-                        <p class="model-name">雪佛兰科沃兹 2019款 320自动欣悦版</p>
-                        <p class="car-status">厂商指导价9.99万</p>
-                        <p class="price-info">
-                            <span class="down-payment">首付<span class="down-payment-price">0.99</span>万</span>
-                            <span class="monthly-payments">月供2498元</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="splite-line"></div>
-                <div class="common-car-item common-car-item">
-                    <div class="image-wrapper">
-                        <img src="images/car3.jpg" width="100%" height="100%" class="oss-image car-image">
-                        <img src="images/zanshiquehuo.png" class="stock-icon">
-                    </div>
-                    <div class="text-infos">
-                        <p class="model-name">本田CR-V 2019款锐・混动 2.0L 两驱净致版 国V</p>
-                        <p class="car-status">厂商指导价25.98万</p>
-                        <p class="price-info">
-                            <span class="down-payment">首付<span class="down-payment-price">2.59</span>万</span>
-                            <span class="monthly-payments">月供5998元</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="splite-line"></div>
-                <div class="common-car-item common-car-item">
-                    <div class="image-wrapper">
-                        <img src="images/car5.jpg" width="100%" height="100%" class="oss-image car-image">
-                        <img src="images/zhijiang.png" class="flag-icon">
-                    </div>
-                    <div class="text-infos">
-                        <p class="model-name">三菱欧蓝德 2019款 2.0L两驱畅享版 5座</p>
-                        <p class="car-status">厂商指导价17.28万</p>
-                        <p class="price-info">
-                            <span class="down-payment">首付<span class="down-payment-price">1.72</span>万</span>
-                            <span class="monthly-payments">月供4498元</span></p>
-                        <div class="tag-list">
-                            <img src="images/car6.png" width="100%" height="100%" class="oss-image tag-image">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="splite-line"></div>
-            <div class="view-all">
-                <span>查看更多</span>
-                <img src="images/to_right2.png" alt="">
-            </div>
-        </div>
+
         <div class="help-find-card help-find-card">
             <img width="100%" height="100%" class="oss-image saler-head" src="./images/yanfu.jpg" lazy="loading">
             <div class="flip-text">
                 <div class="flip-text-head">hi~想弹什么车？</div>
                 <div class="flip-text-sub-head">提交心愿车单，专属顾问帮您找</div>
             </div>
-            <img src="images/xiangyou.png" class="right-arrow">
+            <img src="${ctx}/images/xiangyou.png" class="right-arrow">
         </div>
         <div>
             <div class="position-holder"></div>
@@ -565,19 +347,19 @@
                 <div class="splite-line"></div>
                 <div class="left-actions">
                     <div class="left-action">
-                        <div class="action-icon"><img src="images/zaixianyuyue.png">
+                        <div class="action-icon"><img src="${ctx}/images/zaixianyuyue.png">
                         </div>
                         <span class="action-name">进店</span>
                     </div>
                     <div class="left-action">
                         <div class="action-icon">
-                            <img src="images/shoucang.png">
+                            <img src="${ctx}/images/shoucang.png">
                         </div>
                         <span class="action-name">收藏</span>
                     </div>
                     <div class="left-action">
                         <div class="action-icon">
-                            <img src="images/dianhua.png">
+                            <img src="${ctx}/images/dianhua.png">
                         </div>
                         <span class="action-name">电话</span></div>
                 </div>
@@ -586,12 +368,12 @@
         </div>
         <div class="floating-level">
             <div class="bottom-actions">
-                <img src="./images/to_top.svg" class="to-top-tag">
+                <img src="${ctx}/images/to_top.svg" class="to-top-tag">
             </div>
         </div>
     </div>
 </div>
-<script src="./js/swiper.min.js"></script>
+<script src="${ctx}/js/swiper.min.js"></script>
 <script>
     /*轮播*/
     var swiper = new Swiper('.swiper-container', {
