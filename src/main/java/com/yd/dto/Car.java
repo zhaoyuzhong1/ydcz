@@ -18,6 +18,7 @@ public class Car extends BaseDTO {
     private String flag;
     private String imgpath;
     private String companyname;
+    private Integer sailnum;
 
     public Integer getId() {
         return id;
@@ -113,5 +114,13 @@ public class Car extends BaseDTO {
 
     public void setCompanyname(String companyname) {
         this.companyname = companyname;
+    }
+
+    public Integer getSailnum() {
+        return sailnum;
+    }
+
+    public void setSailnum(Integer sailnum) {
+        this.sailnum = sailnum;
     }
 }
