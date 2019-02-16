@@ -101,7 +101,14 @@
         <div class="promotion-area-item promotion-area-item">
             <div class="pear-dog-index-cars">
                 <a href="" class="pear-other-link cars-banner">
-                    <img width="100%" height="100%" class="oss-image" src="${ctx}/images/car7.png">
+                    <c:choose>
+                    <c:when test="${center==null}">
+                        <img width="100%" height="100%" class="oss-image" src="${ctx}/images/car7.png">
+                    </c:when>
+                    <c:otherwise>
+                        <img width="100%" height="100%" class="oss-image" src="${ctx}/${center.imgpath}">
+                    </c:otherwise>
+                    </c:choose>
                 </a>
 
              </div>
