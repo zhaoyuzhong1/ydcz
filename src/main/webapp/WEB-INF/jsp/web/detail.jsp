@@ -335,7 +335,7 @@
         </div>
 
         <div class="help-find-card help-find-card">
-            <img width="100%" height="100%" class="oss-image saler-head" src="./images/yanfu.jpg" lazy="loading">
+            <img width="100%" height="100%" class="oss-image saler-head" src="${ctx}/images/yanfu.jpg" lazy="loading">
             <div class="flip-text">
                 <div class="flip-text-head">hi~想弹什么车？</div>
                 <div class="flip-text-sub-head">提交心愿车单，专属顾问帮您找</div>
