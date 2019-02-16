@@ -49,7 +49,7 @@ public class WebController {
         model.addAttribute("coms",coms);
         model.addAttribute("main",main);
         Banner top = bannerDao.getBannerByType("0");
-        Banner center = bannerDao.getBannerByType("0");
+        Banner center = bannerDao.getBannerByType("1");
         model.addAttribute("top",top);
         model.addAttribute("center",center);
         return "web/index";
@@ -86,7 +86,7 @@ public class WebController {
 
         Main main = mainDao.getMain();
         Banner top = bannerDao.getBannerByType("0");
-        Banner center = bannerDao.getBannerByType("0");
+        Banner center = bannerDao.getBannerByType("1");
         model.addAttribute("top",top);
         model.addAttribute("center",center);
 
