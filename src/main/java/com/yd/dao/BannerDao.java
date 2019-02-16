@@ -62,6 +62,18 @@ public class BannerDao {
 
 
 
+    public Banner getBannerByType(String type){
+        String sql = "select * from t_banner where type=? and flag='0'";
+        List<Banner> bs = baseDao.query(sql,Banner.class,new Object[]{type});
+        if(bs.size()>0){
+            return bs.get(0);
+        }else{
+            return null;
+        }
+    }
+
+
+
     public int zxBanner(String type) {
         String sql = "update t_banner set flag='1' where type=?";
         return baseDao.update2(sql,new Object[]{type});
