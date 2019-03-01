@@ -35,6 +35,8 @@ public class WebController {
     MainDao mainDao;
     @Autowired
     CompanyDao companyDao;
+    @Autowired
+    BannerDao bannerDao;
 
     @RequestMapping(value = "/index")
     public String index(Model model) {
@@ -46,6 +48,10 @@ public class WebController {
         model.addAttribute("cars",cars);
         model.addAttribute("coms",coms);
         model.addAttribute("main",main);
+        Banner top = bannerDao.getBannerByType("0");
+        Banner center = bannerDao.getBannerByType("1");
+        model.addAttribute("top",top);
+        model.addAttribute("center",center);
         return "web/index";
         //return "sys/top";
     }
@@ -67,6 +73,28 @@ public class WebController {
         model.addAttribute("cars",cars);
         model.addAttribute("main",main);
         return "web/list";
+        //return "sys/top";
+    }
+
+
+
+    @RequestMapping(value = "/detail")
+    public String detail(Model model,int carid) {
+        Shop shop = shopDao.selectShopByCity("长春");
+        Car car = carDao.getCarByid(carid);
+        List<CarImg> cis = carDao.selectImgByCarid(carid);
+
+        Main main = mainDao.getMain();
+        Banner top = bannerDao.getBannerByType("0");
+        Banner center = bannerDao.getBannerByType("1");
+        model.addAttribute("top",top);
+        model.addAttribute("center",center);
+
+        model.addAttribute("shop",shop);
+        model.addAttribute("car",car);
+        model.addAttribute("cis",cis);
+        model.addAttribute("main",main);
+        return "web/detail";
         //return "sys/top";
     }
 
