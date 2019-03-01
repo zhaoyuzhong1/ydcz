@@ -31,7 +31,7 @@
         <img src="${ctx}/images/htlt_logo.png" height="55"/>
     </div>
 
-    <div class="title"><div class="left-tri"></div>无忧出行<div class="right-tri"></div></div>
+    <div class="title"><div class="left-tri"></div>易贷车主<div class="right-tri"></div></div>
     <div class="form-group form-group-lg has-feedback" style="margin-top: 40px;">
         <input  type="text" class="form-control" id="loginName" name="loginName"  maxlength="20" placeholder="用户名" autofocus>
         <span class="fa fa-user form-control-feedback" aria-hidden="true"></span>
