@@ -19,6 +19,11 @@ public class Car extends BaseDTO {
     private String imgpath;
     private String companyname;
     private Integer sailnum;
+    private String tcase;//参团情况
+    private String type;//区分车辆情况
+    private String depict;//二手车描述
+    private Integer km;
+
 
     public Integer getId() {
         return id;
@@ -122,5 +127,37 @@ public class Car extends BaseDTO {
 
     public void setSailnum(Integer sailnum) {
         this.sailnum = sailnum;
+    }
+
+    public String getTcase() {
+        return tcase;
+    }
+
+    public void setTcase(String tcase) {
+        this.tcase = tcase;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getDepict() {
+        return depict;
+    }
+
+    public void setDepict(String depict) {
+        this.depict = depict;
+    }
+
+    public Integer getKm() {
+        return km;
+    }
+
+    public void setKm(Integer km) {
+        this.km = km;
     }
 }
