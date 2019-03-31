@@ -44,15 +44,15 @@ public class WebController {
         List<Car> cars = carDao.getSyCar(10);
         Main main = mainDao.getMain();
         List<Company> coms = companyDao.selectYxCompany();
-        model.addAttribute("shop",shop);
-        model.addAttribute("cars",cars);
-        model.addAttribute("coms",coms);
-        model.addAttribute("main",main);
+        model.addAttribute("new",carDao.getSyCar2("0",3));//新车
+        model.addAttribute("old",carDao.getSyCar2("1",3));//二手车
+        model.addAttribute("tuan",carDao.getSyCar2("2",3));//团购
+
         Banner top = bannerDao.getBannerByType("0");
-        Banner center = bannerDao.getBannerByType("1");
+        //Banner center = bannerDao.getBannerByType("1");
         model.addAttribute("top",top);
-        model.addAttribute("center",center);
-        return "web/index";
+        //model.addAttribute("center",center);
+        return "web/index2";
         //return "sys/top";
     }
 
