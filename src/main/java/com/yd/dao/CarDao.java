@@ -43,6 +43,14 @@ public class CarDao {
     }
 
 
+    //添加
+    public int addCar2(Car car) {
+        StringBuffer sql =new StringBuffer();
+        sql.append(" insert into t_car (title,companyid,color,guiprice,price,downpay,monpay,issy,cdate,flag,type,tcase,depict,km) values(:title,:companyid,:color,:guiprice,:price,:downpay,:monpay,:issy,now(),'0',:type,:tcase,:depict,:km) ");
+        return baseDao.insert(sql.toString(),car);
+    }
+
+
 
     //添加
     public int updateCar(Car car) {
@@ -52,7 +60,15 @@ public class CarDao {
     }
 
 
-    //根据city获取该城市下的门店
+    //修改汽车
+    public int updateCar2(Car car) {
+        StringBuffer sql =new StringBuffer();
+        sql.append(" update t_car set title=:title,companyid=:companyid,color=:color,guiprice=:guiprice,price=:price,downpay=:downpay,monpay=:monpay,issy=:issy,type=:type,tcase=:tcase,depict=:depict,km=:km where id=:id ");
+        return baseDao.update(sql.toString(),car);
+    }
+
+
+
     public List<CarImg> selectImgByCarid(int carid){
         String sql = "SELECT * FROM t_car_img where carid=? ";
         return baseDao.query(sql,CarImg.class,new Object[]{carid});
@@ -60,7 +76,7 @@ public class CarDao {
     }
 
 
-    //根据city获取该城市下的门店
+
     public Car getCarByid(int carid){
         String sql = "SELECT * FROM t_car where id=? ";
         List<Car> cs = baseDao.query(sql,Car.class,new Object[]{carid});
@@ -76,6 +92,13 @@ public class CarDao {
     public List<Car> getSyCar(int limit){
         String sql = "SELECT a.*,b.imgpath FROM t_car a LEFT JOIN t_car_img b ON a.id=b.carid WHERE a.flag='0' AND a.issy='0' GROUP BY a.id ORDER BY a.id ASC LIMIT "+limit;
         return baseDao.query(sql,Car.class,new Object[]{});
+    }
+
+
+    //获取首页展示的car列表
+    public List<Car> getSyCar2(String type,int limit){
+        String sql = "SELECT a.*,b.imgpath FROM t_car a LEFT JOIN t_car_img b ON a.id=b.carid WHERE a.flag='0' and a.type=? AND a.issy='0' GROUP BY a.id ORDER BY a.id ASC LIMIT "+limit;
+        return baseDao.query(sql,Car.class,new Object[]{type});
     }
 
 
