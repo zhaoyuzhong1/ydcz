@@ -27,11 +27,11 @@
 <body class="login-body">
 
 <form class="form-signin1 signin-box" style="margin-bottom: 0"  action="${ctx}/sys/login" method="post" id="loginForm">
-    <div class="login-logobox">
-        <img src="${ctx}/images/htlt_logo.png" height="55"/>
-    </div>
+    <%--<div class="login-logobox">--%>
+        <%--<img src="${ctx}/images/htlt_logo.png" height="55"/>--%>
+    <%--</div>--%>
 
-    <div class="title"><div class="left-tri"></div>无忧出行<div class="right-tri"></div></div>
+    <div class="title"><div class="left-tri"></div>易贷车主<div class="right-tri"></div></div>
     <div class="form-group form-group-lg has-feedback" style="margin-top: 40px;">
         <input  type="text" class="form-control" id="loginName" name="loginName"  maxlength="20" placeholder="用户名" autofocus>
         <span class="fa fa-user form-control-feedback" aria-hidden="true"></span>
