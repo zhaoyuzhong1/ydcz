@@ -59,20 +59,23 @@ public class WebController {
 
 
     @RequestMapping(value = "/list")
-    public String list(Model model,String companyid) {
-        Shop shop = shopDao.selectShopByCity("长春");
-        List<Car> cars = new ArrayList<>();
-        if(companyid!=null && !companyid.equals("")){
-            cars = carDao.getAllCar(companyid,20);
-        }else{
-            cars = carDao.getAllCar("",20);
-        }
+    public String list(Model model,String type) {
+//        Shop shop = shopDao.selectShopByCity("长春");
+//        List<Car> cars = new ArrayList<>();
+//        if(companyid!=null && !companyid.equals("")){
+//            cars = carDao.getAllCar(companyid,20);
+//        }else{
+//            cars = carDao.getAllCar("",20);
+//        }
 
-        Main main = mainDao.getMain();
-        model.addAttribute("shop",shop);
-        model.addAttribute("cars",cars);
-        model.addAttribute("main",main);
-        return "web/list";
+        //Main main = mainDao.getMain();
+        List<Car> new_cars = carDao.getAllCarsByType("0",30);
+        List<Car> old_cars = carDao.getAllCarsByType("1",30);
+        List<Car> tuan_cars = carDao.getAllCarsByType("2",30);
+        model.addAttribute("olds",old_cars);
+        model.addAttribute("news",new_cars);
+        model.addAttribute("tuans",tuan_cars);
+        return "web/list2";
         //return "sys/top";
     }
 
@@ -80,21 +83,25 @@ public class WebController {
 
     @RequestMapping(value = "/detail")
     public String detail(Model model,int carid) {
-        Shop shop = shopDao.selectShopByCity("长春");
+//        Shop shop = shopDao.selectShopByCity("长春");
+//        Car car = carDao.getCarByid(carid);
+//        List<CarImg> cis = carDao.selectImgByCarid(carid);
+//
+//        Main main = mainDao.getMain();
+//        Banner top = bannerDao.getBannerByType("0");
+//        Banner center = bannerDao.getBannerByType("1");
+
         Car car = carDao.getCarByid(carid);
-        List<CarImg> cis = carDao.selectImgByCarid(carid);
+        List<CarImg> cis = carImgDao.getImgList(carid+"");
 
-        Main main = mainDao.getMain();
-        Banner top = bannerDao.getBannerByType("0");
-        Banner center = bannerDao.getBannerByType("1");
-        model.addAttribute("top",top);
-        model.addAttribute("center",center);
-
-        model.addAttribute("shop",shop);
+//        model.addAttribute("top",top);
+//        model.addAttribute("center",center);
+//
+//        model.addAttribute("shop",shop);
         model.addAttribute("car",car);
         model.addAttribute("cis",cis);
-        model.addAttribute("main",main);
-        return "web/detail";
+        //model.addAttribute("main",main);
+        return "web/detail2";
         //return "sys/top";
     }
 
