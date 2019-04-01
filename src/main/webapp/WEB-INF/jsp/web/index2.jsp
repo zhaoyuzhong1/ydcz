@@ -82,23 +82,23 @@
             </div>
         </div>
         <div class="brand-filter-container index-carnav">
-            <a href="#">
+            <a href="${ctx}/web/list?type=2">
                 <div class="icon group"></div>
                 <div class="txt">团购</div>
             </a>
-            <a href="#">
+            <a href="${ctx}/web/list?type=0">
                 <div class="icon new"></div>
                 <div class="txt">新车</div>
             </a>
-            <a href="#">
+            <a href="${ctx}/web/list?type=1">
                 <div class="icon old"></div>
                 <div class="txt">二手车</div>
             </a>
         </div>
         <div class="premium-used-cars">
             <div class="pear-dog-index-cars">
-                <a href="" class="pear-other-link cars-banner">
-                    <img width="100%" height="100%" class="oss-image" src="images/index_ban_group.png">
+                <a href="${ctx}/web/list?type=2" class="pear-other-link cars-banner">
+                    <img width="100%" height="100%" class="oss-image" src="${ctx}/images/index_ban_group.png">
                 </a>
                 <div class="remove-scrollbar">
                     <div class="scroll-list">
@@ -109,10 +109,10 @@
                                         <div class="fix-img">
                                             <c:choose>
                                                 <c:when test="${t.imgpath==null}">
-                                                    <img width="100%" height="100%" class="oss-image car-img" src="images/car16.jpg" lazy="loaded">
+                                                    <a href="${ctx}/web/detail?carid=${t.id}"><img width="100%" height="100%" class="oss-image car-img" src="${ctx}/images/car16.jpg" lazy="loaded"></a>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <img src="${ctx}/img_car/${t.imgpath}">
+                                                    <a href="${ctx}/web/detail?carid=${t.id}"><img src="${ctx}/img_car/${t.imgpath}"></a>
                                                 </c:otherwise>
                                             </c:choose>
 
@@ -143,246 +143,98 @@
         </div>
         <div class="promotion-area-item promotion-area-item">
             <div class="pear-dog-index-cars">
-                <a href="" class="pear-other-link cars-banner">
-                    <img width="100%" height="100%" class="oss-image" src="images/index_ban_new.png">
+                <a href="${ctx}/web/list?type=0" class="pear-other-link cars-banner">
+                    <img width="100%" height="100%" class="oss-image" src="${ctx}/images/index_ban_new.png">
                 </a>
                 <div class="remove-scrollbar">
                     <div class="scroll-list">
+
+                        <c:forEach var="t" items="${new}">
                         <div class="scroll-item">
                             <div class="item-link">
                                 <div>
                                     <div class="fix-img">
-                                        <img src="images/月供.png" class="tag-img" style="width: 32px;">
-                                        <img width="100%" height="100%" class="oss-image car-img" src="images/car8.jpg">
+                                        <%--<img src="images/月供.png" class="tag-img" style="width: 32px;">--%>
+                                            <c:choose>
+                                                <c:when test="${t.imgpath==null}">
+                                                    <a href="${ctx}/web/detail?carid=${t.id}"><img width="100%" height="100%" class="oss-image car-img" src="${ctx}/images/car8.jpg" lazy="loaded"></a>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <a href="${ctx}/web/detail?carid=${t.id}"><img src="${ctx}/img_car/${t.imgpath}"></a>
+                                                </c:otherwise>
+                                            </c:choose>
                                     </div>
                                     <div class="content-word">
-                                        <div class="word-car"><span class="car-name">比亚迪F0</span></div>
-                                        <span class="down-payment">首付<span>0.43</span>万</span><span class="month-installment">月供1398元</span>
+                                        <div class="word-car"><span class="car-name">${t.title}</span></div>
+                                        <span class="down-payment">首付<span>${t.downpay}</span>万</span><span class="month-installment">月供${t.monpay}元</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="scroll-item">
-                            <div class="item-link">
-                                <div>
-                                    <div class="fix-img">
-                                        <img src="images/月供1798.png" class="tag-img" style="width: 32px;">
-                                        <img width="100%" height="100%" class="oss-image car-img" src="images/car9.jpg">
-                                    </div>
-                                    <div class="content-word">
-                                        <div class="word-car"><span class="car-name">雪佛兰赛欧</span></div>
-                                        <span class="down-payment">首付<span>0.68</span>万</span><span class="month-installment">月供1798元</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="scroll-item">
-                            <div class="item-link">
-                                <div>
-                                    <div class="fix-img">
-                                        <img src="images/yuegong1998.png" class="tag-img" style="width: 32px;">
-                                        <img width="100%" height="100%" class="oss-image car-img" src="images/car10.jpg">
-                                    </div>
-                                    <div class="content-word">
-                                        <div class="word-car"><span class="car-name">五菱汽车五菱宏光</span></div>
-                                        <span class="down-payment">首付<span>0.49</span>万</span><span class="month-installment">月供1998元</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="scroll-item">
-                            <div class="item-link">
-                                <div>
-                                    <div class="fix-img">
-                                        <img src="images/yuegong19982.png" class="tag-img" style="width: 32px;">
-                                        <img width="100%" height="100%" class="oss-image car-img" src="images/car11.jpg">
-                                    </div>
-                                    <div class="content-word">
-                                        <div class="word-car"><span class="car-name">起亚焕驰</span></div>
-                                        <span class="down-payment">首付<span>0.65</span>万</span><span class="month-installment">月供1998元</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="scroll-item">
-                            <div class="item-link">
-                                <div>
-                                    <div class="fix-img">
-                                        <img src="images/yuegong2098.png" class="tag-img" style="width: 32px;">
-                                        <img width="100%" height="100%" class="oss-image car-img" src="images/car12.jpg">
-                                    </div>
-                                    <div class="content-word">
-                                        <div class="word-car"><span class="car-name">MG3</span></div>
-                                        <span class="down-payment">首付<span>0.73</span>万</span><span class="month-installment">月供2098元</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="scroll-item">
-                            <div class="item-link">
-                                <div>
-                                    <div class="fix-img">
-                                        <img src="./images/6c9108636104fb807a587b9d44276e1a.png" class="tag-img" style="width: 32px;">
-                                        <img width="100%" height="100%" class="oss-image car-img" src="images/car18.jpg">
-                                    </div>
-                                    <div class="content-word">
-                                        <div class="word-car"><span class="car-name">标致301</span></div>
-                                        <span class="down-payment">首付<span>0.96</span>万</span><span class="month-installment">月供2098元</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="scroll-item">
-                            <div class="item-link">
-                                <div>
-                                    <div class="fix-img">
-                                        <img src="images/yuegong2598.png" class="tag-img" style="width: 32px;">
-                                        <img width="100%" height="100%" class="oss-image car-img" src="images/car19.jpg">
-                                    </div>
-                                    <div class="content-word">
-                                        <div class="word-car"><span class="car-name">广汽传祺GA4</span></div>
-                                        <span class="down-payment">首付<span>0.96</span>万</span><span
-                                            class="month-installment">月供2598元</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="scroll-more">
-                            <a href="" class="pear-other-link scroll-dog-link">
-                                <div>
-                                    <div class="more-zh">
-                                        <span>查看更多</span>
-                                        <img src="./images/to_right.png" alt="" height="13px">
-                                    </div>
-                                    <div class="more-en"><span>See More</span></div>
-                                </div>
-                            </a>
-                        </div>
+                        </c:forEach>
+
+                        <%--<div class="scroll-more">--%>
+                            <%--<a href="" class="pear-other-link scroll-dog-link">--%>
+                                <%--<div>--%>
+                                    <%--<div class="more-zh">--%>
+                                        <%--<span>查看更多</span>--%>
+                                        <%--<img src="./images/to_right.png" alt="" height="13px">--%>
+                                    <%--</div>--%>
+                                    <%--<div class="more-en"><span>See More</span></div>--%>
+                                <%--</div>--%>
+                            <%--</a>--%>
+                        <%--</div>--%>
+
+
                     </div>
                 </div>
             </div>
         </div>
         <div class="premium-used-cars">
             <div class="pear-dog-index-cars">
-                <a href="" class="pear-other-link cars-banner">
-                    <img width="100%" height="100%" class="oss-image" src="images/car20.png">
+                <a href="${ctx}/web/list?type=1" class="pear-other-link cars-banner">
+                    <img width="100%" height="100%" class="oss-image" src="${ctx}/images/car20.png">
                 </a>
                 <div class="remove-scrollbar">
                     <div class="scroll-list">
+
+                        <c:forEach var="t" items="${old}">
                         <div class="scroll-item">
                             <div class="item-link">
                                 <div>
                                     <div class="fix-img">
-                                        <img width="100%" height="100%" class="oss-image car-img" src="images/car16.jpg" lazy="loaded">
+                                        <c:choose>
+                                            <c:when test="${t.imgpath==null}">
+                                                <a href="${ctx}/web/detail?carid=${t.id}"><img width="100%" height="100%" class="oss-image car-img" src="${ctx}/images/car16.jpg" lazy="loaded"></a>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <a href="${ctx}/web/detail?carid=${t.id}"><img src="${ctx}/img_car/${t.imgpath}"></a>
+                                            </c:otherwise>
+                                        </c:choose>
+
                                     </div>
                                     <div class="content-word">
-                                        <div class="word-car"><span class="car-name">Jeep自由侠</span></div>
-                                        <span class="down-payment">首付<span>0.00</span>万</span><span class="month-installment">月供3198元</span>
+                                        <div class="word-car"><span class="car-name">${t.title}</span></div>
+                                        <span class="down-payment">行驶<span>${t.km}</span>公里</span><span class="month-installment">售价${t.price}元</span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="scroll-item">
-                            <div class="item-link">
-                                <div>
-                                    <div class="fix-img">
-                                        <img width="100%" height="100%" class="oss-image car-img" src="images/car21.jpg" lazy="loaded">
-                                    </div>
-                                    <div class="content-word">
-                                        <div class="word-car"><span class="car-name">日产骊威</span></div>
-                                        <span class="down-payment">首付<span>0.47</span>万</span><span class="month-installment">月供2098元</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="scroll-item">
-                            <div class="item-link">
-                                <div>
-                                    <div class="fix-img">
-                                        <img width="100%" height="100%" class="oss-image car-img" src="images/car22.jpg" lazy="loaded">
-                                    </div>
-                                    <div class="content-word">
-                                        <div class="word-car"><span class="car-name">别克英朗</span></div>
-                                        <span class="down-payment">首付<span>0.56</span>万</span><span class="month-installment">月供2498元</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="scroll-item">
-                            <div class="item-link">
-                                <div>
-                                    <div class="fix-img">
-                                        <img width="100%" height="100%" class="oss-image car-img" src="images/car23.jpg" lazy="loaded">
-                                    </div>
-                                    <div class="content-word">
-                                        <div class="word-car"><span class="car-name">日产骐达</span></div>
-                                        <span class="down-payment">首付<span>0.61</span>万</span><span class="month-installment">月供2298元</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="scroll-item">
-                            <div class="item-link">
-                                <div>
-                                    <div class="fix-img">
-                                        <img width="100%" height="100%" class="oss-image car-img" src="images/car24.jpg" lazy="loaded">
-                                    </div>
-                                    <div class="content-word">
-                                        <div class="word-car"><span class="car-name">本田凌派</span></div>
-                                        <span class="down-payment">首付<span>0.62</span>万</span><span class="month-installment">月供2698元</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="scroll-item">
-                            <div class="item-link">
-                                <div>
-                                    <div class="fix-img">
-                                        <img width="100%" height="100%" class="oss-image car-img" src="images/car25.jpg" lazy="loaded">
-                                    </div>
-                                    <div class="content-word">
-                                        <div class="word-car"><span class="car-name">本田凌派</span></div>
-                                        <span class="down-payment">首付<span>0.62</span>万</span><span class="month-installment">月供2798元</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="scroll-item">
-                            <div class="item-link">
-                                <div>
-                                    <div class="fix-img">
-                                        <img width="100%" height="100%" class="oss-image car-img" src="images/car26.jpg" lazy="loaded">
-                                    </div>
-                                    <div class="content-word">
-                                        <div class="word-car"><span class="car-name">福特翼搏</span></div>
-                                        <span class="down-payment">首付<span>0.64</span>万</span><span class="month-installment">月供2098元</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="scroll-item">
-                            <div class="item-link">
-                                <div>
-                                    <div class="fix-img">
-                                        <img width="100%" height="100%" class="oss-image car-img" src="images/car27.jpg" lazy="loaded">
-                                    </div>
-                                    <div class="content-word">
-                                        <div class="word-car"><span class="car-name">斯柯达野帝</span></div>
-                                        <span class="down-payment">首付<span>0.64</span>万</span><span class="month-installment">月供2498元</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="scroll-more">
-                            <a href="" class="pear-other-link scroll-dog-link">
-                                <div>
-                                    <div class="more-zh"><span>查看更多</span>
-                                        <img src="./images/to_right.png" alt="" height="13px">
-                                    </div>
-                                    <div class="more-en"><span>See More</span></div>
-                                </div>
-                            </a>
-                        </div>
+                        </c:forEach>
+
+                        <%--<div class="scroll-more">--%>
+                            <%--<a href="" class="pear-other-link scroll-dog-link">--%>
+                                <%--<div>--%>
+                                    <%--<div class="more-zh"><span>查看更多</span>--%>
+                                        <%--<img src="./images/to_right.png" alt="" height="13px">--%>
+                                    <%--</div>--%>
+                                    <%--<div class="more-en"><span>See More</span></div>--%>
+                                <%--</div>--%>
+                            <%--</a>--%>
+                        <%--</div>--%>
+
+
+
                     </div>
                 </div>
             </div>
@@ -390,7 +242,7 @@
 
         <div class="floating-level">
             <div class="bottom-actions">
-                <img  src="./images/to_top.svg" class="to-top-tag">
+                <img  src="${ctx}/images/to_top.svg" class="to-top-tag">
             </div>
         </div>
     </div>
