@@ -51,4 +51,12 @@ public class CarImgDao {
     }
 
 
+    public List<CarImg> getImgList(String carid){
+
+        String sql = "SELECT * FROM t_car_img where carid= ? order by cdate asc";
+        return baseDao.query(sql, CarImg.class, new Object[]{carid});
+
+    }
+
+
 }
