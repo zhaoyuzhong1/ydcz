@@ -69,13 +69,11 @@ public class WebController {
 //        }
 
         //Main main = mainDao.getMain();
-        List<Car> new_cars = carDao.getAllCarsByType("0",30);
-        List<Car> old_cars = carDao.getAllCarsByType("1",30);
-        List<Car> tuan_cars = carDao.getAllCarsByType("2",30);
+        List<Car> cars = carDao.getAllCarsByType(type,30);
+
         model.addAttribute("type",type);
-        model.addAttribute("olds",old_cars);
-        model.addAttribute("news",new_cars);
-        model.addAttribute("tuans",tuan_cars);
+        model.addAttribute("cars",cars);
+
         return "web/list2";
         //return "sys/top";
     }
