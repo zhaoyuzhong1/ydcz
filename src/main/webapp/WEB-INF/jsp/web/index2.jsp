@@ -112,7 +112,7 @@
                                                     <a href="${ctx}/web/detail?carid=${t.id}"><img width="100%" height="100%" class="oss-image car-img" src="${ctx}/images/car16.jpg" lazy="loaded"></a>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <a href="${ctx}/web/detail?carid=${t.id}"><img src="${ctx}/img_car/${t.imgpath}"></a>
+                                                    <a href="${ctx}/web/detail?carid=${t.id}"><img src="${ctx}/img_car/${t.imgpath}"  width="100%" height="100%" class="oss-image car-image"></a>
                                                 </c:otherwise>
                                             </c:choose>
 
@@ -160,7 +160,7 @@
                                                     <a href="${ctx}/web/detail?carid=${t.id}"><img width="100%" height="100%" class="oss-image car-img" src="${ctx}/images/car8.jpg" lazy="loaded"></a>
                                                 </c:when>
                                                 <c:otherwise>
-                                                    <a href="${ctx}/web/detail?carid=${t.id}"><img src="${ctx}/img_car/${t.imgpath}"></a>
+                                                    <a href="${ctx}/web/detail?carid=${t.id}"><img src="${ctx}/img_car/${t.imgpath}" width="100%" height="100%" class="oss-image car-image"></a>
                                                 </c:otherwise>
                                             </c:choose>
                                     </div>
@@ -208,7 +208,7 @@
                                                 <a href="${ctx}/web/detail?carid=${t.id}"><img width="100%" height="100%" class="oss-image car-img" src="${ctx}/images/car16.jpg" lazy="loaded"></a>
                                             </c:when>
                                             <c:otherwise>
-                                                <a href="${ctx}/web/detail?carid=${t.id}"><img src="${ctx}/img_car/${t.imgpath}"></a>
+                                                <a href="${ctx}/web/detail?carid=${t.id}"><img src="${ctx}/img_car/${t.imgpath}" width="100%" height="100%" class="oss-image car-image"></a>
                                             </c:otherwise>
                                         </c:choose>
 
