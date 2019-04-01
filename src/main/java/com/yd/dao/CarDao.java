@@ -114,6 +114,14 @@ public class CarDao {
     }
 
 
+    //获取所有car列表
+    public List<Car> getAllCarsByType(String type,int limit){
+        String sql = "SELECT a.*,b.imgpath FROM t_car a LEFT JOIN t_car_img b ON a.id=b.carid WHERE a.flag='0' and a.type=? GROUP BY a.id ORDER BY a.issy,a.id ASC LIMIT " + limit;
+        return baseDao.query(sql, Car.class, new Object[]{type});
+
+    }
+
+
 
 
 
