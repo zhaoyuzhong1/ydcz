@@ -58,7 +58,7 @@
             <div tabindex="-1" role="dialog" aria-hidden="true" class="pswp">
                 <div class="pswp__bg"></div>
                 <div class="som-image-viewer">
-                    <div class="som-image-viewer__title"><span><img src="images/cancel.png"></span><span>01/ 00</span>
+                    <div class="som-image-viewer__title"><span><img src="${ctx}/images/cancel.png"></span><span>01/ 00</span>
                     </div>
                 </div>
                 <div class="pswp__scroll-wrap">
