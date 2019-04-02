@@ -47,18 +47,46 @@
                             <a href="${ctx}/web/detail?carid=${t.id}"><img src="${ctx}/img_car/${t.imgpath}" width="100%" height="100%" class="oss-image car-image"></a>
                         </c:otherwise>
                     </c:choose>
-                    <img src="images/shangxin.png" class="stock-icon">
+
                 </div>
-                <div class="text-infos">
-                    <p class="model-name">雪佛兰科沃兹 2019款 320自动欣悦版</p>
-                    <p class="car-status">厂商指导价9.99万</p>
-                    <p class="price-info">
+                <c:choose>
+                <c:when test="${type=='0'}">
+                    <div class="text-infos">
+                        <p class="model-name">${t.title}</p>
+                        <p class="car-status">销售价${t.price}万</p>
+                        <p class="price-info">
+                            <span class="down-payment">首付
+                                <span class="down-payment-price">${t.downpay}</span>万
+                            </span>
+                            <span class="monthly-payments">月供${t.monpay}元</span>
+                        </p>
+                    </div>
+                </c:when>
+                <c:when test="${type=='1'}">
+                    <div class="text-infos">
+                        <p class="model-name">${t.title}</p>
+                        <p class="car-status">行驶${t.km}公里</p>
+                        <p class="price-info">
                         <span class="down-payment">首付
-                            <span class="down-payment-price">0.99</span>万
+                            <span class="down-payment-price">${t.downpay}</span>万
                         </span>
-                        <span class="monthly-payments">月供2498元/span>
-                    </p>
-                </div>
+                            <span class="monthly-payments">月供${t.monpay}元</span>
+                        </p>
+                    </div>
+                </c:when>
+                <c:when test="${type=='2'}">
+                    <div class="text-infos">
+                        <p class="model-name">${t.title}</p>
+                        <p class="car-status">团购价${t.price}万</p>
+                        <p class="price-info">
+                    <span class="down-payment">首付
+                        <span class="down-payment-price">${t.downpay}</span>万
+                    </span>
+                            <span class="monthly-payments">月供${t.monpay}元</span>
+                        </p>
+                    </div>
+                </c:when>
+                </c:choose>
             </div>
             <div class="splite-line"></div>
             </c:forEach>
@@ -67,20 +95,20 @@
 
         <ul class="carlist-nav">
             <li>
-                <a href="">团<br>购</a>
+                <a href="${ctx}/web/list?type=2">团<br>购</a>
             </li>
             <li>
-                <a href="" class="active">新<br>车</a>
+                <a href="${ctx}/web/list?type=0" class="active">新<br>车</a>
             </li>
             <li>
-                <a href="">二<br>手<br>车</a>
+                <a href="${ctx}/web/list?type=1">二<br>手<br>车</a>
             </li>
         </ul>
 
         <div class="floating-level">
             <div class="bottom-actions">
-                <img src="./images/shoucangjia.svg" class="bookmarks-tag">
-                <img src="./images/to_top.svg" class="to-top-tag">
+                <img src="${ctx}/images/shoucangjia.svg" class="bookmarks-tag">
+                <img src="${ctx}/images/to_top.svg" class="to-top-tag">
             </div>
         </div>
     </div>
@@ -125,7 +153,7 @@
     </div>
 </div>
 
-<script type="text/javascript" src="./js/jquery.min.js"></script>
+<script type="text/javascript" src="${ctx}/js/jquery.min.js"></script>
 <script>
     /*回到顶部*/
     document.querySelector('.to-top-tag').onclick = function () {
