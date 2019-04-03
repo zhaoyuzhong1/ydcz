@@ -23,6 +23,8 @@ public class Car extends BaseDTO {
     private String type;//区分车辆情况
     private String depict;//二手车描述
     private Integer km;
+    private Integer cuser;
+    private String cusername;
 
 
     public Integer getId() {
@@ -159,5 +161,21 @@ public class Car extends BaseDTO {
 
     public void setKm(Integer km) {
         this.km = km;
+    }
+
+    public Integer getCuser() {
+        return cuser;
+    }
+
+    public void setCuser(Integer cuser) {
+        this.cuser = cuser;
+    }
+
+    public String getCusername() {
+        return cusername;
+    }
+
+    public void setCusername(String cusername) {
+        this.cusername = cusername;
     }
 }
