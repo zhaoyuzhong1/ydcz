@@ -37,6 +37,8 @@ public class WebController {
     CompanyDao companyDao;
     @Autowired
     BannerDao bannerDao;
+    @Autowired
+    AdvertDao advertDao;
 
     @RequestMapping(value = "/index")
     public String index(Model model) {
@@ -47,10 +49,16 @@ public class WebController {
         model.addAttribute("new",carDao.getSyCar2("0",3));//新车
         model.addAttribute("old",carDao.getSyCar2("1",3));//二手车
         model.addAttribute("tuan",carDao.getSyCar2("2",3));//团购
+        Advert advert = advertDao.getAdvert();
+        String content = "";
+        if(advert!=null){
+            content = advert.getContent();
+        }
 
         Banner top = bannerDao.getBannerByType("0");
         //Banner center = bannerDao.getBannerByType("1");
         model.addAttribute("top",top);
+        model.addAttribute("content",content);
         //model.addAttribute("center",center);
         return "web/index2";
         //return "sys/top";
