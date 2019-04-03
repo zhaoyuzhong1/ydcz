@@ -45,7 +45,7 @@
                 </div>
                 <div class="shop-info">
                     <div class="title">
-                        <div class="title-text">一贷车主一贷车主一贷车主</div>
+                        <div class="title-text">${content}</div>
                     </div>
                 </div>
             </div>
