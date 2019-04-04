@@ -80,16 +80,16 @@ public class CarController {
 
         /** 获取文件的后缀* */
         String filename = new Date().getTime()+"_"+multipartFile.getOriginalFilename();
-        System.out.println();
+
         InputStream inputStream;
         //System.out.println("             "+request.getRealPath("/"));
-        String basePath=request.getRealPath("/")+"upload\\car\\";
+        String basePath="D:\\ydcz_upload\\car\\";
 
 
         byte[] data = new byte[1024];
         int len = 0;
         FileOutputStream fileOutputStream = null;
-
+        String name1 = new Date().getTime()+filename.substring(filename.indexOf("."),filename.length());
         try {
             inputStream = multipartFile.getInputStream();
             fileOutputStream = new FileOutputStream(basePath+filename);
@@ -97,8 +97,8 @@ public class CarController {
                 fileOutputStream.write(data, 0, len);
             }
             CarImg img = new CarImg();
-            img.setImgname(name);
-            img.setImgpath(basePath+filename);
+            img.setImgname(name1);
+            img.setImgpath(basePath+name1);
             if(carid!=null) {
                 img.setCarid(Integer.parseInt(carid));
             }else{
