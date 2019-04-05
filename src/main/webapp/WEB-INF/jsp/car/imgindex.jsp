@@ -226,15 +226,16 @@
                         }
                     },{
                         title: '操作',
-                        width:'100px',
+                        width:'240px',
                         formatter: function(value,row,index){
                             var button ='<div class="btn-group btn-group-xs" style="width:240px">'+
                                     '<button type="button" class="btn btn-default btn-maincolor"onclick="lookview(\'' + row.id+'\')" ><i class="fa fa-eye"></i>&nbsp;查&nbsp;看</button>';
 
 
-                            var b = '<button type="button" class="btn btn-default btn-maincolor"onclick="del(\''+ row.id + '\')" ><i class="fa fa-eye"></i>&nbsp;删&nbsp;除</button>';
+                            var b = '';
                             var e = '';
                             if(row.flag=='1'){
+                                b = '<button type="button" class="btn btn-default btn-maincolor"onclick="del(\''+ row.id + '\')" ><i class="fa fa-eye"></i>&nbsp;删&nbsp;除</button>';
                                 e = '<button type="button" class="btn btn-default btn-maincolor"onclick="qy(\''+ row.id + '\')" ><i class="fa fa-eye"></i>&nbsp;启&nbsp;用</button>';
                             }
                             return button+"&nbsp;" +b+"&nbsp;"+e+ '</div>';
