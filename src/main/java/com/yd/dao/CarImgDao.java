@@ -59,4 +59,22 @@ public class CarImgDao {
     }
 
 
+    public int updateZx() {
+        String sql="update t_car_img set flag='1' where flag='0'";
+        return baseDao.update2(sql,new Object[]{});
+    }
+
+
+    public int updateZx2(int id) {
+        String sql="update t_car_img set flag='1' where id=?";
+        return baseDao.update2(sql,new Object[]{id});
+    }
+
+
+    public int updateQy(int id) {
+        String sql="update t_car_img set flag='0' where id=?";
+        return baseDao.update2(sql,new Object[]{id});
+    }
+
+
 }
