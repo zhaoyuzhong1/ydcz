@@ -147,9 +147,9 @@ public class CarController {
 
     @ResponseBody
     @RequestMapping(value = "/queryList")
-    public Map<String, Object> queryList(String search_name, Integer pagesize, Integer count) {
+    public Map<String, Object> queryList(String search_name, String type,Integer pagesize, Integer count) {
         Map<String, Object> map = new HashMap<>();
-        Page<Car> pageList = carDao.getList(search_name,pagesize, count);
+        Page<Car> pageList = carDao.getList(search_name,type,pagesize, count);
         map.put("rows", pageList.getResult());
         map.put("total", pageList.getTotalCount());
         return map;
