@@ -172,7 +172,7 @@ public class CarController {
     @ResponseBody
     @RequestMapping(value = "/addCar")
     public String addCar(Car car) {
-        int flag = carDao.addCar(car);
+        int flag = carDao.addCar2(car);
         if(flag>0){
             return "ok";
         }else {
@@ -200,7 +200,7 @@ public class CarController {
     @ResponseBody
     @RequestMapping(value = "/updateCar")
     public String updateCar(Car car) {
-        int flag = carDao.updateCar(car);
+        int flag = carDao.updateCar2(car);
         if(flag==0){
             return "ok";
         }else {
