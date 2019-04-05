@@ -164,6 +164,20 @@ public class CarController {
 
 
     @ResponseBody
+    @RequestMapping(value = "/qy")
+    public String qy(String id) {
+        String result = "ok";
+        try {
+            interService.qyImg(Integer.parseInt(id));
+        }catch (Exception e){
+            result = "nook";
+        }
+        return result;
+    }
+
+
+
+    @ResponseBody
     @RequestMapping(value = "/updateCar")
     public String updateCar(Car car) {
         int flag = carDao.updateCar(car);
