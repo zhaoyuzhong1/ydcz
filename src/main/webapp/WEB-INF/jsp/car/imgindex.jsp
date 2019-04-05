@@ -16,6 +16,13 @@
 <script src="${ctx}/js/fileupload/themes/explorer-fas/theme.js" type="text/javascript"></script>
 
 <style>
+    img{
+        width: 100%;
+        height: 100%;
+    }
+    #divs{
+        width: 570px;
+    }
 </style>
 <body class="sticky-header">
 
@@ -69,7 +76,7 @@
                             <div class="form-group">
                                 <label class="control-label col-sm-3"><font color="red" >*</font> 是否封面：</label>
                                 <div class="col-sm-7">
-                                    <input type="radio" class="form-control" name="type" value="0" checked>是&nbsp;&nbsp;<input type="radio" class="form-control" name="type" value="1" checked>否
+                                    <input type="radio" name="type" value="0" checked/>是&nbsp;&nbsp;<input type="radio" name="type" value="1"/>否
                                 </div>
                             </div>
 
@@ -83,7 +90,7 @@
                                             <input id="avatar-1" name="avatar-1" type="file" required>
                                         </div>
                                     </div>
-                                    <div class="kv-avatar-hint"><small>Select file < 1500 KB</small></div>
+                                    <div class="kv-avatar-hint"><small>Select file < 4500 KB</small></div>
                                 </div>
                             </div>
 
@@ -104,7 +111,27 @@
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
     <%----------------d----------------------------------内容结束--%>
+    <div class="modal fade" id="model1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header1">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title">查看图片信息</h4>
+                </div>
+                <div class="panel-body" >
+                    <form class="form-horizontal" role="form">
 
+                        <div  id="divs">
+
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer" id="qlfoot">
+                    <button type="button"  class="btn btn-thollow" data-dismiss="modal" id="myclear"><i class="fa fa-times"></i>返回</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
     <!-- main content end-->
 </body>
 <script src="${ctx}/js/fileupload/fileinput.js" type="text/javascript"></script>
@@ -188,17 +215,29 @@
                         field: 'imgname',
                         title: '图片名称'
                     },{
+                        field: 'flag',
+                        title: '状态',
+                        formatter: function(value){
+                            if(value=='0'){
+                                return "封面图片";
+                            }else{
+                                return "-";
+                            }
+                        }
+                    },{
                         title: '操作',
                         width:'100px',
                         formatter: function(value,row,index){
-                            var button ='<div class="btn-group btn-group-xs">';
+                            var button ='<div class="btn-group btn-group-xs" style="width:240px">'+
+                                    '<button type="button" class="btn btn-default btn-maincolor"onclick="lookview(\'' + row.id+'\')" ><i class="fa fa-eye"></i>&nbsp;查&nbsp;看</button>';
+
 
                             var b = '<button type="button" class="btn btn-default btn-maincolor"onclick="del(\''+ row.id + '\')" ><i class="fa fa-eye"></i>&nbsp;删&nbsp;除</button>';
                             var e = '';
-                            if(value=='1'){
-                                b = '<button type="button" class="btn btn-default btn-maincolor"onclick="qy(\''+ row.id + '\')" ><i class="fa fa-eye"></i>&nbsp;启&nbsp;用</button>';
+                            if(row.flag=='1'){
+                                e = '<button type="button" class="btn btn-default btn-maincolor"onclick="qy(\''+ row.id + '\')" ><i class="fa fa-eye"></i>&nbsp;启&nbsp;用</button>';
                             }
-                            return button +b+ '</div>';
+                            return button+"&nbsp;" +b+"&nbsp;"+e+ '</div>';
 
                         }
                     }
@@ -267,6 +306,36 @@
                     $('#teacher_table').bootstrapTable('refresh');
                 }else {
                     Showbo.Msg.alert('启用失败');
+                }
+            }
+
+        });
+    }
+
+
+
+    function lookview(id){
+        $("#model1").modal();
+        $.post("${ctx}/car/lookview",{id:id},function (d) {
+            console.log(d);
+            if(d=="ajaxfail"){
+                Showbo.Msg.confirm1("会话过期,请重新登录!",function(btn){
+                    if(btn=="yes"){
+                        window.location.href="${ctx}/sys/index";
+                    }
+                });
+            }else {
+                if(d.message=="ok"){
+                    var src="${ctx}/img_car/"+d.src;
+
+                    /*      var fr = new FileReader();
+                     var $img = $('.index-bd .bd .img-wrap img').eq(0);
+                     var imgUrl = fr.readAsDataURL(new Blob(['@ViewBag.path'], { type: "text/plain" }));
+                     $img.attr('src', imgUrl);*/
+                    var imageStr="<image src='"+src+"' />";
+                    $("#divs").html(imageStr);
+                }else {
+                    Showbo.Msg.alert('系统出现错误,请联系系统管理员');
                 }
             }
 
