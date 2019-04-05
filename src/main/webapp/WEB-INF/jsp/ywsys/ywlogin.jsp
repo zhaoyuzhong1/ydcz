@@ -15,7 +15,7 @@
   <meta http-equiv="Cache-Control" content="no-store" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <title>无忧出行</title>
+  <title>易贷车主</title>
 
   <link href="${ctx}/css/bootstrap.min.css" rel="stylesheet">
 
