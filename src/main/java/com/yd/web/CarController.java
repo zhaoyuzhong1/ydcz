@@ -2,6 +2,7 @@ package com.yd.web;
 
 import com.yd.dao.*;
 import com.yd.dto.*;
+import com.yd.service.InterService;
 import com.yd.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -31,6 +32,8 @@ public class CarController {
     CarImgDao carImgDao;
     @Autowired
     CompanyDao companyDao;
+    @Autowired
+    InterService interService;
 
     @RequestMapping(value = "/index")
     public String index(Model model) {
@@ -69,7 +72,7 @@ public class CarController {
         /** 页面控件的文件流* */
         MultipartFile multipartFile = null;
         Map map =multipartRequest.getFileMap();
-        String name = multipartRequest.getParameter("name");
+        String type = multipartRequest.getParameter("type");
         String carid = multipartRequest.getParameter("carid");
 
         for (Iterator i = map.keySet().iterator(); i.hasNext();) {
@@ -79,7 +82,7 @@ public class CarController {
         }
 
         /** 获取文件的后缀* */
-        String filename = new Date().getTime()+"_"+multipartFile.getOriginalFilename();
+        String filename = multipartFile.getOriginalFilename();
 
         InputStream inputStream;
         //System.out.println("             "+request.getRealPath("/"));
@@ -92,19 +95,24 @@ public class CarController {
         String name1 = new Date().getTime()+filename.substring(filename.indexOf("."),filename.length());
         try {
             inputStream = multipartFile.getInputStream();
-            fileOutputStream = new FileOutputStream(basePath+filename);
+            fileOutputStream = new FileOutputStream(basePath+name1);
             while ((len = inputStream.read(data)) != -1) {
                 fileOutputStream.write(data, 0, len);
             }
             CarImg img = new CarImg();
             img.setImgname(name1);
-            img.setImgpath(basePath+name1);
             if(carid!=null) {
                 img.setCarid(Integer.parseInt(carid));
             }else{
                 img.setCarid(0);
             }
-            carImgDao.addCarImg(img);
+            img.setFlag(type);
+
+            if(type.equals("0")){
+                interService.addCarImg(img);
+            }else {
+                carImgDao.addCarImg(img);
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
