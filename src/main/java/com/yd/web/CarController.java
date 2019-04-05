@@ -61,6 +61,26 @@ public class CarController {
     }
 
 
+    @ResponseBody
+    @RequestMapping(value = "/lookview")
+    public Map lookview(Integer id,HttpServletRequest request){
+
+        Map map=new HashMap();
+        try{
+            CarImg gf = carImgDao.getCarImg(id);
+            //System.out.println("id:"+id+"==="+gf);
+            map.put("src",gf.getImgname());
+            map.put("message","ok");
+
+        }catch (Exception e){
+            e.printStackTrace();
+            map.put("message","error");
+            return map;
+        }
+        return map;
+    }
+
+
 
     @RequestMapping(value = "/uploadFile")
     public String upload(HttpServletRequest request, HttpServletResponse response) throws IOException {
