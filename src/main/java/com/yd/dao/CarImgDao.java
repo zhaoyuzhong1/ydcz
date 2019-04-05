@@ -33,7 +33,7 @@ public class CarImgDao {
     //添加
     public int addCarImg(CarImg carImg) {
         StringBuffer sql =new StringBuffer();
-        sql.append(" insert into t_car_img (carid,imgname,imgpath,cdate) values(:carid,:imgname,:imgpath,now()) ");
+        sql.append(" insert into t_car_img (carid,imgname,cdate,flag) values(:carid,:imgname,now(),:flag) ");
         return baseDao.insert(sql.toString(),carImg);
     }
 
