@@ -588,7 +588,7 @@ hr {
 }
 
 .menulogo-box img {
-    height: 45px;
+    height: 60px;
 }
 
 .left-side-collapsed .logo {
@@ -5266,8 +5266,7 @@ ol.comment-list {
 }
 
 .btn-red {
-    /*background-color: #d92d34;*/
-    background: linear-gradient(to left,#f67a54,#f65d57);
+    background-color: #d92d34;
     color: #fff;
 }
 
@@ -5401,30 +5400,12 @@ ol.comment-list {
 }
 
 /*登录page*/
-.login-logobox{
-    position: absolute; left: 0; right: 0; top: -130px; margin: auto;
-    width: 130px; height: 130px;
-    background-color: rgba(255, 255, 255, 0.12);
-    border-radius: 50%;
-    text-align: center; line-height: 130px;
-}
-.login-logobox img{
-    display: inline-block;
-    height: 70px;
-}
 .login-body {
     position: relative;
-    background: #ffffff url("../images/htlt_login_bg1.jpg") no-repeat fixed center center;
+    background: #ffffff url("../images/loginbg_red.jpg") no-repeat fixed center top;
     background-size: cover;
     width: 100%;
     height: 100%;
-}
-.login-body::before{
-    content: "";
-    position: absolute; top: 0; left: 0; z-index: 0;
-    width: 100%; height: 100%;
-    background: url("../images/htlt_login_bg2.png") no-repeat fixed center center;
-    background-size: contain;
 }
 
 .login-body .loginpage-logo {
@@ -5441,7 +5422,7 @@ ol.comment-list {
     margin: auto;
     background-color: #fff;
     border-radius: 15px;
-    box-shadow: 0 0 35px 5px rgba(89, 18, 15, 0.35);
+    box-shadow: 0 0 35px 5px rgba(36, 63, 70, 0.4);
     width: 100%;
     max-width: 540px;
     font-family: "Microsoft YaHei";
@@ -5458,8 +5439,8 @@ ol.comment-list {
     color: #fff;
     height: 45px;
     line-height: 45px;
-    background-color: rgba(239, 99, 85, 0.9);
-    /*background-image: linear-gradient(to right, #DD4249, #EC969A);*/
+    /*background-color: #d92d34;*/
+    background-image: linear-gradient(to right, #DD4249, #EC969A);
     text-align: center;
     position: absolute;
     top: 20px;
@@ -5472,7 +5453,7 @@ ol.comment-list {
     width: 10px;
     height: 100%;
     position: absolute;
-    background-color: rgba(239, 99, 85, 0.9);
+    background-color: #DD4249;
     left: -10px;
 }
 
@@ -5481,7 +5462,7 @@ ol.comment-list {
     width: 10px;
     height: 100%;
     position: absolute;
-    background-color: rgba(239, 99, 85, 0.9);
+    background-color: #EC969A;
     right: -10px;
 }
 
@@ -5492,7 +5473,7 @@ ol.comment-list {
     top: 45px;
     width: 0;
     height: 0;
-    border-top: 10px solid #d5493c;
+    border-top: 10px solid #ba2329;
 }
 
 .signin-box .title .left-tri {
@@ -5502,16 +5483,13 @@ ol.comment-list {
     top: 45px;
     width: 0;
     height: 0;
-    border-top: 10px solid #d5493c;
+    border-top: 10px solid #ba2329;
 }
 
 .signin-box .btn {
     width: 100%;
     max-width: 250px;
-    box-shadow: 0 5px 20px 5px rgba(246, 106, 88, 0.35);
-}
-.signin-box .btn:hover{
-    background: linear-gradient(to right,#f67a54,#f65d57);
+    box-shadow: 0 5px 20px 5px rgba(186, 35, 41, 0.35);
 }
 
 .has-feedback .form-control-feedback {
@@ -5524,15 +5502,14 @@ ol.comment-list {
     font-size: 16px;
     line-height: 1.3333333;
     border-radius: 6px;
-    box-shadow: none;
 }
 
 .form-group-lg .form-control-feedback {
     width: 46px;
     height: 46px;
     line-height: 46px;
-    font-size: 20px;
-    color: #ccc;
+    font-size: 18px;
+    color: #999999;
 }
 
 input:-webkit-autofill {
@@ -5982,42 +5959,8 @@ table img {
     color: #1CA8DD;
 }
 
-.table-cus.table{
-    border: 1px solid #dddddd;
-}
-.table-cus.table>thead>tr>th {
-    padding: 8px;
-    line-height: 24px;
-    vertical-align: top;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    font-weight: bold;
-}
-.table-cus.table thead th {
-    border-left: 1px solid #ddd;
-    font-weight: normal;
-    background-color: #efefef;
-}
-.table-cus.table>thead>tr>th {
-    border-bottom: 1px solid #ddd;
-}
-.table-cus.table tbody td {
-    border-left: 1px solid #dddddd;
-}
-
 @media (max-width: 768px) {
     .wrapper {
         padding: 10px 0 0;
-    }
-    .wrapper>.row {
-        margin: 0;
-    }
-    .wrapper>.row>.col-sm-12 {
-        padding: 0;
-    }
-    .panel-body {
-        padding-left: 8px;
-        padding-right: 8px;
     }
 }
