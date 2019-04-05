@@ -88,6 +88,18 @@
 
 
                         <div class="form-group">
+                            <label class="control-label col-sm-3"><font color="red" >*</font> 销售类别：</label>
+                            <div class="col-sm-7">
+                                <select id="type" name="type" onchange="checkType()">
+                                    <option value="0">新车</option>
+                                    <option value="1">二手车</option>
+                                    <option value="2">团购</option>
+                                </select>
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
                             <label class="control-label col-sm-3"><font color="red" >*</font> 指导价格：</label>
                             <div class="col-sm-7">
                                 <input id="guiprice" maxlength="10" type="text"  class="form-control"  placeholder="指导价格（万元）" >
@@ -130,6 +142,38 @@
                         </div>
 
 
+                        <div id="ersc">
+                            <div class="form-group">
+                                <label class="control-label col-sm-3"><font color="red" >*</font> 公里数：</label>
+                                <div class="col-sm-7">
+                                    <input id="km" maxlength="10" type="text"  class="form-control"  placeholder="行驶公里" >
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-3"><font color="red" >*</font> 描述：</label>
+                                <div class="col-sm-7">
+                                    <input id="depict" type="text"  class="form-control"  placeholder="描述" >
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                        <div id="tuan">
+                            <div class="form-group">
+                                <label class="control-label col-sm-3"><font color="red" >*</font> 参团情况：</label>
+                                <div class="col-sm-7">
+                                    <input id="tcase" maxlength="20" type="text"  class="form-control"  placeholder="参团情况" >
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
                     </div>
                 </div>
                 <div class="modal-footer" id="qlfoot1">
@@ -170,6 +214,12 @@
     });
 
     $(function () {
+        //初始化
+        $("#depict").val("");
+        $("#km").val("");
+        $("#tcase").val("");
+        $("#ersc").hide();
+        $("#tuan").hide();
 
         var dtb1 = new DataTable1();
         dtb1.Init();
@@ -289,6 +339,31 @@
     function gosearch() {
         $('#teacher_table').bootstrapTable('refreshOptions',{pageNumber:1,pagesize:7});
     }
+
+
+    function checkType() {
+        var type = $("#type").val();
+
+        if(type == '0'){
+            $("#depict").val("");
+            $("#km").val("0");
+            $("#tcase").val("");
+            $("#ersc").hide();
+            $("#tuan").hide();
+        }else if(type == '1'){
+            $("#depict").val("");
+            $("#km").val("0");
+            $("#tcase").val("");
+            $('#ersc').show();
+            $('#tuan').hide();
+        }else if(type == '2'){
+            $("#depict").val("");
+            $("#km").val("0");
+            $("#tcase").val("");
+            $('#ersc').hide();
+            $('#tuan').show();
+        }
+    }
     //打开模态框
     function addShop(){
         $('#allid').val("");
@@ -315,6 +390,10 @@
         var downpay=$("#downpay").val();
         var monpay=$("#monpay").val();
         var issy=$("#issy").val();
+        var type = $("#type").val();
+        var depict = $("#depict").val();
+        var km = $("#km").val();
+        var tcase = $("#tcase").val();
 
 
         if($.isEmptyObject(title)||title.trim()==""){
@@ -351,7 +430,29 @@
             return false;
         }
 
-        $.post("${ctx}/car/addCar",{title:title,companyid:companyid,color:color,guiprice:guiprice,price:price,downpay:downpay,monpay:monpay,issy:issy},function (d) {
+        if(type=='1'){
+            if(km.length==0||$.trim(km)==""){
+                Showbo.Msg.alert("请填写行驶公里数！");
+                $("#km").focus();
+                return false;
+            }else if(isNaN(km)){
+                Showbo.Msg.alert("公里数请填写数字！");
+                $("#km").focus();
+                return false;
+            }else if(depict.length==0 || $.trim(depict)==""){
+                Showbo.Msg.alert("请填写二手车描述！");
+                $("#depict").focus();
+                return false;
+            }
+        }else if(type=='2'){
+            if(tcase.length==0||$.trim(tcase)==""){
+                Showbo.Msg.alert("请填写参团情况！");
+                $("#tcase").focus();
+                return false;
+            }
+        }
+
+        $.post("${ctx}/car/addCar",{title:title,companyid:companyid,color:color,guiprice:guiprice,price:price,downpay:downpay,monpay:monpay,issy:issy,type:type,km:km,depict:depict,tcase:tcase},function (d) {
             if(d=="ajaxfail"){
                 Showbo.Msg.confirm1("会话过期,请重新登录!",function(btn){
                     if(btn=="yes"){
