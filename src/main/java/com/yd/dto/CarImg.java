@@ -12,6 +12,7 @@ public class CarImg extends BaseDTO{
     private String imgpath;
     private Date cdate;
     private String title;
+    private String flag;
 
     public Integer getId() {
         return id;
@@ -59,5 +60,13 @@ public class CarImg extends BaseDTO{
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getFlag() {
+        return flag;
+    }
+
+    public void setFlag(String flag) {
+        this.flag = flag;
     }
 }
