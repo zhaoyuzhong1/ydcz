@@ -309,7 +309,7 @@
                                     '</button>';
 
                             var aa =  '<ul class="dropdown-menu dropdown-menu-right">'+
-                                    '<li style="float: none;"><button type="button" class="btn btn-link" onclick="update(\''+ row.id + '\',\''+ row.title + '\',\''+ row.companyid + '\',\''+ row.color + '\',\''+ row.guiprice + '\',\''+ row.price + '\',\''+ row.downpay + '\',\''+ row.monpay + '\',\''+ row.issy + '\')">修改</button></li>'+
+                                    '<li style="float: none;"><button type="button" class="btn btn-link" onclick="update(\''+ row.id + '\',\''+ row.title + '\',\''+ row.companyid + '\',\''+ row.color + '\',\''+ row.guiprice + '\',\''+ row.price + '\',\''+ row.downpay + '\',\''+ row.monpay + '\',\''+ row.issy + '\',\''+ row.type + '\',\''+ row.depict + '\',\''+ row.km + '\',\''+ row.tcase + '\')">修改</button></li>'+
                                     '<li style="float: none;"><button type="button" class="btn btn-link" onclick="img(\''+ row.id + '\')">图片管理</button></li>'+
                                     '</ul>';
 
@@ -474,7 +474,7 @@
     };
 
     //修改角色
-    function update(id,title,companyid,color,guiprice,price,downpay,monpay,issy) {
+    function update(id,title,companyid,color,guiprice,price,downpay,monpay,issy,type,depict,km,tcase) {
 
         $('#allid').val(id);
         $("#title").val(title);
@@ -485,6 +485,10 @@
         $("#downpay").val(downpay);
         $("#monpay").val(monpay);
         $("#issy").val(issy);
+        $("#type").val(type);
+        $("#depict").val(depict);
+        $("#km").val(km);
+        $("#tcase").val(tcase);
 
 
         $("#qlfoot2").css("display","block");
