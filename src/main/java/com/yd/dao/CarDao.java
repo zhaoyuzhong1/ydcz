@@ -12,6 +12,7 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,14 +25,21 @@ public class CarDao {
     private BaseDao baseDao;
 
 
-    public Page<Car> getList(String search_name, Integer pagesize, Integer count){
-        if(search_name!=null && !search_name.equals("")) {
-            String sql = "SELECT a.*,b.name as companyname FROM t_car a left join t_company b on a.companyid=b.id where (a.title like ? or a.color like ?) and a.flag='0' order by a.cdate asc";
-            return baseDao.queryByPage(sql, Car.class, new Object[]{"%" + search_name + "%", "%" + search_name + "%"}, pagesize, count);
-        }else{
-            String sql = "SELECT a.*,b.name as companyname FROM t_car a left join t_company b on a.companyid=b.id where a.flag='0' order by a.cdate asc";
-            return baseDao.queryByPage(sql, Car.class, new Object[]{}, pagesize, count);
+    public Page<Car> getList(String search_name,String type, Integer pagesize, Integer count){
+        List<String> arr = new ArrayList();
+        String sql = "SELECT a.*,b.name as companyname FROM t_car a left join t_company b on a.companyid=b.id where (a.title like ? or a.color like ?) and a.flag='0' ";
+        if(search_name==null ) {
+           search_name = "";
         }
+        arr.add("%"+search_name+"%");
+        arr.add("%"+search_name+"%");
+
+        if(type!=null && !type.equals("")){
+            sql = sql + " and a.type=? ";
+            arr.add(type);
+        }
+        sql = sql + " order by a.cdate asc";
+        return baseDao.queryByPage(sql,Car.class,arr.toArray(),pagesize,count);
     }
 
 
