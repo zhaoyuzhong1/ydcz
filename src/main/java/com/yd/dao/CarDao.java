@@ -90,14 +90,14 @@ public class CarDao {
 
     //获取首页展示的car列表
     public List<Car> getSyCar(int limit){
-        String sql = "SELECT a.*,b.imgpath FROM t_car a LEFT JOIN t_car_img b ON a.id=b.carid WHERE a.flag='0' AND a.issy='0' GROUP BY a.id ORDER BY a.id ASC LIMIT "+limit;
+        String sql = "SELECT a.* FROM t_car a WHERE a.flag='0' AND a.issy='0' GROUP BY a.id ORDER BY a.id ASC LIMIT "+limit;
         return baseDao.query(sql,Car.class,new Object[]{});
     }
 
 
     //获取首页展示的car列表
     public List<Car> getSyCar2(String type,int limit){
-        String sql = "SELECT a.*,b.imgpath FROM t_car a LEFT JOIN t_car_img b ON a.id=b.carid WHERE a.flag='0' and a.type=? AND a.issy='0' GROUP BY a.id ORDER BY a.id ASC LIMIT "+limit;
+        String sql = "SELECT a.* FROM t_car a WHERE a.flag='0' and a.type=? AND a.issy='0' GROUP BY a.id ORDER BY a.id ASC LIMIT "+limit;
         return baseDao.query(sql,Car.class,new Object[]{type});
     }
 
@@ -105,10 +105,10 @@ public class CarDao {
     //获取所有car列表
     public List<Car> getAllCar(String companyid,int limit){
         if(companyid!=null && !companyid.equals("")) {
-            String sql = "SELECT a.*,b.imgpath FROM t_car a LEFT JOIN t_car_img b ON a.id=b.carid WHERE a.flag='0' and a.companyid=? GROUP BY a.id ORDER BY a.issy,a.id ASC LIMIT " + limit;
+            String sql = "SELECT a.* FROM t_car a WHERE a.flag='0' and a.companyid=? GROUP BY a.id ORDER BY a.issy,a.id ASC LIMIT " + limit;
             return baseDao.query(sql, Car.class, new Object[]{companyid});
         }else{
-            String sql = "SELECT a.*,b.imgpath FROM t_car a LEFT JOIN t_car_img b ON a.id=b.carid WHERE a.flag='0' GROUP BY a.id ORDER BY a.issy,a.id ASC LIMIT " + limit;
+            String sql = "SELECT a.* FROM t_car a WHERE a.flag='0' GROUP BY a.id ORDER BY a.issy,a.id ASC LIMIT " + limit;
             return baseDao.query(sql, Car.class, new Object[]{});
         }
     }
@@ -116,9 +116,15 @@ public class CarDao {
 
     //获取所有car列表
     public List<Car> getAllCarsByType(String type,int limit){
-        String sql = "SELECT a.*,b.imgpath FROM t_car a LEFT JOIN t_car_img b ON a.id=b.carid WHERE a.flag='0' and a.type=? GROUP BY a.id ORDER BY a.issy,a.id ASC LIMIT " + limit;
+        String sql = "SELECT a.* FROM t_car a WHERE a.flag='0' and a.type=? GROUP BY a.id ORDER BY a.issy,a.id ASC LIMIT " + limit;
         return baseDao.query(sql, Car.class, new Object[]{type});
 
+    }
+
+
+    public Integer updateImgname(int id,String imgname){
+        String sql ="update t_car set imgpath=? where id=? ";
+        return baseDao.update2(sql,new Object[]{imgname,id});
     }
 
 
