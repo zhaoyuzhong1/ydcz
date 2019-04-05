@@ -67,9 +67,9 @@
                         <input type="hidden" id="uiflag">
                         <div class="form-horizontal">
                             <div class="form-group">
-                                <label class="control-label col-sm-3"><font color="red" >*</font> 图片名称：</label>
+                                <label class="control-label col-sm-3"><font color="red" >*</font> 是否封面：</label>
                                 <div class="col-sm-7">
-                                    <input type="text" class="form-control" name="name" id="name" required>
+                                    <input type="radio" class="form-control" name="type" value="0" checked>是&nbsp;&nbsp;<input type="radio" class="form-control" name="type" value="1" checked>否
                                 </div>
                             </div>
 
@@ -114,11 +114,7 @@
     function submitAdd() {
         var advert = $("#avatar-1").val();
         var type = $("#type").val();
-        var name = $("#name").val();
-        if(name==null || name.length<1){
-            alert("请填写图片名称");
-            return false;
-        }
+
 
         if(advert==null || advert.length<1){
             alert("请选择上传图片");
@@ -135,7 +131,7 @@
     $("#avatar-1").fileinput({
         language: 'zh',
         overwriteInitial: true,
-        maxFileSize: 1500,
+        maxFileSize: 4500,
         showClose: false,
         showCaption: false,
         browseLabel: '',
@@ -198,7 +194,10 @@
                             var button ='<div class="btn-group btn-group-xs">';
 
                             var b = '<button type="button" class="btn btn-default btn-maincolor"onclick="del(\''+ row.id + '\')" ><i class="fa fa-eye"></i>&nbsp;删&nbsp;除</button>';
-
+                            var e = '';
+                            if(value=='1'){
+                                b = '<button type="button" class="btn btn-default btn-maincolor"onclick="qy(\''+ row.id + '\')" ><i class="fa fa-eye"></i>&nbsp;启&nbsp;用</button>';
+                            }
                             return button +b+ '</div>';
 
                         }
@@ -246,6 +245,28 @@
                     $('#teacher_table').bootstrapTable('refresh');
                 }else {
                     Showbo.Msg.alert('删除失败');
+                }
+            }
+
+        });
+    }
+
+
+
+    function qy(id) {
+        $.post("${ctx}/car/qy",{id:id},function (d) {
+            if(d=="ajaxfail"){
+                Showbo.Msg.confirm1("会话过期,请重新登录!",function(btn){
+                    if(btn=="yes"){
+                        window.location.href="${ctx}/sys/index";
+                    }
+                });
+            }else {
+                if(d=="ok"){
+                    Showbo.Msg.alert('启用成功');
+                    $('#teacher_table').bootstrapTable('refresh');
+                }else {
+                    Showbo.Msg.alert('启用失败');
                 }
             }
 
