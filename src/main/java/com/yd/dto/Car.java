@@ -25,6 +25,7 @@ public class Car extends BaseDTO {
     private Integer km;
     private Integer cuser;
     private String cusername;
+    private Integer companyid;
 
 
     public Integer getId() {
@@ -177,5 +178,13 @@ public class Car extends BaseDTO {
 
     public void setCusername(String cusername) {
         this.cusername = cusername;
+    }
+
+    public Integer getCompanyid() {
+        return companyid;
+    }
+
+    public void setCompanyid(Integer companyid) {
+        this.companyid = companyid;
     }
 }
