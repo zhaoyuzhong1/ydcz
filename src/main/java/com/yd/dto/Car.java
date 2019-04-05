@@ -26,7 +26,7 @@ public class Car extends BaseDTO {
     private Integer cuser;
     private String cusername;
     private Integer companyid;
-
+    private String imgname;
 
     public Integer getId() {
         return id;
@@ -186,5 +186,13 @@ public class Car extends BaseDTO {
 
     public void setCompanyid(Integer companyid) {
         this.companyid = companyid;
+    }
+
+    public String getImgname() {
+        return imgname;
+    }
+
+    public void setImgname(String imgname) {
+        this.imgname = imgname;
     }
 }
