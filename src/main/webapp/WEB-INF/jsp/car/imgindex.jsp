@@ -48,8 +48,8 @@
                     </div>
                     <div class="panel-body" >
 
-                        <button style="margin-bottom: 15px;" class="btn btn-main btn-sm" type="button" onclick="add()"><i class="fa fa-search"></i> 添加</button>
-
+                        <button style="margin-bottom: 15px;" class="btn btn-main btn-sm" type="button" onclick="add()"><i class="fa fa-search"></i> 添加</button>&nbsp;
+                        <button style="margin-bottom: 15px;" class="btn btn-main btn-sm" type="button" onclick="javascript:history.go(-1)"><i class="fa fa-search"></i> 返回</button>
                         <table id="teacher_table" data-page-size="5"> </table>
                     </div>
                 </section>
