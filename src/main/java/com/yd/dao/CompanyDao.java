@@ -51,6 +51,19 @@ public class CompanyDao {
 
 
 
+    public Page<Company> getList(String search_name, Integer pagesize, Integer count){
+        if(search_name!=null && !search_name.equals("")) {
+            String sql = "SELECT * FROM t_company where name like ? order by cdate asc";
+            return baseDao.queryByPage(sql, Company.class, new Object[]{"%" + search_name + "%"}, pagesize, count);
+        }else{
+            String sql = "SELECT * FROM t_company order by cdate asc";
+            return baseDao.queryByPage(sql, Company.class, new Object[]{}, pagesize, count);
+        }
+    }
+
+
+
+
     //查询所有的品牌
     public List<Company> selectAllCompany(){
         String sql = "SELECT * FROM t_company order by cdate asc ";
