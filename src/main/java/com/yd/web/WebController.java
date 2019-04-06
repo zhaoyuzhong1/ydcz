@@ -46,9 +46,13 @@ public class WebController {
         List<Car> cars = carDao.getSyCar(10);
         Main main = mainDao.getMain();
         List<Company> coms = companyDao.selectYxCompany();
-        model.addAttribute("new",carDao.getSyCar2("0",3));//新车
-        model.addAttribute("old",carDao.getSyCar2("1",3));//二手车
-        model.addAttribute("tuan",carDao.getSyCar2("2",3));//团购
+        List<Car> news = carDao.getSyCar2("0",3);
+        List<Car> old = carDao.getSyCar2("0",3);
+        List<Car> tuan = carDao.getSyCar2("0",3);
+
+        model.addAttribute("news",news);//新车
+        model.addAttribute("old",old);//二手车
+        model.addAttribute("tuan",tuan);//团购
         Advert advert = advertDao.getAdvert();
         String content = "";
         if(advert!=null){
