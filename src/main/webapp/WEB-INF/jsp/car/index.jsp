@@ -392,6 +392,9 @@
         $("#downpay").val("");
         $("#monpay").val("");
         $("#issy").val("");
+        $("#depict").val("");
+        $("#km").val("");
+        $("#tcase").val("");
         $("#qlfoot1").css("display","block");
         $("#qlfoot2").css("display","none");
         $('#model').modal();
