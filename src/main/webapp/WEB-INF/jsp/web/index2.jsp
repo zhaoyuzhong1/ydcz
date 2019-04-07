@@ -23,10 +23,10 @@
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0">
-    <title>一贷车主</title>
-    <link href="./css/app.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="stylesheet" href="css/new_public.css">
+    <title>易贷车主</title>
+    <link href="${ctx}/css/app.css" rel="stylesheet">
+    <link rel="stylesheet" href="${ctx}/css/index.css">
+    <link rel="stylesheet" href="${ctx}/css/new_public.css">
 </head>
 <body class="index-page">
 <div id="app">
@@ -50,17 +50,17 @@
                 </div>
             </div>
         </div>
-        <div class="saler-module-container detail-propaganda">
-            <div class="big-propa">一贷车主一贷车主一贷车主</div>
-            <div class="small-propa">一贷车主&nbsp;•&nbsp;一贷车主</div>
-        </div>
+        <%--<div class="saler-module-container detail-propaganda">--%>
+            <%--<div class="big-propa">一贷车主一贷车主一贷车主</div>--%>
+            <%--<div class="small-propa">一贷车主&nbsp;•&nbsp;一贷车主</div>--%>
+        <%--</div>--%>
         <div class="delivery-moment">
             <div tabindex="-1" role="dialog" aria-hidden="true" class="pswp">
                 <div class="pswp__bg"></div>
-                <div class="som-image-viewer">
-                    <div class="som-image-viewer__title"><span><img src="${ctx}/images/cancel.png"></span><span>01/ 00</span>
-                    </div>
-                </div>
+                <%--<div class="som-image-viewer">--%>
+                    <%--<div class="som-image-viewer__title"><span><img src="${ctx}/images/cancel.png"></span><span>01/ 00</span>--%>
+                    <%--</div>--%>
+                <%--</div>--%>
                 <div class="pswp__scroll-wrap">
                     <div class="pswp__container">
                         <div class="pswp__item"></div>
