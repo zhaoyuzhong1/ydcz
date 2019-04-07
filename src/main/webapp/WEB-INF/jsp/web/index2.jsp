@@ -102,6 +102,7 @@
                 </a>
                 <div class="remove-scrollbar">
                     <div class="scroll-list">
+                        <c:if test="${tuan!=null}">
                         <c:forEach var="t" items="${tuan}">
                             <div class="scroll-item">
                                 <div class="item-link">
@@ -126,7 +127,7 @@
                                 </div>
                             </div>
                         </c:forEach>
-
+                        </c:if>
                         <%--<div class="scroll-more">--%>
                             <%--<a href="" class="pear-other-link scroll-dog-link">--%>
                                 <%--<div>--%>
@@ -148,8 +149,8 @@
                 </a>
                 <div class="remove-scrollbar">
                     <div class="scroll-list">
-
-                        <c:forEach var="t" items="${new}">
+                        <c:if test="${news!=null}">
+                        <c:forEach var="t" items="${news}">
                         <div class="scroll-item">
                             <div class="item-link">
                                 <div>
@@ -172,6 +173,7 @@
                             </div>
                         </div>
                         </c:forEach>
+                        </c:if>
 
                         <%--<div class="scroll-more">--%>
                             <%--<a href="" class="pear-other-link scroll-dog-link">--%>
@@ -197,7 +199,7 @@
                 </a>
                 <div class="remove-scrollbar">
                     <div class="scroll-list">
-
+                        <c:if test="${old!=null}">
                         <c:forEach var="t" items="${old}">
                         <div class="scroll-item">
                             <div class="item-link">
@@ -221,7 +223,7 @@
                             </div>
                         </div>
                         </c:forEach>
-
+                        </c:if>
                         <%--<div class="scroll-more">--%>
                             <%--<a href="" class="pear-other-link scroll-dog-link">--%>
                                 <%--<div>--%>
@@ -258,7 +260,7 @@
                         </g>
                     </svg>
                 </div>
-                <span >首页</span>
+                <span ><a href="${ctx}/web/index">首页</a></span>
             </div>
             <div  class="bottom-item" style="width: 33.33%;">
                 <div  class="icon-box">
@@ -270,7 +272,7 @@
                         </g>
                     </svg>
                 </div>
-                <span >新车</span>
+                <span ><a href="${ctx}/web/list?type=0" >新车</a></span>
             </div>
             <div  class="bottom-item" style="width: 33.33%;">
                 <div  class="icon-box">
