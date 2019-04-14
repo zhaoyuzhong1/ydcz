@@ -34,6 +34,14 @@ public class ShopDao {
     }
 
 
+
+    public List<Shop> getList(){
+        String sql = "SELECT * FROM t_shop where flag='0' order by cdate asc";
+        return baseDao.query(sql, Shop.class, new Object[]{});
+
+    }
+
+
     //添加
     public int addShop(Shop shop) {
         StringBuffer sql =new StringBuffer();
