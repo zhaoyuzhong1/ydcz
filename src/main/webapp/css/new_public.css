@@ -1,0 +1,97 @@
+.shop-sign-container .shop-info-container .shop-info {
+  margin-top: 15px;
+}
+.detail-propaganda {
+  display: block;
+  text-align: center;
+  background: #ffffff -webkit-gradient(linear, left top, left bottom, from(rgba(89, 89, 243, 0.13)), to(transparent));
+  background: #ffffff linear-gradient(to bottom, rgba(89, 89, 243, 0.13), transparent);
+}
+.detail-propaganda .big-propa {
+  font-size: 22px;
+}
+.detail-propaganda .small-propa {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #777;
+}
+.index-carnav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding: 16px 15px;
+}
+.index-carnav a {
+  display: block;
+  text-align: center;
+}
+.index-carnav .icon {
+  width: 50px;
+  height: 50px;
+}
+.index-carnav .icon.group {
+  background: url("../images/index_icon1.png") no-repeat center;
+  background-size: contain;
+}
+.index-carnav .icon.new {
+  background: url("../images/index_icon2.png") no-repeat center;
+  background-size: contain;
+}
+.index-carnav .icon.old {
+  background: url("../images/index_icon3.png") no-repeat center;
+  background-size: contain;
+}
+.index-carnav .txt {
+  margin-top: 8px;
+  font-size: 14px;
+}
+/*汽车列表*/
+.car-list-page {
+  padding-left: 58px;
+}
+.carlist-nav {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 48px;
+  background-color: #fff;
+}
+.carlist-nav a {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  height: 70px;
+}
+.carlist-nav a.active {
+  position: relative;
+  background-color: #f2f2f2;
+  color: #575ff1;
+}
+.carlist-nav a.active::before {
+  content: "";
+  width: 5px;
+  height: 40px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  background: -webkit-gradient(linear, left top, left bottom, from(#5375f4), to(#5d48f3));
+  background: linear-gradient(to bottom, #5375f4, #5d48f3);
+}
+.car-list-page .carlist-search {
+  width: calc(42%);
+}

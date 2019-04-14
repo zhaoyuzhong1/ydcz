@@ -124,7 +124,7 @@
                         </g>
                     </svg>
                 </div>
-                <span>首页</span></div>
+                <span><a href="${ctx}/web/index">首页</a></span></div>
             <div class="bottom-item active" style="width: 33.33%;">
                 <div class="icon-box">
                     <svg viewBox="0 0 44 39">
@@ -135,7 +135,7 @@
                         </g>
                     </svg>
                 </div>
-                <span>新车</span>
+                <span><a href="${ctx}/web/list?type=0">新车</a></span>
             </div>
             <div class="bottom-item" style="width: 33.33%;">
                 <div class="icon-box">

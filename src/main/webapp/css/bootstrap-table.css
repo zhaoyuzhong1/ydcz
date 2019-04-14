@@ -72,14 +72,13 @@
 @media screen and (max-width: 767px){
     .fixed-table-body {
         width: 100%;
-        overflow-x: visible;
+        overflow-x: auto;
         overflow-y: visible;
     }
 }
 
 .fixed-table-container table {
     width: 100%;
-    table-layout: fixed;
 }
 
 .fixed-table-container thead th {
@@ -111,7 +110,6 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    font-weight: bold;
 }
 .table-striped>tbody>tr:nth-child(odd)>td,
 .table-striped>tbody>tr:nth-child(odd)>th {

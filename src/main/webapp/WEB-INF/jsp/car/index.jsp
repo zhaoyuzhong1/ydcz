@@ -33,6 +33,13 @@
                     <div class="panel-body" >
                         <div class="form-inline pull-right" style="margin-bottom:15px;">
                             <div class="form-group form-group-sm">
+                                类别：
+                                <select name="type" id="stype">
+                                    <option value="">全部</option>
+                                    <option value="0">新车</option>
+                                    <option value="1">二手车</option>
+                                    <option value="2">团购</option>
+                                    </select>&nbsp;&nbsp;
                                 <input id="search_name" name="search_name" type="text" class="form-control"  placeholder="请输入关键字">
                             </div>&nbsp;
                             <button class="btn btn-main btn-sm" type="button" onclick="gosearch()"><i class="fa fa-search"></i> 查询</button>
@@ -268,8 +275,17 @@
                         field: 'color',
                         title: '车辆颜色'
                     },{
-                        field: 'guiprice',
-                        title: '指导价（万元）'
+                        field: 'type',
+                        title: '类别',
+                        formatter: function(value,row,index){
+                            if(value=='0'){
+                                return "新车";
+                            }else if(value=='1'){
+                                return "二手车";
+                            }else {
+                                return "团购";
+                            }
+                        }
                     }
                     ,{
                         field: 'price',
@@ -332,6 +348,7 @@
                 count: params.limit,  //页面大小
                 pagesize:params.offset, //页码
                 search_name:$('#search_name').val(),
+                type:$('#stype').val()
             };
         };
         return oTableInit;
@@ -375,6 +392,9 @@
         $("#downpay").val("");
         $("#monpay").val("");
         $("#issy").val("");
+        $("#depict").val("");
+        $("#km").val("");
+        $("#tcase").val("");
         $("#qlfoot1").css("display","block");
         $("#qlfoot2").css("display","none");
         $('#model').modal();
@@ -491,6 +511,18 @@
         $("#tcase").val(tcase);
 
 
+        if(type == '0'){
+            $("#ersc").hide();
+            $("#tuan").hide();
+        }else if(type == '1'){
+            $('#ersc').show();
+            $('#tuan').hide();
+        }else if(type == '2'){
+            $('#ersc').hide();
+            $('#tuan').show();
+        }
+
+
         $("#qlfoot2").css("display","block");
         $("#qlfoot1").css("display","none");
         $('#model').modal();
@@ -506,6 +538,10 @@
         var downpay=$("#downpay").val();
         var monpay=$("#monpay").val();
         var issy=$("#issy").val();
+        var type= $("#type").val();
+        var depict= $("#depict").val();
+        var km= $("#km").val();
+        var tcase= $("#tcase").val();
 
 
         if($.isEmptyObject(title)||title.trim()==""){
@@ -542,7 +578,7 @@
             return false;
         }
 
-        $.post("${ctx}/car/updateCar",{id:id,title:title,companyid:companyid,color:color,guiprice:guiprice,price:price,downpay:downpay,monpay:monpay,issy:issy},function (d) {
+        $.post("${ctx}/car/updateCar",{id:id,title:title,companyid:companyid,color:color,guiprice:guiprice,price:price,downpay:downpay,monpay:monpay,issy:issy,type:type,km:km,depict:depict,tcase:tcase},function (d) {
             if(d=="ajaxfail"){
                 Showbo.Msg.confirm1("会话过期,请重新登录!",function(btn){
                     if(btn=="yes"){

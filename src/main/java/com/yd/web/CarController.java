@@ -61,6 +61,26 @@ public class CarController {
     }
 
 
+    @ResponseBody
+    @RequestMapping(value = "/lookview")
+    public Map lookview(Integer id,HttpServletRequest request){
+
+        Map map=new HashMap();
+        try{
+            CarImg gf = carImgDao.getCarImg(id);
+            //System.out.println("id:"+id+"==="+gf);
+            map.put("src",gf.getImgname());
+            map.put("message","ok");
+
+        }catch (Exception e){
+            e.printStackTrace();
+            map.put("message","error");
+            return map;
+        }
+        return map;
+    }
+
+
 
     @RequestMapping(value = "/uploadFile")
     public String upload(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -127,9 +147,9 @@ public class CarController {
 
     @ResponseBody
     @RequestMapping(value = "/queryList")
-    public Map<String, Object> queryList(String search_name, Integer pagesize, Integer count) {
+    public Map<String, Object> queryList(String search_name, String type,Integer pagesize, Integer count) {
         Map<String, Object> map = new HashMap<>();
-        Page<Car> pageList = carDao.getList(search_name,pagesize, count);
+        Page<Car> pageList = carDao.getList(search_name,type,pagesize, count);
         map.put("rows", pageList.getResult());
         map.put("total", pageList.getTotalCount());
         return map;
@@ -152,7 +172,7 @@ public class CarController {
     @ResponseBody
     @RequestMapping(value = "/addCar")
     public String addCar(Car car) {
-        int flag = carDao.addCar(car);
+        int flag = carDao.addCar2(car);
         if(flag>0){
             return "ok";
         }else {
@@ -180,7 +200,7 @@ public class CarController {
     @ResponseBody
     @RequestMapping(value = "/updateCar")
     public String updateCar(Car car) {
-        int flag = carDao.updateCar(car);
+        int flag = carDao.updateCar2(car);
         if(flag==0){
             return "ok";
         }else {
