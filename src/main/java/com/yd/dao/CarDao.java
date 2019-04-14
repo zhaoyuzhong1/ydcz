@@ -71,7 +71,7 @@ public class CarDao {
     //修改汽车
     public int updateCar2(Car car) {
         StringBuffer sql =new StringBuffer();
-        sql.append(" update t_car set title=:title,companyid=:companyid,color=:color,guiprice=:guiprice,price=:price,downpay=:downpay,monpay=:monpay,issy=:issy,type=:type,tcase=:tcase,depict=:depict,km=:km where id=:id ");
+        sql.append(" update t_car set title=:title,companyid=:companyid,color=:color,guiprice=:guiprice,price=:price,downpay=:downpay,monpay=:monpay,issy=:issy,type=:type,tcase=:tcase,depict=:depict,km=:km,shopid=:shopid where id=:id ");
         return baseDao.update(sql.toString(),car);
     }
 
