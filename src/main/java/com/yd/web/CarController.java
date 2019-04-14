@@ -34,11 +34,15 @@ public class CarController {
     CompanyDao companyDao;
     @Autowired
     InterService interService;
+    @Autowired
+    ShopDao shopDao;
 
     @RequestMapping(value = "/index")
     public String index(Model model) {
         List<Company> cs = companyDao.selectAllCompany();
+        List<Shop> shops = shopDao.getList();
         model.addAttribute("cs",cs);
+        model.addAttribute("shops",shops);
         return "car/index";
         //return "sys/top";
     }
