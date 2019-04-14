@@ -33,13 +33,6 @@
                     <div class="panel-body" >
                         <div class="form-inline pull-right" style="margin-bottom:15px;">
                             <div class="form-group form-group-sm">
-                                类别：
-                                <select name="type" id="stype">
-                                    <option value="">全部</option>
-                                    <option value="0">新车</option>
-                                    <option value="1">二手车</option>
-                                    <option value="2">团购</option>
-                                    </select>&nbsp;&nbsp;
                                 <input id="search_name" name="search_name" type="text" class="form-control"  placeholder="请输入关键字">
                             </div>&nbsp;
                             <button class="btn btn-main btn-sm" type="button" onclick="gosearch()"><i class="fa fa-search"></i> 查询</button>
@@ -165,6 +158,19 @@
                                 </div>
                             </div>
 
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-3"><font color="red" >*</font> 店铺：</label>
+                                <div class="col-sm-7">
+                                    <select id="shopid">
+                                        <option value="0">请选择</option>
+                                        <c:forEach var="s" items="${shops}">
+                                            <option value="${s.id}">${s.name}</option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
+                            </div>
+
                         </div>
 
 
@@ -275,17 +281,8 @@
                         field: 'color',
                         title: '车辆颜色'
                     },{
-                        field: 'type',
-                        title: '类别',
-                        formatter: function(value,row,index){
-                            if(value=='0'){
-                                return "新车";
-                            }else if(value=='1'){
-                                return "二手车";
-                            }else {
-                                return "团购";
-                            }
-                        }
+                        field: 'guiprice',
+                        title: '指导价（万元）'
                     }
                     ,{
                         field: 'price',
@@ -325,7 +322,7 @@
                                     '</button>';
 
                             var aa =  '<ul class="dropdown-menu dropdown-menu-right">'+
-                                    '<li style="float: none;"><button type="button" class="btn btn-link" onclick="update(\''+ row.id + '\',\''+ row.title + '\',\''+ row.companyid + '\',\''+ row.color + '\',\''+ row.guiprice + '\',\''+ row.price + '\',\''+ row.downpay + '\',\''+ row.monpay + '\',\''+ row.issy + '\',\''+ row.type + '\',\''+ row.depict + '\',\''+ row.km + '\',\''+ row.tcase + '\')">修改</button></li>'+
+                                    '<li style="float: none;"><button type="button" class="btn btn-link" onclick="update(\''+ row.id + '\',\''+ row.title + '\',\''+ row.companyid + '\',\''+ row.color + '\',\''+ row.guiprice + '\',\''+ row.price + '\',\''+ row.downpay + '\',\''+ row.monpay + '\',\''+ row.issy + '\',\''+ row.type + '\',\''+ row.depict + '\',\''+ row.km + '\',\''+ row.tcase + '\',\''+ row.shopid + '\')">修改</button></li>'+
                                     '<li style="float: none;"><button type="button" class="btn btn-link" onclick="img(\''+ row.id + '\')">图片管理</button></li>'+
                                     '</ul>';
 
@@ -348,7 +345,6 @@
                 count: params.limit,  //页面大小
                 pagesize:params.offset, //页码
                 search_name:$('#search_name').val(),
-                type:$('#stype').val()
             };
         };
         return oTableInit;
@@ -392,9 +388,13 @@
         $("#downpay").val("");
         $("#monpay").val("");
         $("#issy").val("");
+
+        $("#type").val("0");
         $("#depict").val("");
-        $("#km").val("");
+        $("#km").val("0");
         $("#tcase").val("");
+        $("#shopid").val("0");
+
         $("#qlfoot1").css("display","block");
         $("#qlfoot2").css("display","none");
         $('#model').modal();
@@ -414,6 +414,7 @@
         var depict = $("#depict").val();
         var km = $("#km").val();
         var tcase = $("#tcase").val();
+        var shopid = $("#shopid").val();
 
 
         if($.isEmptyObject(title)||title.trim()==""){
@@ -463,6 +464,10 @@
                 Showbo.Msg.alert("请填写二手车描述！");
                 $("#depict").focus();
                 return false;
+            }else if(shopid=="0"){
+                Showbo.Msg.alert("请选择二手车店铺！");
+                $("#shopid").focus();
+                return false;
             }
         }else if(type=='2'){
             if(tcase.length==0||$.trim(tcase)==""){
@@ -472,7 +477,7 @@
             }
         }
 
-        $.post("${ctx}/car/addCar",{title:title,companyid:companyid,color:color,guiprice:guiprice,price:price,downpay:downpay,monpay:monpay,issy:issy,type:type,km:km,depict:depict,tcase:tcase},function (d) {
+        $.post("${ctx}/car/addCar",{title:title,companyid:companyid,color:color,guiprice:guiprice,price:price,downpay:downpay,monpay:monpay,issy:issy,type:type,km:km,depict:depict,tcase:tcase,shopid:shopid},function (d) {
             if(d=="ajaxfail"){
                 Showbo.Msg.confirm1("会话过期,请重新登录!",function(btn){
                     if(btn=="yes"){
@@ -494,7 +499,7 @@
     };
 
     //修改角色
-    function update(id,title,companyid,color,guiprice,price,downpay,monpay,issy,type,depict,km,tcase) {
+    function update(id,title,companyid,color,guiprice,price,downpay,monpay,issy,type,depict,km,tcase,shopid) {
 
         $('#allid').val(id);
         $("#title").val(title);
@@ -509,18 +514,7 @@
         $("#depict").val(depict);
         $("#km").val(km);
         $("#tcase").val(tcase);
-
-
-        if(type == '0'){
-            $("#ersc").hide();
-            $("#tuan").hide();
-        }else if(type == '1'){
-            $('#ersc').show();
-            $('#tuan').hide();
-        }else if(type == '2'){
-            $('#ersc').hide();
-            $('#tuan').show();
-        }
+        $("#shopid").val(shopid);
 
 
         $("#qlfoot2").css("display","block");
@@ -538,10 +532,12 @@
         var downpay=$("#downpay").val();
         var monpay=$("#monpay").val();
         var issy=$("#issy").val();
-        var type= $("#type").val();
-        var depict= $("#depict").val();
-        var km= $("#km").val();
-        var tcase= $("#tcase").val();
+
+        var type = $("#type").val();
+        var depict = $("#depict").val();
+        var km = $("#km").val();
+        var tcase = $("#tcase").val();
+        var shopid = $("#shopid").val();
 
 
         if($.isEmptyObject(title)||title.trim()==""){
@@ -578,7 +574,36 @@
             return false;
         }
 
-        $.post("${ctx}/car/updateCar",{id:id,title:title,companyid:companyid,color:color,guiprice:guiprice,price:price,downpay:downpay,monpay:monpay,issy:issy,type:type,km:km,depict:depict,tcase:tcase},function (d) {
+
+        if(type=='1'){
+            if(km.length==0||$.trim(km)==""){
+                Showbo.Msg.alert("请填写行驶公里数！");
+                $("#km").focus();
+                return false;
+            }else if(isNaN(km)){
+                Showbo.Msg.alert("公里数请填写数字！");
+                $("#km").focus();
+                return false;
+            }else if(depict.length==0 || $.trim(depict)==""){
+                Showbo.Msg.alert("请填写二手车描述！");
+                $("#depict").focus();
+                return false;
+            }else if(shopid=="0"){
+                Showbo.Msg.alert("请选择二手车店铺！");
+                $("#shopid").focus();
+                return false;
+            }
+        }else if(type=='2'){
+            if(tcase.length==0||$.trim(tcase)==""){
+                Showbo.Msg.alert("请填写参团情况！");
+                $("#tcase").focus();
+                return false;
+            }
+        }
+
+
+
+        $.post("${ctx}/car/updateCar",{id:id,title:title,companyid:companyid,color:color,guiprice:guiprice,price:price,downpay:downpay,monpay:monpay,issy:issy,type:type,km:km,depict:depict,tcase:tcase,shopid:shopid},function (d) {
             if(d=="ajaxfail"){
                 Showbo.Msg.confirm1("会话过期,请重新登录!",function(btn){
                     if(btn=="yes"){
